@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EU Repairability Scoring Has a Credibility Problem</title>
+  <style>
+    :root {
+      --ink: #11161a;
+      --muted: #58636d;
+      --line: #d7dde3;
+      --paper: #f3f4f6;
+      --panel: #ffffff;
+      --red: #0071ce;
+      --amber: #e09f49;
+      --green: #00b5bc;
+      --blue: #0071ce;
+      --soft-red: #e7f3fc;
+      --soft-amber: #fff2dd;
+      --soft-green: #e2f7f8;
+      --shadow: 0 18px 45px rgba(17, 22, 26, .09);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+
+    a { color: var(--blue); }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1160px, calc(100% - 36px)); margin: 0 auto; }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(rgba(243, 244, 246, .9), rgba(243, 244, 246, .96)),
+        url("assets/overview-image-06.png") center 35% / cover;
+    }
+
+    .brandline {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 28px;
+    }
+
+    .ifixit-mark {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .ifixit-logo {
+      width: 116px;
+      height: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: .5rem;
+      align-items: center;
+      margin: 36px 0 18px;
+      color: var(--red);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .78rem;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2.4rem, 7vw, 5.8rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .dek {
+      max-width: 760px;
+      margin: 24px 0 28px;
+      color: #26323b;
+      font-size: clamp(1.1rem, 2vw, 1.42rem);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 24px 0 42px;
+    }
+
+    .metric {
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid var(--line);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric b {
+      display: block;
+      font-size: clamp(2.05rem, 3.8vw, 2.65rem);
+      line-height: 1;
+      color: var(--red);
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .asus-score-card {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 18px;
+      align-items: center;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .asus-score-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      object-fit: contain;
+      padding: 18px;
+      background: #101512;
+    }
+
+    .asus-score-copy {
+      padding: 20px 20px 20px 0;
+    }
+
+    .asus-score-copy p {
+      margin: 10px 0 0;
+      color: #28342d;
+    }
+
+    .score-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 14px 0;
+      align-items: stretch;
+    }
+
+    .score-box {
+      display: flex;
+      flex-direction: column;
+      min-height: 108px;
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #f7f7f2;
+      padding: 12px;
+      border-radius: 6px;
+    }
+
+    .score-box small {
+      display: flex;
+      align-items: end;
+      min-height: 34px;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: .68rem;
+      letter-spacing: .05em;
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    .score-box b {
+      margin-top: auto;
+      font-size: clamp(1.55rem, 3.6vw, 2.5rem);
+      line-height: 1;
+    }
+
+    .score-box.claim b::after {
+      content: "?";
+      color: var(--red);
+      margin-left: 2px;
+    }
+
+    .score-flags {
+      display: grid;
+      gap: 7px;
+      margin-top: 14px;
+    }
+
+    .score-flags span {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      color: var(--ink);
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .score-flags span::before {
+      content: "x";
+      width: 18px;
+      height: 18px;
+      display: inline-grid;
+      place-items: center;
+      color: #fff;
+      background: #d12f2f;
+      border-radius: 50%;
+      font-size: .82rem;
+      line-height: 1;
+      font-weight: 900;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .temu-logo {
+      width: 96px;
+      height: auto;
+      margin-bottom: 14px;
+    }
+
+    .metric-stack {
+      display: grid;
+      gap: 12px;
+    }
+
+    .metric.has-image {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .metric-image {
+      width: 78px;
+      height: 78px;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .metric.secondary {
+      box-shadow: none;
+      background: rgba(255, 255, 255, .82);
+    }
+
+    .metric.secondary b {
+      color: var(--amber);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(243, 244, 246, .96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    nav .wrap {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+
+    nav a {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid transparent;
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    nav a:hover { border-color: var(--line); background: var(--panel); }
+
+    main section {
+      padding: 54px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .kicker {
+      color: var(--red);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .78rem;
+    }
+
+    h2 {
+      margin: 6px 0 12px;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    h3 { margin: 0 0 10px; font-size: 1.15rem; }
+    .lead { font-size: 1.16rem; color: #29352e; margin-top: 0; }
+    .cols { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 18px;
+      border-radius: 6px;
+    }
+    .card-media {
+      margin: 0 0 14px;
+      aspect-ratio: 16 / 10;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #f7f8fa;
+    }
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 10px;
+    }
+    .card strong { color: var(--red); }
+
+    .callout {
+      background: var(--soft-red);
+      border-left: 6px solid var(--red);
+      padding: 18px 20px;
+      margin: 20px 0;
+      font-weight: 700;
+    }
+
+    .chart {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 18px;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: minmax(120px, 190px) 1fr minmax(52px, auto);
+      gap: 12px;
+      align-items: center;
+      margin: 12px 0;
+      font-size: .94rem;
+    }
+
+    .track {
+      height: 18px;
+      background: #eef1ee;
+      border: 1px solid #dce2dc;
+      overflow: hidden;
+    }
+
+    .bar { height: 100%; background: var(--red); }
+    .bar.green { background: var(--green); }
+    .bar.amber { background: var(--amber); }
+    .bar.blue { background: var(--blue); }
+
+    .stack-row {
+      display: grid;
+      grid-template-columns: minmax(120px, 190px) 1fr minmax(52px, auto);
+      gap: 12px;
+      align-items: center;
+      margin: 14px 0;
+      font-size: .94rem;
+    }
+
+    .stack-track {
+      display: flex;
+      height: 26px;
+      background: #eef1ee;
+      border: 1px solid #dce2dc;
+      overflow: hidden;
+    }
+
+    .stack-segment {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .stack-segment.design { background: var(--green); }
+    .stack-segment.service { background: var(--blue); }
+    .stack-segment.parts { background: var(--amber); color: var(--ink); }
+    .stack-segment.gap { background: transparent; }
+
+    .chart-note { margin: 10px 0 0; color: var(--muted); font-size: .9rem; }
+
+    .asus-score-layout {
+      display: grid;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .asus-score-chart .track,
+    .asus-score-chart .stack-track {
+      height: 34px;
+    }
+
+    .score-compare {
+      display: grid;
+      gap: 12px;
+    }
+
+    .score-compare-item {
+      display: grid;
+      gap: 6px;
+      align-content: start;
+    }
+
+    .score-compare-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: end;
+      min-width: 0;
+    }
+
+    .score-compare-row .track,
+    .score-compare-row .stack-track {
+      min-width: 0;
+    }
+
+    .score-stack-labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 6px;
+      padding-right: 48px;
+      color: var(--ink);
+      font-size: .86rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .score-stack-labels span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .score-stack-labels i {
+      width: 10px;
+      height: 10px;
+      display: inline-block;
+      border-radius: 2px;
+      flex: 0 0 auto;
+    }
+
+    .score-compare-label {
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      line-height: 1.1;
+    }
+
+    figure {
+      margin: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    figure img {
+      width: 100%;
+      height: auto;
+      background: #eef1ee;
+    }
+
+    figcaption {
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: .9rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .pull-quote {
+      margin: 18px 0;
+      padding: 16px 20px 16px 22px;
+      background: #f7fbff;
+      border: 1px solid #d7e8f7;
+      border-left: 4px solid var(--blue);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .pull-quote p {
+      margin: 0;
+      color: #13202b;
+      font-size: 1.45rem;
+      line-height: 1.22;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 10px;
+      color: var(--muted);
+      font-style: normal;
+      font-size: .92rem;
+    }
+
+    .section-hero {
+      margin: 0 0 28px;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      align-items: stretch;
+    }
+
+    .section-hero img {
+      width: 100%;
+      height: 100%;
+      max-height: 520px;
+      object-fit: cover;
+    }
+
+    .section-hero figcaption {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      border-top: 0;
+      border-left: 1px solid var(--line);
+      padding: 24px;
+      color: var(--ink);
+    }
+
+    .section-hero .pull-quote { margin: 0; }
+
+    .section-hero cite {
+      color: var(--muted);
+      font-style: normal;
+      font-size: .95rem;
+    }
+
+    .product-hero {
+      margin: 0 0 28px;
+    }
+
+    .product-hero img {
+      width: 100%;
+      max-height: 430px;
+      object-fit: contain;
+      padding: 26px;
+      background: #101512;
+    }
+
+    .score-with-badge {
+      display: grid;
+      grid-template-columns: 1fr 160px;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .repairability-badge {
+      width: 100%;
+      max-width: 160px;
+      margin: 0 auto;
+      filter: drop-shadow(0 16px 24px rgba(17, 22, 26, .18));
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid, .cards, .photo-strip { grid-template-columns: 1fr 1fr; }
+      .asus-score-card { grid-column: 1 / -1; }
+      .section-head, .cols { grid-template-columns: 1fr; gap: 18px; }
+      .figure-grid { grid-template-columns: 1fr; }
+      .section-hero { grid-template-columns: 1fr; }
+      .section-hero figcaption { border-left: 0; border-top: 1px solid var(--line); }
+      .score-with-badge { grid-template-columns: 1fr; }
+      .score-compare { grid-template-columns: 1fr; }
+      .repairability-badge { max-width: 140px; }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 24px, 1160px); }
+      .hero-grid, .cards, .photo-strip { grid-template-columns: 1fr; }
+      .asus-score-card { grid-template-columns: 1fr; }
+      .asus-score-copy { padding: 18px; }
+      .asus-score-card img { min-height: 190px; }
+      .score-pair { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr; gap: 5px; }
+      main section { padding: 42px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brandline">
+        <a class="ifixit-mark" href="https://www.ifixit.com" aria-label="iFixit">
+          <img class="ifixit-logo" src="assets/ifixit-logo.svg" alt="iFixit">
+        </a>
+      </div>
+      <div class="eyebrow">Investigative report</div>
+      <h1>EU repairability scoring has a credibility problem.</h1>
+      <p class="dek">Repairability scores are supposed to be the consumer shortcut for a hard question: if this phone, laptop, or appliance breaks, can it actually be fixed? France and the EU have started putting those answers on labels and public product records. Our findings show that the public data is spotty, misleading, and in some cases even maybe flat-out wrong.</p>
+      <div class="hero-grid" aria-label="Key findings">
+        <div class="metric asus-score-card">
+          <img src="assets/asus-rog-flow-z13-front.png" alt="ASUS ROG Flow Z13 tablet product image">
+          <div class="asus-score-copy">
+            <h3>ASUS gave themselves a 10/10 for this laptop.</h3>
+            <p>Our indpendent score of the same ROG Flow Z13 is a 7.4/10. We found more solder and fewer parts for sale than we'd expect in a top-score product.</p>
+            <div class="score-pair" aria-label="ASUS and independent scores">
+              <div class="score-box claim"><small>ASUS French<br>Repair Index claim</small><b>10/10</b></div>
+              <div class="score-box"><small>Independent iFixit Score</small><b>7.4/10</b></div>
+            </div>
+            <div class="score-flags">
+              <span>Soldered ports</span>
+              <span>Soldered RAM</span>
+              <span>Weak parts access</span>
+            </div>
+          </div>
+        </div>
+        <div class="metric-stack">
+          <div class="metric">
+            <img class="temu-logo" src="assets/temu-logo.svg" alt="Temu logo">
+            <b>39</b>
+            <span>EPREL records listing Temu as an official repair-information or parts-pricing source.</span>
+          </div>
+          <div class="metric secondary">
+            <b>103</b>
+            <span>Smartphone and tablet records pointed to Temu or AliExpress instead of a proper parts-price source.</span>
+          </div>
+        </div>
+        <div class="metric-stack">
+          <div class="metric has-image">
+            <img class="metric-image" src="assets/ifixit-phone-category.jpg" alt="iFixit phone category image">
+            <div>
+              <b>81%</b>
+              <span>Smartphone model sheets did not lead to required spare-parts price information.</span>
+            </div>
+          </div>
+          <div class="metric secondary has-image">
+            <img class="metric-image" src="assets/ifixit-dryer-category.jpg" alt="iFixit dryer category image">
+            <div>
+              <b>55%</b>
+              <span>Dryer model sheets did not lead to required spare-parts price information.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Report sections">
+    <div class="wrap">
+      <a href="#overview">Core Case</a>
+      <a href="#asus">ASUS 10/10</a>
+      <a href="#temu">Bad Links</a>
+      <a href="#retail">Missing Labels</a>
+      <a href="#data">Inflated Scores</a>
+      <a href="#professionals">No Access</a>
+      <a href="#evidence">Demand Better</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="overview">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Core case</div>
+            <h2>The score is only useful if people can trust it.</h2>
+          </div>
+          <div>
+            <p class="lead">Repairability scores are supposed to translate technical repair barriers into consumer-facing signals. But the findings show a system with three weak links: manufacturers can claim scores that do not match independent assessment, official databases accept low-quality or unusable repair resources, and retailers often fail to show the labels at the moment of purchase.</p>
+            <p><a href="https://repair.eu/news/the-french-repair-index-challenges-and-opportunities/">France moved first.</a> Its repairability index took effect on January 1, 2021 for five categories of electronic devices sold in France, after a 2019 law required clear repairability information at the point of sale. Manufacturers calculate the score, sellers display it, and the 0-to-10 grade is built from criteria such as documentation, disassembly, spare-parts availability, and spare-parts prices.</p>
+            <p><a href="https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/new-eu-labels-help-consumers-choose-more-repairable-electronics-2025-06-20_en">The EU followed</a> with smartphone and tablet repairability classes on the energy label, in force from June 20, 2025. Those labels run from A to E and are based on factors including disassembly depth, fasteners, tools, spare-parts availability, software updates, and repair information.</p>
+            <p>That context matters because the label is only the front end. A public-interest tool becomes a marketing badge if the score is inflated, the evidence behind it is inaccessible, or the label is missing from the store shelf.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <figure class="card-media">
+              <img src="assets/asus-rog-flow-z13-front.png" alt="ASUS ROG Flow Z13 product image">
+            </figure>
+            <h3>Inflated scoring</h3>
+            <p>ASUS reports perfect 10/10 French Repairability Index scores for more than 40 laptops, including a ROG Flow Z13 that independent scoring rates at 7.4/10.</p>
+          </div>
+          <div class="card">
+            <figure class="card-media">
+              <img src="assets/overview-image-09.png" alt="Ulefone support center page and AliExpress store screenshots">
+            </figure>
+            <h3>Broken transparency</h3>
+            <p>EPREL records point consumers to empty fields, "see manual" notes, generic support pages, AliExpress, and Temu for legally relevant repair information.</p>
+          </div>
+          <div class="card">
+            <figure class="card-media">
+              <img src="assets/overview-image-05.jpg" alt="Brussels shop window displaying smartphone models without energy labels">
+            </figure>
+            <h3>Missing at retail</h3>
+            <p>Independent checks found major online and physical retailers failing to display required smartphone energy and repairability labels.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="asus">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Repairability Data Problem 1</div>
+            <h2>ASUS gave themselves 10/10. Our repairability engineers disagree.</h2>
+          </div>
+          <div>
+            <p class="lead">The ASUS ROG Flow Z13 GZ302EA is a repairable tablet-style device by modern standards. That is not the same as a 10/10.</p>
+            <p>Independent iFixit scoring treats the device as a tablet because the guts live behind the display and the keyboard detaches magnetically. That is the more lenient path: a laptop scorecard would be harsher. Even then, the result is 7.4/10, not 10/10.</p>
+          </div>
+        </div>
+
+        <figure class="product-hero">
+          <img src="assets/asus-rog-flow-z13-keyboard.png" alt="ASUS ROG Flow Z13 with detachable keyboard">
+          <figcaption>ASUS ROG Flow Z13 product image. The device is marketed like a laptop, but its tablet-style architecture matters for repairability scoring.</figcaption>
+        </figure>
+
+        <div class="asus-score-layout">
+          <div class="card">
+            <div class="callout">The central contradiction: ASUS declares a perfect French score, while independent scoring finds real repair barriers including soldered RAM, soldered charging ports, incomplete support materials, and weak official parts availability.</div>
+            <p>The design has strengths: the screen comes away first, the battery is screwed rather than glued, the SSD is accessible behind a hatch, and many modules are replaceable. But the charging ports are soldered to the motherboard, RAM and wireless are soldered, one fan is trapped under the heatsink, and the official support path does not clearly lead ordinary consumers to buy parts.</p>
+            <p>The service manual is public and useful, but it lacks troubleshooting, a parts list with part numbers, and board diagrams. ASUS's official US support path did not expose parts for sale; the separate ASUS parts site appeared legitimate but was not clearly endorsed from the official support page.</p>
+          </div>
+          <div class="chart asus-score-chart">
+            <div class="score-with-badge">
+              <div>
+                <h3>ASUS declared score vs independent score</h3>
+                <div class="score-compare">
+                  <div class="score-compare-item">
+                    <div class="score-compare-row"><div class="track"><div class="bar" style="width:100%"></div></div><strong>10.0</strong></div>
+                    <div class="score-compare-label">ASUS French Repair Index claim</div>
+                  </div>
+                  <div class="score-compare-item">
+                    <div class="score-compare-row"><div class="stack-track" aria-label="iFixit score components totaling 7.4 out of 10">
+                      <div class="stack-segment design" style="width:63.5%">Design 6.35</div>
+                      <div class="stack-segment service" style="width:8.5%" title="Service manual 0.85"></div>
+                      <div class="stack-segment parts" style="width:1.5%" title="Parts availability 0.15"></div>
+                      <div class="stack-segment gap" style="width:26.5%"></div>
+                    </div><strong>7.4</strong></div>
+                    <div class="score-stack-labels" aria-label="Small iFixit score components">
+                      <span><i style="background: var(--blue)"></i>Manual 0.85</span>
+                      <span><i style="background: var(--amber)"></i>Parts 0.15</span>
+                    </div>
+                    <div class="score-compare-label">Independent iFixit Score</div>
+                  </div>
+                </div>
+                <p class="chart-note">Independent scoring summary supplied for ASUS ROG Flow Z13 GZ302EA.</p>
+              </div>
+              <img class="repairability-badge" src="assets/ifixit-repairability-7-badge.png" alt="iFixit repairability badge showing a score of 7">
+            </div>
+          </div>
+        </div>
+
+        <div class="figure-grid">
+          <figure>
+            <img src="assets/asus-image-01.png" alt="ASUS ROG Flow Z13 internal repair assessment image">
+            <figcaption>This ASUS support FAQ shows why the official repair path is part of the scoring dispute: if MyASUS does not confirm a hardware error, the customer cannot use CSR; only one component can be covered per CSR request; and ASUS can require a deposit tied to the replacement part's market price. That is not the kind of open repair access you'd expect from a 10/10 product.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-01.jpg" alt="ASUS ROG Flow Z13 label with QR code">
+            <figcaption>ASUS ROG Flow Z13 compliance photo. The QR code leads to ASUS support pages, but the broader finding is that support pathways and parts access remain confusing.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="temu">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Repairability Data Problem 2</div>
+            <h2>Official repair links often do not lead to repair.</h2>
+          </div>
+          <div>
+            <p class="lead">A repairability label depends on the underlying repair resources. EPREL records show widespread failure at that layer.</p>
+            <p>In the smartphone and tablet dataset, 39 devices list Temu as the official web link for repair instructions, spare-part information, and pre-tax spare-part pricing. Temu and AliExpress are marketplaces, not repair-service providers, so those links do not give consumers repair instructions, repair support, or spare-parts pricing in the way the regulation expects. Across a broader review of active smartphone records, 5% point to Temu or AliExpress, and 81% of information sheets do not lead to the spare-parts prices required by regulation.</p>
+          </div>
+        </div>
+
+        <div class="cols">
+          <div class="chart">
+            <h3>Smartphone records without usable spare-parts pricing</h3>
+            <div class="bar-row"><span>Empty field</span><div class="track"><div class="bar" style="width:50%"></div></div><strong>1,026</strong></div>
+            <div class="bar-row"><span>Brand/product page</span><div class="track"><div class="bar" style="width:12%"></div></div><strong>248</strong></div>
+            <div class="bar-row"><span>"See manual"</span><div class="track"><div class="bar" style="width:7%"></div></div><strong>150</strong></div>
+            <div class="bar-row"><span>Support page, no prices</span><div class="track"><div class="bar" style="width:6%"></div></div><strong>126</strong></div>
+            <div class="bar-row"><span>Temu/AliExpress</span><div class="track"><div class="bar" style="width:5%"></div></div><strong>103</strong></div>
+            <p class="chart-note">Counts from our analysis of 2,054 active smartphone/tablet records.</p>
+          </div>
+          <div>
+            <p>These are not cosmetic problems. If a consumer scans a label and finds an empty field, a generic brand homepage, a locked-down support flow, or a marketplace listing, the regulation has not produced meaningful price transparency.</p>
+            <p>The Temu finding is especially damaging because it puts the burden on consumers to navigate marketplace imports, potential duties, and compliance uncertainty, while still appearing in an official repair-information field. A marketplace listing is not the same thing as a repair channel or a parts catalogue, and it does not satisfy the consumer-facing purpose of the label.</p>
+          </div>
+        </div>
+
+        <div class="figure-grid">
+          <figure>
+            <img src="assets/overview-image-07.png" alt="Acer tablet energy label with missing repair links">
+            <figcaption>Acer tablet information sheet: a class B repair score based on perfect spare-parts availability, while required links to parts availability, prices, and repair instructions are missing.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-08.png" alt="Rhino support page screenshot">
+            <figcaption>Rhino support page reached from a repair-information path. Legally relevant repair information is treated like an escalation request.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-09.png" alt="Ulefone support center and AliExpress store screenshots">
+            <figcaption>Ulefone support path: a brand support page fronts an AliExpress parts store, which may be unavailable or irrelevant to the repair search.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-12.png" alt="Electrolux and AEG dryer parts price page">
+            <figcaption>What compliance can look like: AEG and Electrolux dryer sheets link directly to relevant model-specific parts prices.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="retail">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Repairability Data Problem 3</div>
+            <h2>Retailers are not consistently showing mandatory labels.</h2>
+          </div>
+          <div>
+            <p class="lead">The label cannot guide purchases if shoppers never see it.</p>
+            <p>Independent checks found missing smartphone labels across major online retailers and physical stores. mediamarkt.de and saturn.de are large German consumer-electronics storefronts where shoppers compare phones before they buy. If the score is absent there, the label is missing at the exact point where it is supposed to influence the purchase. On mediamarkt.de, 2,775 of 4,857 smartphone listings lacked a score. On saturn.de, 2,779 of 4,955 did.</p>
+            <p>MediaMarkt Belgium's online filter implied labels for fewer than half the listed phones, and a Brussels MediaMarkt store had 19 of 113 smartphones on display without the required label. That matters because the regulation is not just about publishing a score somewhere in the system; it is about putting the score in front of the shopper, on the product page or on the shelf, where it can actually shape a decision.</p>
+            <blockquote class="pull-quote">
+              <p>The label cannot guide purchases if shoppers never see it.</p>
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="chart">
+          <h3>Where labels or scores were missing</h3>
+          <div class="bar-row"><span>mediamarkt.de</span><div class="track"><div class="bar" style="width:57%"></div></div><strong>57%</strong></div>
+          <div class="bar-row"><span>saturn.de</span><div class="track"><div class="bar" style="width:56%"></div></div><strong>56%</strong></div>
+          <div class="bar-row"><span>MediaMarkt Belgium online</span><div class="track"><div class="bar" style="width:56%"></div></div><strong>56%</strong></div>
+          <div class="bar-row"><span>MediaMarkt Brussels store</span><div class="track"><div class="bar" style="width:17%"></div></div><strong>17%</strong></div>
+          <p class="chart-note">Online percentages are based on our listing and filter-count checks; store count is 19 of 113 smartphones.</p>
+        </div>
+
+        <div class="figure-grid">
+          <figure>
+            <img src="assets/overview-image-02.png" alt="Online retailer smartphone listings without complete energy score filtering">
+            <figcaption>MediaMarkt Belgium online: product counts by energy class add up to less than half of listed cellphones.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-03.png" alt="Amazon.de listings with inconsistent energy label presence">
+            <figcaption>Amazon.de results show inconsistent label presence; the model with a label is sold by Amazon, while third-party listings lack the label.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-04.png" alt="Google Pixel product page missing mandatory energy label">
+            <figcaption>Google Pixel smartphone sold by Amazon without the mandatory energy label on the product page.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-05.jpg" alt="Brussels shop window with smartphone models lacking energy labels">
+            <figcaption>Brussels shop window displaying recent smartphone models without the required energy label, which should be shown at price-label scale.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-06.png" alt="MediaMarkt Brussels smartphone display with inconsistent labels">
+            <figcaption>MediaMarkt Brussels: required labels appeared inconsistently; the count in the source was 19 missing labels out of 113 phones on display.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="data">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Repairability Data Problem 4</div>
+            <h2>When almost everything scores high, the score stops meaning much.</h2>
+          </div>
+          <div>
+            <p class="lead">Repair scores are supposed to help shoppers tell the difference between products. If nearly every product earns an 8, 9, or 10, the label becomes functionally useless.</p>
+            <p>The French Repairability Index data is heavily skewed: data.gouv.fr repairability entries average 9.22 with a 9.3 median, compared with Boulanger data at 7.96 mean and 8.0 median. In the government repairability dataset, 97% of products score 8/10 or higher, and only 8 of 2,173 score below 6.0. A scale with that little spread does not give consumers a meaningful way to compare repairability.</p>
+          </div>
+        </div>
+
+        <div class="cols">
+          <div class="chart">
+            <h3>FRI scores look much higher in the voluntary government dataset</h3>
+            <div class="bar-row"><span>data.gouv.fr mean</span><div class="track"><div class="bar" style="width:92%"></div></div><strong>9.22</strong></div>
+            <div class="bar-row"><span>Boulanger mean</span><div class="track"><div class="bar blue" style="width:80%"></div></div><strong>7.96</strong></div>
+            <div class="bar-row"><span>data.gouv.fr median</span><div class="track"><div class="bar" style="width:93%"></div></div><strong>9.3</strong></div>
+            <div class="bar-row"><span>Boulanger median</span><div class="track"><div class="bar blue" style="width:80%"></div></div><strong>8.0</strong></div>
+            <p class="chart-note">Reporting FRI data to data.gouv.fr is voluntary, creating a likely selection bias toward higher ratings.</p>
+          </div>
+          <div>
+            <p>We are not saying manufacturers are lying. We are saying the system gives them every reason to claim the highest score they can, and it does not appear to check those claims aggressively enough. When the incentives push upward and the guardrails are weak, the result is predictable: scores bunch at the top.</p>
+            <blockquote class="pull-quote">
+              <p>A scale with that little spread does not give consumers a meaningful way to compare repairability.</p>
+            </blockquote>
+            <p>There are also direct data-quality problems: 48 repairability products and 18 durability products have conflicting scores depending on source. Smartphone manufacturers largely skipped reporting to data.gouv.fr, except for brands such as Fairphone and Crosscall, making that category unrepresentative.</p>
+            <p>In EPREL, some white-label devices using names such as "S24 Ultra" and "S25 Ultra" report repairability scores higher than actual Samsung devices. Three devices claim perfect 5.0/5.0 repairability across all sub-scores. All 11 ARCHOS tablets score exactly 1.0 across every criterion. Those patterns may reflect real products. They also look like self-reporting with too little oversight.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="professionals">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Repairability Data Problem 5</div>
+            <h2>Repair information is still hard to get, even for professionals.</h2>
+          </div>
+          <div>
+            <p class="lead">The EU rules do not only require a label. They also rely on access to practical repair information. The findings show that access still breaks down.</p>
+            <p>For tumble dryers, 55% of model information sheets did not link to a page where the required spare-parts price information was actually available. For professional repairers, the problem is more basic: some manufacturers still refuse or delay access to service manuals, diagnostics, wiring diagrams, and error codes.</p>
+          </div>
+        </div>
+
+        <figure class="section-hero">
+          <img src="assets/overview-image-13.png" alt="Jacob D'Hollander repairing a washing machine">
+          <figcaption>
+            <blockquote class="pull-quote">
+              <p>"The new regulations have not made it any easier for me to get service manuals or error codes."</p>
+            </blockquote>
+            <cite>Jacob D'Hollander, appliance repairer in Ghent, Belgium. Photo (c) Brecht Van Maele.</cite>
+          </figcaption>
+        </figure>
+
+        <div class="cols">
+          <div class="chart">
+            <h3>Tumble dryer records with weak parts-price access</h3>
+            <div class="bar-row"><span>Login, serial number, or contact required</span><div class="track"><div class="bar amber" style="width:27%"></div></div><strong>1,389</strong></div>
+            <div class="bar-row"><span>General/dead-end brand or support page</span><div class="track"><div class="bar amber" style="width:26%"></div></div><strong>1,317</strong></div>
+            <div class="bar-row"><span>Empty or broken links</span><div class="track"><div class="bar" style="width:2%"></div></div><strong>96</strong></div>
+            <div class="bar-row"><span>Total not leading to required info</span><div class="track"><div class="bar" style="width:55%"></div></div><strong>2,832</strong></div>
+            <p class="chart-note">Counts from our analysis of 5,159 active dryer records.</p>
+          </div>
+          <div>
+            <p>That is the experience of Jacob D'Hollander, a Belgian appliance repairer who meets the professional requirements but still struggled for months to obtain information that ecodesign rules are supposed to make available within five working days.</p>
+          </div>
+        </div>
+
+        <div class="figure-grid">
+          <figure>
+            <img src="assets/overview-image-10.png" alt="Dryer support page that does not provide required price information">
+            <figcaption>Dryer information sheet link that does not meet the obligation to point to where relevant information is available.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-11.png" alt="Beko support page without visible spare parts prices">
+            <figcaption>Beko support page: a polished service experience, but no spare-parts prices visible from the required path.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-14.png" alt="Email refusing access to proprietary repair methods and wiring diagrams">
+            <figcaption>Email from a leading brand refusing access to repair methods, wiring diagrams, and diagnostic programs, despite legal access requirements.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/overview-image-15.png" alt="Tradeplace platform screenshot without repair information tab">
+            <figcaption>Tradeplace access for a repairer: parts sales are available, but the repair-information tab shown in other screenshots is absent from Jacob's account.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Demand Better</div>
+            <h2>We need to demand better repairability data.</h2>
+          </div>
+          <div>
+            <p class="lead">Each individual problem has a narrow explanation. Together, they point to a credibility failure.</p>
+            <p>A repair label can survive some noise in the data. It cannot survive perfect self-scores that independent reviewers do not support, official repair links that point to Temu, missing retail labels, and repair information systems that block the very people expected to repair products.</p>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="card"><h3>For journalists</h3><p>Interrogate the scores. Ask manufacturers to defend perfect ratings, test whether official repair links lead anywhere useful, and check whether retailers are showing labels where the law says they must.</p></div>
+          <div class="card"><h3>For consumers</h3><p>A high score does not necessarily mean parts are easy to buy, repair instructions are useful, or the label will appear where you shop.</p></div>
+          <div class="card"><h3>For regulators</h3><p>The system needs market surveillance: score audits, link validation, retailer checks, and consequences for inaccessible repair information.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>

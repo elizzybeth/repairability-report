@@ -1,0 +1,146 @@
+[
+  {
+    "file": "overview-image-01.jpg",
+    "bytes": 297133,
+    "caption_candidates": [
+      "QR code leads to https://www.asus.com/supportonly/gz302ea/helpdesk_knowledge/?qsid=i%2FGdFVr4XOWULl21u%2FWtUw%3D%3D",
+      "(it will propose to redirect to a localised page; for Belgium: \u200b\u200bhttps://www.asus.com/be-nl/supportonly/gz302ea/helpdesk_knowledge/?qsid=i%2FGdFVr4XOWULl21u%2FWtUw%3D%3D)",
+      "iFixit scorecard is here"
+    ]
+  },
+  {
+    "file": "overview-image-02.png",
+    "bytes": 185175,
+    "caption_candidates": [
+      "Mediamarkt Belgium offers 2342 cellphones. When summing up the products in all of the energy classes you can filter for in the left menu, you only get to 642 + 330 + 32 + 5 + 17 = 1026 items. In other words, the energy score is listed for less than half of the models listed.",
+      "On amazon.de, the proportions are harder to assess, but the presence of the label is also hit-or-miss. Units sold by third parties on the platform are more often lacking the label than models sold by Amazon, but even in the latter case, the label can be found to be missing.",
+      "Inconsistent presence of the energy label on amazon.de. The model on the left (with the label) is sold by Amazon, the others are offered by third party sellers"
+    ]
+  },
+  {
+    "file": "overview-image-03.png",
+    "bytes": 593721,
+    "caption_candidates": [
+      "Inconsistent presence of the energy label on amazon.de. The model on the left (with the label) is sold by Amazon, the others are offered by third party sellers",
+      "Product page of a Google Pixel smartphone sold by Amazon, missing the mandatory energy label.",
+      "We also had a look in physical stores in Brussels. In small shops, the energy label was often totally absent even for the most recent models."
+    ]
+  },
+  {
+    "file": "overview-image-04.png",
+    "bytes": 501833,
+    "caption_candidates": [
+      "Product page of a Google Pixel smartphone sold by Amazon, missing the mandatory energy label.",
+      "We also had a look in physical stores in Brussels. In small shops, the energy label was often totally absent even for the most recent models.",
+      "Shop window in Brussels displaying recently introduced smartphone models without the energy label. This is supposed to be displayed in the same size as the price, and to include a QR code leading to a detailed information sheet."
+    ]
+  },
+  {
+    "file": "overview-image-05.jpg",
+    "bytes": 276894,
+    "caption_candidates": [
+      "Shop window in Brussels displaying recently introduced smartphone models without the energy label. This is supposed to be displayed in the same size as the price, and to include a QR code leading to a detailed information sheet.",
+      "Even in big box stores, the presence of the labels was inconsistent. At mediamarkt, we counted 113 smartphones on display, 19 of which (17%) were lacking the energy label. Under these circumstances, consumers can\u2019t effectively compare the score of the smartphones they are considering for purchase.",
+      "Hit-or-miss presence of the mandatory energy label at Mediamarkt in Brussels. About 1 in 6 smartphones are on display without the label."
+    ]
+  },
+  {
+    "file": "overview-image-06.png",
+    "bytes": 2687806,
+    "caption_candidates": [
+      "Hit-or-miss presence of the mandatory energy label at Mediamarkt in Brussels. About 1 in 6 smartphones are on display without the label.",
+      "A Spare Parts Price List is Mandatory - But it\u2019s Missing for 4 out of 5 Smartphones",
+      "Contrary to the French indice de r\u00e9parabilit\u00e9, the EU Repairability Index for smartphones and tablets does not take into account spare parts prices - even though, in the words of a policy official, \u201cit is hard to find a study that does not list spare parts prices as one of the key aspects determining whether a product will be repaired\u201d . However, EU policymakers nevertheless expect to \u201ccreate transparency and incentivise the setting of reasonable prices\u201d. How? By requiring manufacturers to publish their spare parts prices, they hope to allow consumers to take into account spare parts prices when shopping for a new smartphone."
+    ]
+  },
+  {
+    "file": "overview-image-07.png",
+    "bytes": 184285,
+    "caption_candidates": [
+      "Screenshot of the energy label for an Acer AGM PAD P2W tablet currently on the market, with a class B repair score that is based on a perfect score for spare parts availability - but missing the legally required links to spare parts availability, parts prices or repair instructions.",
+      "Another 7% of records (150 records) have a reference such as \u2018see manual\u2019, 6% more (126 records) lead to a support page where spare parts prices are not listed, nor is there any suggestion of where they might be found, and 12% (248) simply point to a brand or product page instead of a service resource. A few links also led to error pages.",
+      "\u201cHow can we help you?\u201d Well for starters, by complying with legal obligations \u2026 Screenshot of the support page for a Rhino phone - apparently, accessing freely available information is tantamount to \u2018escalation\u2019."
+    ]
+  },
+  {
+    "file": "overview-image-08.png",
+    "bytes": 424678,
+    "caption_candidates": [
+      "\u201cHow can we help you?\u201d Well for starters, by complying with legal obligations \u2026 Screenshot of the support page for a Rhino phone - apparently, accessing freely available information is tantamount to \u2018escalation\u2019.",
+      "Last but not least, 5% (103 records) point to Temu or Alixpress. In such a scenario, you as a consumer would be the importer and as such, responsible for paying import duties as well as ensuring compliance with all regulations. Sometimes, this situation is slyly camouflaged: Ulefone information sheets list a link that looks genuine (https://www.ulefone.com/pages/support-centers), but if you click the \u2018parts store button\u2019 on that page, it takes you to Aliexpress.",
+      "Screenshot of the Ulefone \u2018Support Centers\u2019 page (left), which is a front for an Aliexpress store (right). Depending on your luck, you may find that store open (top right) or closed (bottom right). Note that in both cases, the pre-filled search bar invites you to revise your repair plans and shop for sexy lingerie instead."
+    ]
+  },
+  {
+    "file": "overview-image-09.png",
+    "bytes": 222342,
+    "caption_candidates": [
+      "Screenshot of the Ulefone \u2018Support Centers\u2019 page (left), which is a front for an Aliexpress store (right). Depending on your luck, you may find that store open (top right) or closed (bottom right). Note that in both cases, the pre-filled search bar invites you to revise your repair plans and shop for sexy lingerie instead.",
+      "Still a page that actually lists parts is still marginally better than a general reference to Temu as listed by such illustrious brands as Shenzhen Bu Dong Feng Technology Co. or Shenzhen Haifuan Intelligent Manufacturing Co., who presumably also sell their products on the aforementioned platform.",
+      "All combined, we found a whopping 81% of products (1670 records) to be non-compliant. Of course, this does not mean that 8 out of 10 smartphone units sold are in breach of the regulation, but it does mean that this particular policy tool does very little to regulate the market or to enable consumers to make an informed choice. Particularly for the cheaper models, consumers should be made aware of the potential long-term cost of buying an unrepairable phone - but they are not."
+    ]
+  },
+  {
+    "file": "overview-image-10.png",
+    "bytes": 36225,
+    "caption_candidates": [
+      "This page does not seem to meet the suppliers\u2019 obligation \u201cto include the weblink to the website where the relevant information will be available\u201d as per EU 2023/2434, Annex V, note (g).",
+      "It is just as common to hit a dead end on a general brand or support website. This happens for 26% of models (1317 records). Apart from directing you to their contact page as mentioned above, Sharp will also send you to their plain brand website for dozens of models, as is the case for brands such as Amica, Hyundai, Midea, Tesla, Vestel and many other brands, amounting to 13% (673 records) of the total number of products. Most of these pages will be of no help at all to you in your search for spare parts prices. Only the Amica website lists a few parts (some seals and a door lock). On Hyundai\u2019s, Sharp\u2019s, Tesla\u2019s and most other brand websites, you will find no information at all on spare parts.",
+      "For some models, Midea will send you to a German support page that actually lists spare parts, but for others, you\u2019ll be sent to the global, French or Italian website. If you root around long enough on the latter, you\u2019ll find a document telling you they have spare parts for 10 years - but consumers can only obtain them by getting in touch with their local authorized technical assistance center."
+    ]
+  },
+  {
+    "file": "overview-image-11.png",
+    "bytes": 260368,
+    "caption_candidates": [
+      "Beko have a nice support website - but no spare parts in sight\u2026",
+      "All in all, this makes for 55% of models (2832 records) for which the information sheet doesn\u2019t actually lead, as per the regulation, \u201cto the website where the relevant information will be available\u201d. And contrary to what might be the case with smartphones, these non-compliant models seem to represent quite a substantial market share. As with smartphones, it seems quite clear that little or no market surveillance is being conducted to check compliance.",
+      "For 55% of dryer models, the the information sheet doesn\u2019t link to spare parts prices"
+    ]
+  },
+  {
+    "file": "overview-image-12.png",
+    "bytes": 237217,
+    "caption_candidates": [
+      "This is how it should be done: for AEG and Electrolux dryers, the link takes you straight to a page with relevant parts prices",
+      "\u201cI Used to Just Call a Guy\u201d: Professional Repairers Also Lack Information",
+      "You may have a hard time accessing the information that you are entitled to as a consumer, but professional repairers also run into issues."
+    ]
+  },
+  {
+    "file": "overview-image-13.png",
+    "bytes": 5736747,
+    "caption_candidates": [
+      "Jacob repairing a washing machine a few years ago, when repair information was still easy to come by. Photo \u00a9 Brecht Van Maele",
+      "\"I used to just call a guy at the service department and he would send me the documents I needed, no red tape. Now they tell me they are not at liberty to disclose the information\".",
+      "Since last autumn, Jacob has been sending e-mails to all of the major brands of household appliances: Bauknecht, Bosch, Beko, Indesit, Miele, Whirlpool,... While Ecodesign regulations should have guaranteed him access to repair information in 5 working days, he is still standing mostly empty-handed after several months of back-and-forth. Only Electrolux has provided him with the information that he has a legal right to obtain."
+    ]
+  },
+  {
+    "file": "overview-image-14.png",
+    "bytes": 56640,
+    "caption_candidates": [
+      "In January, he got a reply from the Head of Customer Care for one of the brands he contacted, providing him with the following 'clear and definitive explanation': \"Our in-depth repair methods, wiring diagrams and diagnostic test programmes are proprietary information. Access to this information is restricted to our authorised service partners who have a contractual agreement with [brand name], undergo specific training and use tools validated by us. This policy ensures the safety and quality of repairs and the correct handling of our technology.\" (see picture)",
+      "E-mail from the Head of Customer Care of a leading brand, with a \u2018clear and definitive explanation\u2019 of their refusal to provide the necessary repair information",
+      "This is quite the statement for a person in that position, given how blatantly it contradicts the legal requirements. These ensure access for professional repairers to all necessary information, explicitly including diagnosis information and wiring and connection diagrams."
+    ]
+  },
+  {
+    "file": "overview-image-15.png",
+    "bytes": 151442,
+    "caption_candidates": [
+      "Screenshot of the platform used by most brands for distributing spare parts. This version also includes a tab with repair information - which is absent in the version that Jacob received access to.",
+      "Jacob sighs. \u201cI don\u2019t necessarily think this is a conspiracy\u2026 There are just many internal hurdles now, employees have simply become scared of sharing information.\u201d",
+      "Call to action? Donate, subscribe etc."
+    ]
+  },
+  {
+    "file": "asus-image-01.png",
+    "bytes": 100918,
+    "caption_candidates": [
+      "Scored as a laptop or tablet? Pros and cons, loopholes, what it means for the consumer, etc",
+      "Build a case for why we\u2019re scoring it as a tablet. Confirm it\u2019s not a 10/10 on either scorecard (soldered RAM on a laptop).",
+      "The service manual is incomplete but good."
+    ]
+  }
+]
