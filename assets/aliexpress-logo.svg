@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 64" role="img" aria-labelledby="title">
+  <title id="title">AliExpress logo</title>
+  <rect width="220" height="64" rx="8" fill="#fff"/>
+  <path d="M24 14h31c7 0 12 5 12 12v12c0 7-5 12-12 12H24c-7 0-12-5-12-12V26c0-7 5-12 12-12z" fill="#e43225"/>
+  <path d="M25 24h30v8H25zM25 35h20v7H25z" fill="#fff"/>
+  <text x="80" y="40" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#e43225">AliExpress</text>
+</svg>

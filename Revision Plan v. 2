@@ -1,0 +1,279 @@
+Revision Plan v. 2
+
+Core recommendation
+
+The draft should move from "EU repairability scoring has a credibility problem" to a more constructive, enforcement-centered frame:
+
+The EU is leading the world on repair policy, but the rules are only as strong as the evidence, enforcement, and public access behind them.
+
+That frame preserves the news value while reducing the risk of sounding like we are attacking the EU project itself. The story is not "EU scores suck." The story is that Europe has created the world's most ambitious repair transparency infrastructure, and our investigation found that manufacturers and retailers are already finding weak points in that system: self-declared scores that are hard to verify, missing or useless repair links, missing labels at retail, and professional repairers still blocked from information they should be able to access.
+
+This is a stronger political frame because it asks EU institutions to finish the job, not to abandon or discredit the work they have started. It also gives reporters a clear headline:
+
+The EU Is Raising the Bar on Repair. Our Data Shows Where It Still Falls Short.
+
+Why the current draft triggers EU-bashing concerns
+
+The current headline is the main problem: "EU repairability scoring has a credibility problem." It puts "EU" and "credibility problem" in the same sentence before the reader understands what kind of scores are involved, which rules are French versus EU-wide, what is self-reported, and what has or has not taken effect yet. That makes the institutional target feel like the EU, not the manufacturers, retailers, and enforcement gaps.
+
+The dek compounds this: "France and the EU have started putting those answers on labels and public product records. Our findings show that the public data is spotty, misleading, and in some cases even maybe flat-out wrong." This is punchy, but it collapses several regimes into one "public data" bucket. Ugo's concern is right: the story currently bundles the French Repairability Index, the EU smartphone/tablet energy label and EPREL records, retailer display obligations, dryer parts-price requirements, and professional-repairer information access. Those pieces can belong in the same investigation, but the frame has to explain why they belong together.
+
+The draft's section labels reinforce the problem. "Repairability Data Problem 1/2/3/4/5" makes all findings sound like failures of "repairability data," even when the issue is retailer non-display, market surveillance, parts-price link compliance, or repair information access. That narrows the frame too much and makes the disparate pieces feel forced.
+
+The ASUS module is also too accusatory in its current presentation. "ASUS gave themselves 10/10. Our repairability engineers disagree" is a useful hook, but the copy compares the French score and the iFixit score too directly. Thomas is right that the iFixit score is not a one-to-one alternative to the French Repairability Index. The stronger claim is narrower: our teardown and scoring found concrete repair barriers that should make a perfect repairability claim require much more transparent evidence.
+
+The "more than 40 laptops" line should be dropped or heavily qualified. Manuel and Thomas are right that the broader count appears to include many variants/configurations of a few model families. If we keep the point as currently phrased, it can imply ASUS is making perfect claims across a huge independent range of products, which is misleading. Use one tested product and, if needed, a parenthetical that public datasets contain multiple 10/10 ASUS variants, but ASUS's dedicated repairability site appears to highlight two 10/10 model lines.
+
+The Jacob/professional repairer story needs a timing caveat. The draft currently says "EU rules do not only require a label" and "the findings show that access still breaks down." That is true for existing ecodesign repair-information obligations, but Ugo is right that the broader Right to Repair Directive is not yet fully applicable. The European Commission states that Directive (EU) 2024/1799 was adopted on June 13, 2024, entered into force on July 30, 2024, and must be transposed and applied from July 31, 2026. So the draft should not say or imply that the Right to Repair Directive has already failed. It should say: existing ecodesign access rules are still unevenly enforced, and the incoming Right to Repair Directive will only work if those enforcement gaps are fixed.
+
+What to preserve
+
+The evidence is strong. The frame is the weak point, not the reporting. Keep:
+
+- The 81% smartphone/tablet information-sheet finding: 1,670 of 2,054 active records did not lead to usable spare-parts price information.
+- The 55% dryer finding: 2,832 of 5,159 active dryer records did not lead to required spare-parts price information.
+- The missing retail label checks: mediamarkt.de, saturn.de, MediaMarkt Belgium online, Amazon.de examples, and Brussels physical-store checks.
+- The Temu and AliExpress finding, especially as a vivid example of EPREL accepting legally relevant links that do not function as a genuine repair channel.
+- The ASUS Flow Z13 case, but as a transparency and verification case study, not as a direct "iFixit proves French score wrong" comparison.
+- The Jacob story, but positioned as "existing repair-information rights still break down in practice" and "a warning sign for the incoming right-to-repair implementation."
+
+Best broad narrative
+
+Suggested nut graf:
+
+"Europe is doing what the rest of the world has not: putting repairability, spare-parts access, and repair information into consumer-facing law. That is the right direction. But an iFixit review of public repair datasets, retailer listings, product information sheets, and a real repairer's attempt to obtain service information found a recurring problem: the rules often depend on self-reporting, unverified links, and weak market surveillance. The result is a repair system that looks strong on paper but can still fail consumers and independent repairers at the moment they need it."
+
+This gives reporters:
+
+- A clear protagonist: the EU as repair-policy leader.
+- A clear problem: enforcement and verification gaps.
+- A clear antagonist: manufacturers/retailers exploiting or neglecting weak points.
+- A clear policy takeaway: keep going, audit the data, enforce the rules, close loopholes.
+
+Selected frame
+
+Use:
+
+"The EU Is Raising the Bar on Repair. Our Data Shows Where It Still Falls Short."
+
+Dek:
+
+"An iFixit review found missing repair labels, empty parts-price links, Temu links in official records, and a 10/10 ASUS claim that deserves public proof."
+
+This selection is the best fit for the current advocacy concern because it starts by crediting the EU's leadership and ambition, then moves immediately to the evidence that implementation still needs work. It gives reporters a clear and approachable story: Europe is raising the bar; iFixit checked the ground truth; the evidence shows gaps regulators can fix.
+
+Suggested revised hero
+
+Eyebrow: Investigation
+
+Headline: The EU Is Raising the Bar on Repair. Our Data Shows Where It Still Falls Short.
+
+Dek: An iFixit review found missing repair labels, empty parts-price links, Temu links in official records, and a 10/10 ASUS claim that deserves public proof.
+
+Key metrics:
+
+- 81% of active smartphone/tablet information sheets we reviewed did not lead to required spare-parts price information.
+- 55% of active dryer information sheets we reviewed did not lead to required spare-parts price information.
+- 57% of mediamarkt.de smartphone listings and 56% of saturn.de smartphone listings lacked a score in our checks.
+- ASUS publicly claims a 10/10 French repairability score for the ROG Flow Z13 GZ302EA; our teardown found meaningful barriers that should make any perfect score transparent and auditable.
+
+More careful ASUS approach
+
+Do not frame the ASUS case as "French score versus iFixit score, therefore French score is wrong." Ugo is right that the scoring systems are not comparable. The French Repairability Index and iFixit's score use different criteria, weights, categories, and evidence standards.
+
+Use this structure instead:
+
+1. State the official claim precisely.
+
+"ASUS's dedicated French repairability site claims a 10/10 score for the ROG Flow Z13 GZ302EA. Public datasets also contain multiple 10/10 ASUS model variants, but those appear to be variants/configurations of a small number of model families, not dozens of unrelated product designs."
+
+2. Acknowledge the product's real strengths.
+
+"The Flow Z13 is, truth be told, a remarkably repairable device by modern tablet/laptop standards. The display can be removed with little or no adhesive, the battery is screwed down rather than glued, the SSD is accessible behind a hatch, cameras and several modules are replaceable, and ASUS publishes a useful service manual. That is exactly why the case is useful: even a genuinely repairable product should not receive a perfect score unless the evidence behind that score is transparent, verifiable, and easy for consumers to understand."
+
+3. Explain what we found that makes "perfect" hard to accept without evidence.
+
+"Our teardown also found barriers that are difficult to square with an unqualified perfect score: soldered RAM, soldered wireless, soldered ports, one fan trapped under the heatsink, liquid metal making heatsink removal riskier, incomplete service documentation, weak parts discoverability, and official support paths that may require diagnostics or serial-number-dependent workflows."
+
+4. Avoid direct score equivalence.
+
+Use:
+
+"Our independent iFixit score is not a replacement French Repairability Index score. It is a separate assessment. But the process of scoring the device gave us physical evidence that any 10/10 claim should be backed by public, criterion-by-criterion documentation."
+
+Avoid:
+
+"ASUS says 10/10; iFixit says 7.4/10; therefore ASUS is wrong."
+
+5. Focus on transparency and verifiability.
+
+"The policy issue is not that iFixit's score and the French score differ. The policy issue is that consumers cannot easily audit how ASUS assigned full marks for the relevant French criteria, and some parts of the French score necessarily depend on commitments or evidence that a member of the public cannot verify by examining the product."
+
+6. Incorporate Thomas's distinction on non-public data.
+
+"Some French score elements cannot be audited from a teardown alone. For example, a manufacturer's commitment to provide spare parts for a certain duration may require contracts, supply records, or historical fulfillment evidence. Other elements are not necessarily non-public in principle but are not exposed in a consumer-verifiable way, such as detailed step counts for disassembly or the exact basis for a sub-score."
+
+7. Suggest the remedy.
+
+"Perfect self-scores should come with public scorecards, source evidence, and a redress mechanism if the promised parts, documents, or support periods are not delivered later."
+
+Replacement ASUS section language
+
+Current: "ASUS gave themselves 10/10. Our repairability engineers disagree."
+
+Better: "ASUS says this repairable device is perfect. The evidence should be public."
+
+Current: "The central contradiction: ASUS declares a perfect French score, while independent scoring finds real repair barriers..."
+
+Better: "The central issue is not that two scoring systems produce different numbers. It is that a perfect self-declared score should be verifiable, especially when a teardown reveals meaningful repair barriers."
+
+Current: "Independent iFixit scoring treats the device as a tablet... Even then, the result is 7.4/10, not 10/10."
+
+Better: "iFixit scored the Flow Z13 under our tablet methodology because the main components sit behind the display and the keyboard detaches. That score is not directly comparable to the French laptop score, but the teardown behind it is still evidence: this is a relatively repairable device with real limitations, not an obviously perfect one."
+
+Data change on ASUS 10/10 counts
+
+Remove:
+
+"ASUS reports perfect 10/10 French Repairability Index scores for more than 40 laptops..."
+
+Replace with:
+
+"ASUS's dedicated French repairability site claims 10/10 scores for the ROG Flow Z13 GZ302EA and the ROG Zephyrus GU605MZ. A broader public dataset contains many 10/10 ASUS entries, but those appear to be variants of a small number of model families, so the count should not be used as evidence of a massive pattern across unrelated designs."
+
+If the count is kept anywhere, use:
+
+"Multiple ASUS model variants in public data are listed at 10/10, concentrated in the Strix G16, Strix G18, and Flow Z13 families."
+
+Do not use:
+
+"More than 40 ASUS laptops" or "more than 50 ASUS laptops" as a standalone claim.
+
+Changes to address Ugo's last two points
+
+ASUS is generally good:
+
+- Add a paragraph early in the ASUS section acknowledging that the Flow Z13 is an improvement over many tablet-style computers and 2-in-1s.
+- Keep the existing strengths list but make it more prominent, not buried after the callout.
+- Avoid "anything but repairable" language from source notes.
+- Consider a side-by-side "What ASUS got right / What needs proof" module.
+- Avoid making ASUS the villain of the whole piece. It should be a case study in why perfect scores require transparency.
+
+Right to Repair Directive timing:
+
+- Add a clear date: Directive (EU) 2024/1799 applies from July 31, 2026.
+- Do not say "the R2R Directive has not made a difference" or imply that Jacob's experience proves the incoming directive failed.
+- Say Jacob's story concerns existing ecodesign repair-information obligations and manufacturer access processes.
+- Frame Jacob's experience as a warning for implementation: if existing access rules are not enforced, the broader right-to-repair framework may underdeliver.
+- In the conclusion, say "with the Right to Repair Directive becoming applicable from July 31, 2026, this is the moment to fix enforcement and redress mechanisms."
+
+Section-by-section revision plan
+
+Hero:
+
+- Replace the headline.
+- Replace "EU repairability scoring has a credibility problem" with a pro-reform/enforcement frame.
+- Replace "spotty, misleading, and maybe flat-out wrong" with "too often incomplete, unverifiable, or missing at the point of use."
+- Fix typo: "indpendent" to "independent."
+- Change ASUS hero card from "gave themselves a 10/10 for this laptop" to "claims a perfect French repairability score for this model."
+- Change the iFixit score card label to "Separate iFixit teardown score" or "Independent iFixit assessment" rather than "declared score vs independent score."
+
+Navigation:
+
+- Rename "ASUS 10/10" to "Perfect Score?"
+- Rename "Bad Links" to "Missing Parts Prices."
+- Rename "Inflated Scores" to "Self-Reported Scores."
+- Rename "No Access" to "Repairer Access."
+- Rename "Demand Better" to "What Enforcement Needs."
+
+Core case:
+
+- Start with EU leadership and France's pioneering role.
+- Explain that the investigation covers four linked layers: score claims, public repair records, retailer display, and repair information access.
+- Separate French and EU regimes clearly.
+- Add one sentence: "Some findings concern French national scoring; others concern EU energy-labelling, ecodesign, and repair-information requirements."
+
+ASUS:
+
+- Make this a transparency/verifiability case study.
+- Drop or qualify the "40+" point.
+- Add product strengths before limitations.
+- Keep the 7.4/10 iFixit score, but explicitly say it is not directly comparable to the French score.
+- Add the public-audit point: perfect self-scores should include criterion-level evidence.
+
+EPREL / parts-price links:
+
+- This is probably the strongest enforcement story. Consider moving it before ASUS if the headline is broad. It has a bigger dataset and clearer legal obligation.
+- Keep Temu and AliExpress as the memorable examples, but avoid implying all noncompliance is equally egregious.
+- Distinguish "empty field," "generic support page," "manual reference," "Temu/AliExpress link," and "technically compliant but hard to use."
+- Add that major brands often comply better, though sometimes with too much friction.
+
+Retail labels:
+
+- Keep as a separate "point of purchase" failure.
+- Make clear this is generally retailer responsibility, not necessarily manufacturer responsibility.
+- Use "our checks" and dates if available, because retail pages change.
+
+FRI score distribution:
+
+- Keep the top-heavy data, but be cautious. Voluntary reporting and selection bias are likely explanations, not proof of false claims.
+- Reframe from "score stops meaning much" to "top-heavy public data makes comparison harder."
+- Add that this does not mean all high-scoring products are bad; it means public datasets need auditing and enough spread to be useful.
+- Include Thomas's point: some commitments cannot be audited by teardown and need market-surveillance authority tools or consumer redress.
+
+Professional repairer access:
+
+- Add a date caveat about Directive (EU) 2024/1799.
+- Explain which existing rules Jacob's access issues relate to.
+- Avoid "legislation hasn't made a difference at all." Use "access rights still break down in practice."
+- Keep Jacob's quote, but surround it with nuance: one repairer's case is not a complete evaluation of the law, but it is a concrete example of where enforcement and internal manufacturer processes fail.
+
+Conclusion:
+
+- Replace "We need to demand better repairability data" with "Europe's repair reforms need proof, audits, and redress."
+- Avoid "credibility failure" as the final takeaway unless framed as "a credibility risk."
+- Suggested closing line: "Europe has built the repair framework other regions should copy. Now it needs the boring machinery that makes rights real: audited scores, validated links, visible labels, fast access for repairers, and consequences when companies do not comply."
+
+Policy asks to add
+
+- Public criterion-level score evidence for self-declared repairability and durability scores.
+- Routine validation of EPREL links for required parts-price and repair-information fields.
+- Market surveillance checks at online and physical retail.
+- A consumer redress mechanism when promised parts availability, software support, or repair information is not delivered.
+- Clear rules that parts-price links must go directly to model-relevant prices without login, serial number, or post-purchase identifiers.
+- Repairer-access enforcement with deadlines, escalation paths, and penalties for unjustified denial.
+
+Language watchlist
+
+Avoid:
+
+- "EU scoring is broken."
+- "The EU repairability index is bad."
+- "Manufacturers are manipulating the FRI" unless we have evidence of intent.
+- "ASUS gave themselves 10/10" as the only formulation.
+- "More than 40 ASUS laptops" without explaining model variants.
+- "The legislation has not made a difference."
+- "Flat-out wrong" unless a specific claim has been conclusively falsified.
+
+Use:
+
+- "Self-declared scores need public evidence."
+- "The rules are promising, but enforcement is uneven."
+- "The issue is not the existence of repair labels; it is whether consumers can verify and use them."
+- "Our iFixit score is not directly comparable to the French score, but the teardown found repair barriers relevant to any perfect-score claim."
+- "Existing access rights still break down in practice."
+- "The incoming Right to Repair Directive, applicable from July 31, 2026, makes enforcement more urgent."
+
+Most important editorial move
+
+Lead with praise and urgency, not disappointment.
+
+The report should sound like:
+
+"Europe is ahead. That is exactly why these gaps matter."
+
+not:
+
+"Europe tried repair scores and they do not work."
+
+That single tonal change will address Ugo's first and largest concern while keeping the investigation compelling for reporters.
