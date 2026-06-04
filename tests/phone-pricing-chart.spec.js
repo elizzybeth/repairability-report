@@ -66,7 +66,7 @@ for (const viewport of viewports) {
       const labelChecks = [
         ['empty-price-link-field', 'Empty price-link field'],
         ['brand-product-page', 'Brand/product page'],
-        ['see-manual', '"See manual"'],
+        ['see-manual', /"See\s*manual"/],
         ['support-page-no-prices', /Support page,\s*no prices/],
         ['temu-aliexpress', /Temu\/\s*AliExpress/],
         ['usable-pricing-path', 'Usable pricing path']
@@ -88,7 +88,10 @@ for (const viewport of viewports) {
         await expect(svg.locator(`text[data-count-for="${id}"]`)).toHaveText(count);
       }
       await expect(svg.locator('text[data-callout-text-for="other-dead-end"]')).toHaveText(/Other dead end\s*17/);
-      await expect(svg.locator('text[data-total-label="phone"]')).toHaveText('2,054 active smartphone/tablet records');
+      await expect(svg.locator('rect[data-callout-box-for="other-dead-end"]')).toHaveCount(0);
+      await expect(svg.locator('text[data-total-label="phone"]')).toHaveCount(0);
+      const totalLabel = chart.locator('.stacked-column-label');
+      await expect(totalLabel).toHaveText('2,054 active smartphone/tablet records');
 
       const chartBox = await chart.boundingBox();
       const svgBox = await svg.boundingBox();
@@ -109,21 +112,19 @@ for (const viewport of viewports) {
       await expect(chart.locator('.scroll-hint')).toBeHidden();
 
       const targetBox = await getBox(svg.locator('rect[data-segment="other-dead-end"]'));
-      const calloutBox = await getBox(svg.locator('rect[data-callout-box-for="other-dead-end"]'));
       const calloutTextBox = await getBox(svg.locator('text[data-callout-text-for="other-dead-end"]'));
       const stem = await getLineGeometry(svg.locator('line[data-callout-stem-for="other-dead-end"]'));
+      const totalLabelBox = await getBox(totalLabel);
 
-      expect(calloutBox.width).toBeGreaterThan(70);
-      expect(calloutBox.height).toBeGreaterThan(20);
-      expect(calloutTextBox.width).toBeLessThanOrEqual(calloutBox.width + 1);
-      expect(calloutTextBox.height).toBeLessThanOrEqual(calloutBox.height + 1);
-      expect(boxesOverlap(calloutBox, targetBox, 0)).toBe(false);
+      expect(calloutTextBox.width).toBeGreaterThan(70);
+      expect(boxesOverlap(calloutTextBox, targetBox, 0)).toBe(false);
       expect(Math.abs(stem.x1 - centerX(targetBox))).toBeLessThanOrEqual(viewport.name === 'desktop' ? 2 : 4);
       expect(Math.abs(stem.x2 - centerX(targetBox))).toBeLessThanOrEqual(viewport.name === 'desktop' ? 2 : 4);
-      expect(stem.y1).toBeGreaterThan(bottomY(calloutBox) - 1);
+      expect(stem.y1).toBeGreaterThan(bottomY(calloutTextBox) - 1);
       expect(stem.y2).toBeGreaterThanOrEqual(targetBox.y - 1);
       expect(stem.y2).toBeLessThanOrEqual(targetBox.y + 1);
-      expect(bottomY(calloutBox)).toBeLessThanOrEqual(targetBox.y - 2);
+      expect(bottomY(calloutTextBox)).toBeLessThanOrEqual(targetBox.y - 2);
+      expect(totalLabelBox.y).toBeGreaterThanOrEqual(bottomY(svgBox) - 1);
 
       if (viewport.name === 'desktop') {
         await expect(chart.locator('.phone-chart-legend')).toBeHidden();
@@ -169,7 +170,13 @@ for (const viewport of viewports) {
       }
       await expect(svg.locator('text[data-callout-text-for="empty-broken-links"]')).toHaveText(/Empty or broken\s*links\s*96/);
       await expect(svg.locator('text[data-callout-text-for="other-weak-links"]')).toHaveText(/Other weak\s*links\s*30/);
-      await expect(svg.locator('text[data-total-label="dryer"]')).toHaveText('5,159 active dryer records');
+      await expect(svg.locator('rect[data-callout-box-for="empty-broken-links"]')).toHaveCount(0);
+      await expect(svg.locator('rect[data-callout-box-for="other-weak-links"]')).toHaveCount(0);
+      await expect(svg.locator('text[data-total-label="dryer"]')).toHaveCount(0);
+      const totalLabel = chart.locator('.stacked-column-label');
+      const chartNote = chart.locator('.chart-note');
+      await expect(totalLabel).toHaveText('5,159 active dryer records');
+      await expect(chartNote).toHaveText('Counts from our analysis of active EPREL dryer records.');
 
       const chartBox = await chart.boundingBox();
       const svgBox = await svg.boundingBox();
@@ -183,38 +190,32 @@ for (const viewport of viewports) {
       expect(svgBox.x + svgBox.width).toBeLessThanOrEqual(chartBox.x + chartBox.width + 1);
       expect(pageOverflow).toBeLessThanOrEqual(1);
 
-      const emptyBox = await getBox(svg.locator('rect[data-callout-box-for="empty-broken-links"]'));
-      const otherBox = await getBox(svg.locator('rect[data-callout-box-for="other-weak-links"]'));
       const emptyTextBox = await getBox(svg.locator('text[data-callout-text-for="empty-broken-links"]'));
       const otherTextBox = await getBox(svg.locator('text[data-callout-text-for="other-weak-links"]'));
       const emptyStem = await getLineGeometry(svg.locator('line[data-callout-stem-for="empty-broken-links"]'));
       const otherStem = await getLineGeometry(svg.locator('line[data-callout-stem-for="other-weak-links"]'));
       const emptyTarget = await getBox(svg.locator('rect[data-segment="empty-broken-links"]'));
       const otherTarget = await getBox(svg.locator('rect[data-segment="other-weak-links"]'));
-      const emptyFill = await svg.locator('rect[data-callout-box-for="empty-broken-links"]').getAttribute('fill');
-      const otherFill = await svg.locator('rect[data-callout-box-for="other-weak-links"]').getAttribute('fill');
+      const totalLabelBox = await getBox(totalLabel);
+      const chartNoteBox = await getBox(chartNote);
 
-      expect(emptyBox.width).toBeGreaterThan(100);
-      expect(emptyBox.height).toBeGreaterThan(20);
-      expect(otherBox.width).toBeGreaterThan(70);
-      expect(otherBox.height).toBeGreaterThan(30);
-      expect(emptyTextBox.width).toBeLessThanOrEqual(emptyBox.width + 1);
-      expect(otherTextBox.width).toBeLessThanOrEqual(otherBox.width + 1);
-      expect(boxesOverlap(emptyBox, otherBox, 1)).toBe(false);
-      expect(emptyBox.y + emptyBox.height).toBeLessThanOrEqual(emptyTarget.y - 2);
-      expect(otherBox.y + otherBox.height).toBeLessThanOrEqual(otherTarget.y - 2);
+      expect(emptyTextBox.width).toBeGreaterThan(80);
+      expect(otherTextBox.width).toBeGreaterThan(60);
+      expect(boxesOverlap(emptyTextBox, otherTextBox, 1)).toBe(false);
+      expect(emptyTextBox.y + emptyTextBox.height).toBeLessThanOrEqual(emptyTarget.y - 2);
+      expect(otherTextBox.y + otherTextBox.height).toBeLessThanOrEqual(otherTarget.y - 2);
       expect(Math.abs(emptyStem.x1 - centerX(emptyTarget))).toBeLessThanOrEqual(viewport.name === 'desktop' ? 2 : 4);
       expect(Math.abs(otherStem.x1 - centerX(otherTarget))).toBeLessThanOrEqual(viewport.name === 'desktop' ? 2 : 4);
       expect(Math.abs(emptyStem.x2 - centerX(emptyTarget))).toBeLessThanOrEqual(viewport.name === 'desktop' ? 2 : 4);
       expect(Math.abs(otherStem.x2 - centerX(otherTarget))).toBeLessThanOrEqual(viewport.name === 'desktop' ? 2 : 4);
+      expect(emptyStem.y1).toBeGreaterThan(bottomY(emptyTextBox) - 1);
+      expect(otherStem.y1).toBeGreaterThan(bottomY(otherTextBox) - 1);
       expect(emptyStem.y2).toBeGreaterThanOrEqual(emptyTarget.y - 1);
       expect(emptyStem.y2).toBeLessThanOrEqual(emptyTarget.y + 1);
       expect(otherStem.y2).toBeGreaterThanOrEqual(otherTarget.y - 1);
       expect(otherStem.y2).toBeLessThanOrEqual(otherTarget.y + 1);
-      expect(emptyStem.y1).toBeGreaterThan(bottomY(emptyBox) - 1);
-      expect(otherStem.y1).toBeGreaterThan(bottomY(otherBox) - 1);
-      expect(emptyFill).toBe('#d15a61');
-      expect(otherFill).toBe('#f0a0a5');
+      expect(totalLabelBox.y).toBeGreaterThanOrEqual(bottomY(svgBox) - 1);
+      expect(chartNoteBox.y).toBeGreaterThanOrEqual(bottomY(totalLabelBox) - 1);
 
       if (viewport.name === 'desktop') {
         await expect(chart.locator('.dryer-chart-legend')).toBeHidden();

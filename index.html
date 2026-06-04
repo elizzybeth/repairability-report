@@ -443,7 +443,7 @@
       overflow: hidden;
     }
 
-    .stack-segment {
+    .stack-track .stack-segment {
       height: 100%;
       display: flex;
       align-items: center;
@@ -454,10 +454,10 @@
       white-space: nowrap;
     }
 
-    .stack-segment.design { background: var(--green); }
-    .stack-segment.service { background: var(--blue); }
-    .stack-segment.parts { background: var(--amber); color: var(--ink); }
-    .stack-segment.gap { background: transparent; }
+    .stack-track .stack-segment.design { background: var(--green); }
+    .stack-track .stack-segment.service { background: var(--blue); }
+    .stack-track .stack-segment.parts { background: var(--amber); color: var(--ink); }
+    .stack-track .stack-segment.gap { background: transparent; }
 
     .chart-note { margin: 10px 0 0; color: var(--muted); font-size: .9rem; }
 
@@ -720,15 +720,17 @@
     }
 
     .dryer-pricing-chart .stack-callout.lower {
-      top: 15px;
+      top: 44px;
       max-width: 72px;
       white-space: normal;
-      background: #fff;
-      padding: 0 3px;
     }
 
     .dryer-pricing-chart .stack-callout.lower::after {
       height: 98px;
+    }
+
+    .dryer-horizontal-chart .stack-callout-row {
+      min-height: 76px;
     }
 
     .horizontal-stack-chart .stack-label-row {
@@ -756,6 +758,10 @@
       padding: 0 0 4px;
       font-size: .56rem;
       line-height: 1;
+    }
+
+    .horizontal-stack-chart .stack-label.label-lower {
+      transform: translateY(22px);
     }
 
     .horizontal-stack-chart .stack-bar-row {
@@ -788,7 +794,11 @@
     }
 
     .dryer-horizontal-chart .stack-bar-row {
-      height: 60px;
+      height: 52px;
+    }
+
+    .dryer-pricing-chart > .stacked-column-label {
+      margin-top: 8px;
     }
 
     .dryer-pricing-chart .stack-cell.availability {
@@ -907,6 +917,13 @@
       font-weight: 900;
       text-anchor: middle;
       dominant-baseline: hanging;
+    }
+
+    .stack-chart-svg .callout-text.no-box {
+      paint-order: stroke;
+      stroke: var(--paper);
+      stroke-width: 3px;
+      stroke-linejoin: round;
     }
 
     .stack-chart-svg .callout-stem {
@@ -1571,7 +1588,7 @@
               <div class="stack-label-row" aria-label="Smartphone and tablet segment labels">
                 <div class="stack-label">Empty price-link field</div>
                 <div class="stack-label">Brand/product page</div>
-                <div class="stack-label">"See manual"</div>
+                <div class="stack-label tiny label-lower">"See<br>manual"</div>
                 <div class="stack-label">Support page, no prices</div>
                 <div class="stack-label">Temu/<wbr>AliExpress</div>
                 <div class="stack-label tiny" aria-hidden="true"></div>
@@ -1586,9 +1603,9 @@
                 <div class="stack-cell problem-muted tiny" data-segment="other-dead-end">17</div>
                 <div class="stack-cell ok">384</div>
               </div>
-              <div class="stacked-column-label">2,054 active smartphone/tablet records</div>
             </div>
           </div>
+          <div class="stacked-column-label">2,054 active smartphone/tablet records</div>
           <p class="scroll-hint">Swipe to inspect chart</p>
           <div class="chart-legend phone-chart-legend" aria-label="Smartphone pricing chart legend">
             <span><i style="background:#8f1d22"></i>Empty price-link field: 1,026</span>
@@ -1774,12 +1791,10 @@
 
         <div class="cols">
           <div class="chart source-comparison">
-            <h3>Voluntary government uploads score higher than retailer listings</h3>
+            <h3>Mean scores are higher in voluntary government uploads</h3>
             <div class="bar-row"><span>Voluntary data.gouv.fr uploads: mean</span><div class="track"><div class="bar" style="width:92%"></div></div><strong>9.22</strong></div>
             <div class="bar-row"><span>Boulanger retailer listings: mean</span><div class="track"><div class="bar blue" style="width:80%"></div></div><strong>7.96</strong></div>
-            <div class="bar-row"><span>Voluntary data.gouv.fr uploads: median</span><div class="track"><div class="bar" style="width:93%"></div></div><strong>9.3</strong></div>
-            <div class="bar-row"><span>Boulanger retailer listings: median</span><div class="track"><div class="bar blue" style="width:80%"></div></div><strong>8.0</strong></div>
-            <p class="chart-note">The data.gouv.fr rows show voluntary government open-data uploads. The Boulanger rows show scores from a retailer catalog. The gap suggests selection bias: companies appear more likely to publish higher scores to the voluntary government dataset.</p>
+            <p class="chart-note">Mean repairability scores from voluntary data.gouv.fr open-data uploads compared with Boulanger retailer listings. The gap suggests selection bias: companies appear more likely to publish higher scores to the voluntary government dataset.</p>
           </div>
           <div>
             <p>Voluntary reporting and selection bias are likely part of the explanation, and the system still gives companies every reason to claim the highest score they can without aggressive checks on those claims. When the incentives push upward and the guardrails are weak, the result is predictable: public scores bunch at the top.</p>
@@ -1811,27 +1826,29 @@
 
         <div class="chart full-width-figure dryer-pricing-chart">
           <h3>Tumble dryer records with weak parts-price access</h3>
-          <div class="horizontal-stack-chart dryer-horizontal-chart" style="--stack-columns: 26.92fr 25.53fr 1.86fr .58fr 45.11fr;" aria-label="Horizontal stacked bar chart of 5,159 dryer records by spare-parts pricing link status">
-            <div class="stack-callout-row" aria-label="Dryer tiny segment callouts">
-              <div class="stack-callout" data-callout-for="empty-broken-links" style="left:53.4%;">Empty or broken links</div>
-              <div class="stack-callout lower" data-callout-for="other-weak-links" style="left:54.55%;">Other weak<br>links</div>
+          <div class="chart-scroll">
+            <div class="horizontal-stack-chart dryer-horizontal-chart" style="--stack-columns: 26.92fr 25.53fr 1.86fr .58fr 45.11fr;" aria-label="Horizontal stacked bar chart of 5,159 dryer records by spare-parts pricing link status">
+              <div class="stack-callout-row" aria-label="Dryer tiny segment callouts">
+                <div class="stack-callout" data-callout-for="empty-broken-links" style="left:53.4%;">Empty or broken<br>links<br>96</div>
+                <div class="stack-callout lower" data-callout-for="other-weak-links" style="left:54.55%;">Other weak<br>links<br>30</div>
+              </div>
+              <div class="stack-label-row" aria-label="Dryer segment labels">
+                <div class="stack-label">Login, serial, or contact required</div>
+                <div class="stack-label">General/dead-end support page</div>
+                <div class="stack-label tiny" aria-hidden="true"></div>
+                <div class="stack-label tiny" aria-hidden="true"></div>
+                <div class="stack-label">Usable or not flagged</div>
+              </div>
+              <div class="stack-bar-row">
+                <div class="stack-cell availability">1,389</div>
+                <div class="stack-cell problem">1,317</div>
+                <div class="stack-cell info tiny" data-segment="empty-broken-links">96</div>
+                <div class="stack-cell neutral tiny" data-segment="other-weak-links">30</div>
+                <div class="stack-cell ok">2,327</div>
+              </div>
             </div>
-            <div class="stack-label-row" aria-label="Dryer segment labels">
-              <div class="stack-label">Login, serial, or contact required</div>
-              <div class="stack-label">General/dead-end support page</div>
-              <div class="stack-label tiny" aria-hidden="true"></div>
-              <div class="stack-label tiny" aria-hidden="true"></div>
-              <div class="stack-label">Usable or not flagged</div>
-            </div>
-            <div class="stack-bar-row">
-              <div class="stack-cell availability">1,389</div>
-              <div class="stack-cell problem">1,317</div>
-              <div class="stack-cell info tiny" data-segment="empty-broken-links">96</div>
-              <div class="stack-cell neutral tiny" data-segment="other-weak-links">30</div>
-              <div class="stack-cell ok">2,327</div>
-            </div>
-            <div class="stacked-column-label">5,159 active dryer records</div>
           </div>
+          <div class="stacked-column-label">5,159 active dryer records</div>
           <div class="chart-legend dryer-chart-legend" aria-label="Dryer pricing chart legend">
             <span><i style="background:#c1464d"></i>Login, serial, or contact required: 1,389</span>
             <span><i style="background:#9f1f25"></i>General/dead-end support page: 1,317</span>

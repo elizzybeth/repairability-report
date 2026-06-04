@@ -61,6 +61,7 @@
     const svg = svgEl('svg', {
       class: 'stack-chart-svg',
       viewBox: `0 0 ${width} ${chartHeight}`,
+      'data-chart': config.chartId,
       role: 'img',
       'aria-label': config.ariaLabel,
       focusable: 'false'
@@ -150,19 +151,21 @@
       });
       svg.appendChild(stem);
 
-      const box = svgEl('rect', {
-        class: 'callout-box',
-        x: boxX,
-        y: boxY,
-        width: boxWidth,
-        height: boxHeight,
-        fill: callout.fill,
-        'data-callout-box-for': callout.segmentId
-      });
-      svg.appendChild(box);
+      if (callout.showBox !== false) {
+        const box = svgEl('rect', {
+          class: 'callout-box',
+          x: boxX,
+          y: boxY,
+          width: boxWidth,
+          height: boxHeight,
+          fill: callout.fill,
+          'data-callout-box-for': callout.segmentId
+        });
+        svg.appendChild(box);
+      }
 
       const text = textLines(lines, {
-        className: 'callout-text',
+        className: `callout-text${callout.showBox === false ? ' no-box' : ''}`,
         x: center.x,
         y: boxY + paddingY,
         fill: callout.textFill || '#11161a',
@@ -176,7 +179,7 @@
       svg.appendChild(text);
     });
 
-    if (config.totalLabel) {
+    if (config.totalLabel && config.showTotalInSvg !== false) {
       const totalText = textLines([config.totalLabel], {
         className: 'stacked-column-label',
         x: width / 2,
@@ -202,7 +205,8 @@
         labelRowHeight: 52,
         calloutRowHeight: 42,
         barHeight: 46,
-        totalLabelHeight: 24,
+        totalLabelHeight: 0,
+        showTotalInSvg: false,
         segments: [
           {
             id: 'empty-price-link-field',
@@ -226,7 +230,9 @@
             fill: '#b7333a',
             countText: '150',
             countFill: '#fff',
-            labelLines: ['"See manual"']
+            labelLines: ['"See', 'manual"'],
+            labelClass: 'tiny',
+            labelY: 22
           },
           {
             id: 'support-page-no-prices',
@@ -270,7 +276,7 @@
             lines: ['Other dead end', '17'],
             boxWidth: 88,
             y: 0,
-            fill: '#f3c2c5',
+            showBox: false,
             textFill: '#11161a',
             fontSize: 11,
             lineGap: 12,
@@ -288,7 +294,8 @@
         labelRowHeight: 52,
         calloutRowHeight: 66,
         barHeight: 46,
-        totalLabelHeight: 24,
+        totalLabelHeight: 0,
+        showTotalInSvg: false,
         segments: [
           {
             id: 'login-serial-contact-required',
@@ -296,7 +303,8 @@
             fill: '#c1464d',
             countText: '1,389',
             countFill: '#fff',
-            labelLines: ['Login, serial, or', 'contact required']
+            labelLines: ['Login, serial, or', 'contact required'],
+            labelFontSize: 12
           },
           {
             id: 'general-dead-end-support-page',
@@ -304,7 +312,8 @@
             fill: '#9f1f25',
             countText: '1,317',
             countFill: '#fff',
-            labelLines: ['General/dead-end', 'support page']
+            labelLines: ['General/dead-end', 'support page'],
+            labelFontSize: 12
           },
           {
             id: 'empty-broken-links',
@@ -330,7 +339,8 @@
             fill: '#7aa95c',
             countText: '2,327',
             countFill: '#fff',
-            labelLines: ['Usable or not flagged']
+            labelLines: ['Usable or not flagged'],
+            labelFontSize: 12
           }
         ],
         callouts: [
@@ -339,7 +349,7 @@
             lines: ['Empty or broken', 'links', '96'],
             boxWidth: 118,
             y: 4,
-            fill: '#d15a61',
+            showBox: false,
             textFill: '#11161a',
             fontSize: 11,
             lineGap: 12,
@@ -351,7 +361,7 @@
             lines: ['Other weak', 'links', '30'],
             boxWidth: 84,
             y: 44,
-            fill: '#f0a0a5',
+            showBox: false,
             textFill: '#11161a',
             fontSize: 11,
             lineGap: 12,
