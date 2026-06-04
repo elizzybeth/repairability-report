@@ -265,10 +265,13 @@
     }
 
     nav .wrap {
+      padding: 10px 0;
+    }
+
+    .desktop-nav {
       display: flex;
       gap: 10px;
       overflow-x: auto;
-      padding: 10px 0;
     }
 
     nav a {
@@ -282,6 +285,48 @@
     }
 
     nav a:hover { border-color: var(--line); background: var(--panel); }
+
+    .mobile-nav { display: none; }
+
+    .mobile-nav summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 42px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      font-size: .95rem;
+      font-weight: 800;
+      list-style: none;
+      cursor: pointer;
+    }
+
+    .mobile-nav summary::-webkit-details-marker { display: none; }
+
+    .mobile-nav summary::after {
+      content: "v";
+      font-size: .85rem;
+      line-height: 1;
+      color: var(--muted);
+    }
+
+    .mobile-nav[open] summary::after { transform: rotate(180deg); }
+
+    .mobile-nav-links {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 8px 0 2px;
+    }
+
+    .mobile-nav-links a {
+      display: block;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, .74);
+      border: 1px solid var(--line);
+    }
 
     main section {
       padding: 54px 0;
@@ -415,6 +460,72 @@
     .stack-segment.gap { background: transparent; }
 
     .chart-note { margin: 10px 0 0; color: var(--muted); font-size: .9rem; }
+
+    .chart-scroll {
+      min-width: 0;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: visible;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .phone-pricing-chart .chart-scroll {
+      overflow: hidden;
+    }
+
+    .scroll-hint {
+      display: none;
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .chart-legend {
+      display: none;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 8px 12px;
+      margin-top: 12px;
+      font-size: .86rem;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .chart-legend span {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 8px;
+      align-items: start;
+      min-width: 0;
+    }
+
+    .chart-legend i {
+      display: block;
+      width: 12px;
+      height: 12px;
+      margin-top: .12rem;
+      border-radius: 2px;
+      background: var(--muted);
+    }
+
+    .legend-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.25;
+    }
+
+    .mobile-stacked-summary { display: none; }
+
+    .asus-score-chart .chart-scroll {
+      overflow-x: visible;
+    }
+
+    .asus-score-chart .scroll-hint {
+      display: none;
+    }
 
     .marketplace-logo-card {
       min-width: 0;
@@ -558,6 +669,7 @@
       gap: 10px;
       margin-top: 14px;
       min-width: 0;
+      width: 100%;
       --other-dead-end-center: 80.885%;
     }
 
@@ -577,7 +689,7 @@
     .horizontal-stack-chart .stack-callout {
       position: absolute;
       left: var(--other-dead-end-center);
-      top: 0;
+      top: 14px;
       transform: translateX(-50%);
       z-index: 1;
       color: var(--ink);
@@ -597,6 +709,26 @@
       height: 120px;
       background: var(--ink);
       opacity: .55;
+    }
+
+    .phone-pricing-chart .stack-callout[data-callout-for="other-dead-end"]::after {
+      height: 60px;
+    }
+
+    .phone-pricing-chart .stack-callout[data-callout-for="other-dead-end"] {
+      top: 28px;
+    }
+
+    .dryer-pricing-chart .stack-callout.lower {
+      top: 15px;
+      max-width: 72px;
+      white-space: normal;
+      background: #fff;
+      padding: 0 3px;
+    }
+
+    .dryer-pricing-chart .stack-callout.lower::after {
+      height: 98px;
     }
 
     .horizontal-stack-chart .stack-label-row {
@@ -650,6 +782,40 @@
       text-align: left;
     }
 
+    .dryer-horizontal-chart .stack-label {
+      font-size: .64rem;
+      line-height: 1.08;
+    }
+
+    .dryer-horizontal-chart .stack-bar-row {
+      height: 60px;
+    }
+
+    .dryer-pricing-chart .stack-cell.availability {
+      background: #c1464d;
+      color: #fff;
+    }
+
+    .dryer-pricing-chart .stack-cell.problem {
+      background: #9f1f25;
+    }
+
+    .dryer-pricing-chart .stack-cell.info {
+      background: #d15a61;
+    }
+
+    .dryer-pricing-chart .stack-cell.neutral {
+      background: #f0a0a5;
+      color: var(--ink);
+    }
+
+    .dryer-pricing-chart .stack-cell.neutral[data-segment="other-weak-links"] {
+      position: relative;
+      z-index: 2;
+      background: #f0a0a5;
+      padding-inline: 4px;
+    }
+
     .stack-cell {
       min-height: 20px;
       display: flex;
@@ -693,9 +859,66 @@
       overflow-wrap: anywhere;
     }
 
+    .method-stack-wrap .stacked-column-label {
+      overflow-wrap: normal;
+      word-break: normal;
+    }
+
+    .stack-chart-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .stack-chart-svg .stack-label {
+      fill: var(--ink);
+      font-size: 12px;
+      font-weight: 800;
+      text-anchor: middle;
+      dominant-baseline: hanging;
+    }
+
+    .stack-chart-svg .stack-label.tiny {
+      font-size: 11px;
+    }
+
+    .stack-chart-svg .stack-count {
+      fill: #fff;
+      font-size: 12px;
+      font-weight: 900;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .stack-chart-svg .stack-count.dark {
+      fill: var(--ink);
+    }
+
+    .stack-chart-svg .callout-box {
+      stroke: none;
+      rx: 4;
+      ry: 4;
+    }
+
+    .stack-chart-svg .callout-text {
+      fill: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+      text-anchor: middle;
+      dominant-baseline: hanging;
+    }
+
+    .stack-chart-svg .callout-stem {
+      stroke: var(--ink);
+      stroke-width: 1;
+      vector-effect: non-scaling-stroke;
+      opacity: .55;
+    }
+
     .method-stack-compare {
       display: grid;
-      grid-template-columns: minmax(120px, 1fr) minmax(76px, 104px) minmax(76px, 104px) minmax(120px, 1fr);
+      grid-template-columns: minmax(120px, 1fr) minmax(92px, 120px) minmax(92px, 120px) minmax(120px, 1fr);
       gap: 12px;
       align-items: start;
       margin-top: 14px;
@@ -760,6 +983,10 @@
     .evidence-copy {
       width: 100%;
       max-width: none;
+    }
+
+    .closing-evidence {
+      margin-top: 28px;
     }
 
     .evidence-copy h3 {
@@ -962,7 +1189,9 @@
     }
 
     .opening-repairability-badge {
-      width: min(130px, 40vw);
+      width: 100%;
+      max-width: none;
+      display: block;
       margin: 4px 0 14px;
       filter: drop-shadow(0 16px 24px rgba(17, 22, 26, .18));
     }
@@ -983,12 +1212,69 @@
       .horizontal-stack-chart .stack-label { font-size: .62rem; padding-inline: 2px; }
       .horizontal-stack-chart .stack-bar-row { height: 52px; }
       .method-stack-compare {
-        grid-template-columns: minmax(120px, 1fr) minmax(76px, 110px);
+        grid-template-columns: minmax(120px, 1fr) minmax(92px, 122px);
         row-gap: 18px;
       }
       .method-stack-compare .method-stack-wrap:nth-of-type(3) { grid-column: 1; }
       .method-stack-compare .method-labels:nth-of-type(4) { grid-column: 2; }
       .repairability-badge { max-width: 140px; }
+    }
+
+    @media (max-width: 720px) {
+      nav .wrap { padding: 8px 0; }
+      .desktop-nav { display: none; }
+      .mobile-nav { display: block; }
+      main section { scroll-margin-top: 72px; }
+      .chart {
+        padding: 14px;
+        overflow: hidden;
+      }
+      .chart-scroll {
+        margin-inline: -2px;
+        padding-inline: 2px;
+      }
+      .scroll-hint { display: block; }
+      .chart-legend {
+        display: grid;
+        grid-template-columns: 1fr;
+        font-size: .82rem;
+      }
+      .chart-legend span { grid-template-columns: 10px 1fr; }
+      .chart-legend i {
+        width: 10px;
+        height: 10px;
+      }
+      .method-stack-compare {
+        grid-template-columns: minmax(96px, 1fr) minmax(96px, 1fr);
+        min-width: 300px;
+        gap: 12px;
+      }
+      .method-stack-compare .method-labels {
+        display: none;
+      }
+      .method-stack-wrap {
+        min-width: 0;
+      }
+      .method-stack-compare .method-stack-wrap:nth-of-type(2),
+      .method-stack-compare .method-stack-wrap:nth-of-type(3) {
+        grid-column: auto;
+      }
+      .phone-pricing-chart .scroll-hint {
+        display: none;
+      }
+      .method-labels,
+      .method-stack {
+        height: 400px;
+      }
+      .method-stack .stack-cell {
+        font-size: .58rem;
+      }
+      .score-chart-legend {
+        grid-template-columns: 1fr;
+      }
+      .bar-row {
+        grid-template-columns: 1fr minmax(0, 1fr) minmax(44px, auto);
+      }
     }
 
     @media (max-width: 560px) {
@@ -999,22 +1285,18 @@
       .asus-score-card img { min-height: 190px; }
       .score-pair { grid-template-columns: 1fr; }
       .bar-row { grid-template-columns: 1fr; gap: 5px; }
-      .stacked-columns { grid-auto-columns: minmax(72px, 1fr); gap: 10px; }
-      .stacked-column { height: 260px; }
-      .stack-segment-labels,
-      .vertical-stack-chart .stacked-column { height: 1120px; }
-      .stack-segment-labels { font-size: .72rem; }
-      .vertical-stack-chart .stack-cell { font-size: .52rem; padding: 0 1px; }
-      .vertical-stack-chart .stack-cell.tiny { font-size: .4rem; }
+      .bar-row strong {
+        justify-self: start;
+      }
       .horizontal-stack-chart .stack-callout { font-size: .5rem; }
-      .horizontal-stack-chart .stack-callout::after { height: 140px; }
+      .horizontal-stack-chart .stack-callout::after { height: 48px; }
       .horizontal-stack-chart .stack-label-row { min-height: 96px; }
       .horizontal-stack-chart .stack-label { font-size: .54rem; }
       .horizontal-stack-chart .stack-label.tiny { font-size: .48rem; max-height: 88px; }
       .horizontal-stack-chart .stack-cell { font-size: .62rem; padding: 2px 1px; }
       .horizontal-stack-chart .stack-cell.tiny { font-size: .44rem; }
       .method-labels,
-      .method-stack { height: 520px; }
+      .method-stack { height: 360px; }
       .method-labels { font-size: .72rem; }
       .stack-cell { font-size: .68rem; padding: 2px; }
       .method-stack .stack-cell { font-size: .5rem; padding: 0 1px; }
@@ -1083,13 +1365,27 @@
 
   <nav aria-label="Report sections">
     <div class="wrap">
-      <a href="#overview">Core Case</a>
-      <a href="#asus">Perfect Score?</a>
-      <a href="#temu">Missing Parts Prices</a>
-      <a href="#retail">Missing Labels</a>
-      <a href="#data">Self-Reported Scores</a>
-      <a href="#professionals">Repairer Access</a>
-      <a href="#evidence">What Enforcement Needs</a>
+      <div class="desktop-nav" aria-label="Report section links">
+        <a href="#overview">Core Case</a>
+        <a href="#asus">Perfect Score?</a>
+        <a href="#temu">Missing Parts Prices</a>
+        <a href="#retail">Missing Labels</a>
+        <a href="#data">Self-Reported Scores</a>
+        <a href="#professionals">Repairer Access</a>
+        <a href="#evidence">What Enforcement Needs</a>
+      </div>
+      <details class="mobile-nav">
+        <summary>Sections</summary>
+        <div class="mobile-nav-links">
+          <a href="#overview">Core Case</a>
+          <a href="#asus">Perfect Score</a>
+          <a href="#temu">Parts Prices</a>
+          <a href="#retail">Labels</a>
+          <a href="#data">Score Data</a>
+          <a href="#professionals">Repairer Access</a>
+          <a href="#evidence">Enforcement</a>
+        </div>
+      </details>
     </div>
   </nav>
 
@@ -1102,7 +1398,7 @@
             <h2>Europe is ahead. That is exactly why these gaps matter.</h2>
           </div>
           <div>
-            <p class="lead">Repair policy is moving all over the world. The US has real state-level right-to-repair wins, and advocates are pushing repair access, parts availability, and repairability information <a href="https://www.repair.org/world">across Canada, Australia, New Zealand, Brazil, India, Taiwan, Europe, and beyond</a>. Europe is ahead because it is the only place where repairability labels, spare-parts access, and repair-information rules are all far enough along to stress-test in public. So we went looking at the places where those rules meet real life: public score records, <a href="https://eprel.ec.europa.eu/screen/home">European Product Registry for Energy Labelling (EPREL)</a> product sheets, retailer listings, store shelves, ASUS support pages, and a professional repairer's attempt to get the information he is supposed to have.</p>
+            <p class="lead">Repair policy is moving all over the world. The US has real state-level <a href="https://repair.org/legislation">Right to Repair</a> wins, and advocates are pushing repair access, parts availability, and repairability information <a href="https://www.repair.org/world">across Canada, Australia, New Zealand, Brazil, India, Taiwan, Europe, and beyond</a>. Europe is ahead because it is the only place where repairability labels, spare-parts access, and repair-information rules are all far enough along to stress-test in public. So we went looking at the places where those rules meet real life: public score records, <a href="https://eprel.ec.europa.eu/screen/home">European Product Registry for Energy Labelling (EPREL)</a> product sheets, retailer listings, store shelves, ASUS support pages, and a professional repairer's attempt to get the information he is supposed to have.</p>
             <p>Repairability scoring is one of the reforms we are most excited about because it turns repair into a point-of-sale comparison. A score gives consumers a way to compare products, gives journalists a concrete claim to test, and gives regulators a public promise to enforce. The score only works if the evidence behind it is visible enough to check.</p>
             <p><a href="https://repair.eu/news/the-french-repair-index-challenges-and-opportunities/">France moved first.</a> Its repairability index took effect on January 1, 2021 for five categories of electronic devices sold in France, after a 2019 law required clear repairability information at the point of sale. Manufacturers calculate the score, sellers display it, and the 0-to-10 grade is built from criteria such as documentation, disassembly, spare-parts availability, and spare-parts prices.</p>
             <p><a href="https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/new-eu-labels-help-consumers-choose-more-repairable-electronics-2025-06-20_en">The EU followed</a> with smartphone and tablet repairability classes on the energy label, in force from June 20, 2025. Those labels run from A to E and are based on factors including disassembly depth, fasteners, tools, spare-parts availability, software updates, and repair information.</p>
@@ -1116,7 +1412,7 @@
               <img src="assets/asus-rog-flow-z13-front.png" alt="ASUS ROG Flow Z13 product image">
             </figure>
             <h3>Perfect scores need proof</h3>
-            <p>ASUS's dedicated French repairability site publishes a 10/10 scorecard for the ROG Flow Z13 GZ302EA. But our teardown found soldered components, parts-access friction, and documentation gaps that make a perfect score hard to square without audit-ready evidence.</p>
+            <p><a href="https://www.indicereparabiliteasus.com/">ASUS's dedicated French repairability site</a> publishes a 10/10 scorecard for the ROG Flow Z13 GZ302EA. But our teardown found soldered components, parts-access friction, and documentation gaps that make a perfect score hard to square without audit-ready evidence.</p>
           </div>
           <div class="card">
             <figure class="card-media marketplace-logo-card">
@@ -1136,8 +1432,8 @@
             <p>We found major online and physical retailers failing to display required smartphone energy and repairability labels.</p>
           </div>
         </div>
-        <div class="evidence-copy">
-          <p>Taken together, these findings argue for improving the repair-label system, not retreating from it. Score claims need evidence, official records need working links, and retailers need to show repair information where people actually shop.</p>
+        <div class="evidence-copy closing-evidence">
+          <p>Taken together, these findings argue for improving the repair-label system, not retreating from it. Score claims need evidence, official records need working links, and retailers need to show repair information where people actually shop. Market regulators should treat EPREL records and retailer disclosures as live compliance targets, not static paperwork. They should check whether the public data matches the product on sale, whether the links resolve to useful repair information, and whether the label is visible at the point of purchase. If the system is going to earn consumer trust, it needs routine enforcement, visible consequences for bad records, and faster correction when manufacturers or retailers get the details wrong.</p>
         </div>
       </div>
     </section>
@@ -1148,13 +1444,15 @@
           <div>
             <div class="kicker">Perfect score?</div>
             <h2>ASUS gave the Flow Z13 a 10/10. We put it to the test.</h2>
-            <img class="opening-repairability-badge" src="assets/ifixit-repairability-7-badge.png" alt="iFixit repairability badge showing a score of 7">
+            <img class="opening-repairability-badge" src="assets/7_Repairability-Score_Drop-Shadow (1).png" alt="iFixit repairability badge showing a score of 7">
           </div>
           <div>
-            <p class="lead">ASUS <a href="https://www.indicereparabiliteasus.com/page-produit/?model=GZ302EA">publishes a 10/10 French Repairability Index scorecard</a> for the ROG Flow Z13 GZ302EA. That public scorecard is useful. The tricky part is that not everything behind a perfect score is equally easy for a consumer, journalist, or independent repair group to verify.</p>
+            <p class="lead"><a href="https://www.indicereparabiliteasus.com/page-produit/?model=GZ302EA">ASUS says the ROG Flow Z13 GZ302EA deserves a 10/10 on the French Repairability Index</a>, and that claim is exactly the kind that begs for a closer look. The scorecard is public, which is useful. The tricky part is that not everything behind a perfect score is equally easy for a consumer, journalist, or independent repair group to verify.</p>
             <p>We tried to verify that 10/10 claim from the outside. We could check the public scorecard, the published service manual, the physical design of the device, and the repair/support paths ASUS makes visible online. We could not independently verify every underlying commitment that feeds the French score, such as future parts availability, delivery timelines, or the internal evidence behind some criterion calculations.</p>
-            <p>The visible evidence gave us reasons to question whether a perfect score was plausible. The device has soldered USB-C ports, soldered RAM and wireless, and a fan trapped under the heatsink. The service manual is public and useful, but it lacks troubleshooting, board diagrams, and a parts list with part numbers. ASUS's official support route also does not clearly show ordinary consumers how to buy parts, and the customer self-repair pathway appears to depend on diagnostic gates, one-component requests, and possible deposits.</p>
-            <p>So we did what iFixit does: we took the Flow Z13 apart, documented the repair experience, and scored it on our own repairability scale.</p>
+            <p>The visible evidence gave us reasons to question whether a perfect score was plausible. The device has soldered USB-C ports, soldered RAM and wireless, and a fan trapped under the heatsink. The <a href="https://rog.asus.com/laptops/rog-flow/rog-flow-z13-2025/helpdesk_service_guide/">service manual</a> is public and useful, but it lacks troubleshooting, board diagrams, and a parts list with part numbers. ASUS's official support route also does not clearly show ordinary consumers how to buy parts, and the customer self-repair pathway appears to depend on diagnostic gates, one-component requests, and possible deposits.</p>
+            <blockquote class="pull-quote">
+              <p>So we did the usual iFixit thing: we took the Flow Z13 apart, documented the repair experience, and scored it on our own repairability scale.</p>
+            </blockquote>
             <p>Our score was 7.4/10. The Flow Z13 earned most of its points from repairable design choices: a screen-first opening procedure, a screwed-in battery, an accessible SSD hatch, replaceable cameras and modules, and a useful public service manual. It lost points where those strengths did not translate into a complete repair experience: component-level soldering, harder fan access, incomplete documentation, and unclear parts access.</p>
             <p>The Flow Z13 is, truth be told, a remarkably repairable device by modern tablet/laptop standards. ASUS made a repairable product, and a perfect repairability score should still be backed by evidence people can check, especially when the score depends partly on manufacturer commitments about future parts availability, delivery timelines, and support pathways.</p>
           </div>
@@ -1169,48 +1467,54 @@
           <div class="card">
             <div class="callout">Two scoring systems can reasonably produce different numbers. A perfect self-declared score still needs to be verifiable, especially when a teardown reveals meaningful repair barriers.</div>
             <p>iFixit has been publishing repairability scores since 2011, and our score does a different job from the French Repairability Index score. We <a href="https://www.ifixit.com/News/80361/ifixit-vs-french-repairability-score">consulted on the French system</a>, but the two methods answer slightly different questions. The French score looks at a broader repair ecosystem in France. <a href="https://www.ifixit.com/News/75533/how-ifixit-scores-repairability">Our score</a> puts more weight on product design, teardown evidence, and the repair experience available to a self-repairer right now.</p>
-            <p>Our scoring also uses product-group calibration in a specific way. Instead of simply adding up category weights and letting scores fall wherever they fall, we score a sample of products in a given category, then calibrate the range so the results spread out instead of clustering near the top. That makes the score more useful as a comparator: shoppers can see meaningful differences between products, rather than a long list of things that all look almost perfect.</p>
-            <p>The design has real strengths: the screen comes away first, the battery is screwed rather than glued, the SSD is accessible behind a hatch, cameras and several modules are replaceable, and ASUS publishes a useful service manual. But the charging ports are soldered to the motherboard, RAM and wireless are soldered, one fan is trapped under the heatsink, and the official support path does not clearly lead ordinary consumers to buy parts.</p>
+            <p>Our scoring also uses product-group calibration in a specific way. Instead of simply adding up category weights and letting scores fall wherever they fall, we score a sample of products in a given category, then calibrate the range so the results spread out instead of clustering near the top. That matters here because the Flow Z13 is a real example of why calibrated scoring is useful: it combines genuinely repair-friendly design choices with barriers that keep a perfect score from being self-evident.</p>
+            <p>The design has real strengths: the screen comes away first, the battery is screwed rather than glued, the SSD is accessible behind a hatch, cameras and several modules are replaceable, and ASUS publishes a useful service manual. But the charging ports are soldered to the motherboard, RAM and wireless are soldered, one fan is trapped under the heatsink, and the official support path does not clearly lead ordinary consumers to buy parts. In other words, the calibration can reward the good design choices without flattening the repair barriers that still matter in practice.</p>
             <p>The service manual is public and useful, though it lacks troubleshooting, a parts list with part numbers, and board diagrams. ASUS's official US support path did not expose parts for sale; the separate ASUS parts site appeared legitimate without a clear endorsement from the official support page.</p>
-            <p>ASUS has a lot of high French repairability scores. Its dedicated French repairability site claims 10/10 scores for the ROG Flow Z13 GZ302EA and the ROG Zephyrus GU605MZ. A broader public dataset contains many 10/10 ASUS entries, concentrated in variants of a small number of model families, so that count does not show a massive pattern across unrelated designs. The bigger issue is that high scores are everywhere: the public French repairability data is heavily clustered near the top.</p>
+            <p>ASUS has a lot of high French repairability scores. <a href="https://www.indicereparabiliteasus.com/">Its dedicated French repairability site</a> claims 10/10 scores for the ROG Flow Z13 GZ302EA and the ROG Zephyrus GU605MZ. A broader public dataset contains many 10/10 ASUS entries, concentrated in variants of a small number of model families, so that count does not show a massive pattern across unrelated designs. The bigger issue is that high scores are everywhere: the <a href="#data">public French repairability data is heavily clustered near the top</a>.</p>
           </div>
           <div class="chart asus-score-chart">
             <h3>Two stacked scores, two different methods</h3>
-            <div class="method-stack-compare" aria-label="Stacked comparison of French Repairability Index claim and separate iFixit assessment">
-              <div class="method-labels" aria-label="French Repairability Index segment labels">
-                <div class="method-label left" style="height:20%">Product-specific criteria</div>
-                <div class="method-label left" style="height:20%">Parts-price ratio</div>
-                <div class="method-label left" style="height:20%">Spare-parts availability</div>
-                <div class="method-label left" style="height:20%">Disassembly</div>
-                <div class="method-label left" style="height:20%">Repair information</div>
-              </div>
-              <div class="method-stack-wrap">
-                <div class="method-stack">
-                  <div class="stack-cell specific" style="height:20%">20%</div>
-                  <div class="stack-cell price" style="height:20%">20%</div>
-                  <div class="stack-cell availability" style="height:20%">20%</div>
-                  <div class="stack-cell disassembly" style="height:20%">20%</div>
-                  <div class="stack-cell info" style="height:20%">20%</div>
+            <div class="chart-scroll">
+              <div class="method-stack-compare" aria-label="Stacked comparison of French Repairability Index claim and separate iFixit assessment">
+                <div class="method-labels" aria-label="French Repairability Index segment labels">
+                  <div class="method-label left" style="height:20%">Product-specific criteria</div>
+                  <div class="method-label left" style="height:20%">Parts-price ratio</div>
+                  <div class="method-label left" style="height:20%">Spare-parts availability</div>
+                  <div class="method-label left" style="height:20%">Disassembly</div>
+                  <div class="method-label left" style="height:20%">Repair information</div>
                 </div>
-                <div class="stacked-column-label">ASUS French Repairability Index claim: 10/10</div>
-              </div>
-              <div class="method-stack-wrap">
-                <div class="method-stack">
-                  <div class="stack-cell gap" style="height:26.5%"></div>
-                  <div class="stack-cell parts" style="height:1.5%">0.15</div>
-                  <div class="stack-cell design" style="height:63.5%">6.35</div>
-                  <div class="stack-cell service" style="height:8.5%">0.85</div>
+                <div class="method-stack-wrap">
+                  <div class="method-stack">
+                    <div class="stack-cell specific" style="height:20%">20%</div>
+                    <div class="stack-cell price" style="height:20%">20%</div>
+                    <div class="stack-cell availability" style="height:20%">20%</div>
+                    <div class="stack-cell disassembly" style="height:20%">20%</div>
+                    <div class="stack-cell info" style="height:20%">20%</div>
+                  </div>
+                  <div class="stacked-column-label">ASUS French Repairability Index claim: 10/10</div>
                 </div>
-                <div class="stacked-column-label">Separate iFixit assessment: 7.4/10</div>
-              </div>
-              <div class="method-labels" aria-label="iFixit assessment segment labels">
-                <div class="method-label right" style="height:26.5%"></div>
-                <div class="method-label right" style="height:1.5%">Parts availability</div>
-                <div class="method-label right" style="height:63.5%">Design, including parts pricing</div>
-                <div class="method-label right" style="height:8.5%">Repair information/manual</div>
+                <div class="method-stack-wrap">
+                  <div class="method-stack">
+                    <div class="stack-cell gap" style="height:26.5%"></div>
+                    <div class="stack-cell parts" style="height:1.5%">0.15</div>
+                    <div class="stack-cell design" style="height:63.5%">6.35</div>
+                    <div class="stack-cell service" style="height:8.5%">0.85</div>
+                  </div>
+                  <div class="stacked-column-label">Separate iFixit assessment: 7.4/10</div>
+                </div>
+                <div class="method-labels" aria-label="iFixit assessment segment labels">
+                  <div class="method-label right" style="height:26.5%"></div>
+                  <div class="method-label right" style="height:1.5%">Parts availability</div>
+                  <div class="method-label right" style="height:63.5%">Design, including parts pricing</div>
+                  <div class="method-label right" style="height:8.5%">Repair information/manual</div>
+                </div>
               </div>
             </div>
-            <p class="chart-note">Both bars use the same full-height scale. The labels are separate because the French index and iFixit score use different categories and weights.</p>
+            <p class="scroll-hint">Swipe to inspect chart</p>
+            <div class="chart-legend score-chart-legend" aria-label="Mobile score chart labels">
+              <span><i style="background:#5b8e7d"></i><b>French claim:</b> five equally weighted 20% categories: product-specific criteria, parts-price ratio, spare-parts availability, disassembly, and repair information.</span>
+              <span><i style="background:#7aa95c"></i><b>iFixit assessment:</b> 6.35 design points, 0.85 repair-information points, 0.15 parts-availability points, and a 2.65-point gap from 10.</span>
+            </div>
             <p class="chart-note">The iFixit score is a separate assessment with a different method. Scoring the Flow Z13 revealed soldered RAM and wireless, soldered ports, weak parts access, and incomplete repair documentation.</p>
           </div>
         </div>
@@ -1259,40 +1563,55 @@
 
         <div class="chart phone-pricing-chart">
           <h3>Smartphone records without usable spare-parts pricing</h3>
-          <div class="horizontal-stack-chart" style="--stack-columns: 49.95fr 12.07fr 7.30fr 6.14fr 5.01fr 0.83fr 18.70fr;" aria-label="Horizontal stacked bar chart of 2,054 smartphone and tablet records by spare-parts pricing link status">
-            <div class="stack-callout-row" aria-label="Smartphone and tablet tiny segment callout">
-              <div class="stack-callout" data-callout-for="other-dead-end">Other dead end</div>
+          <div class="chart-scroll">
+            <div class="horizontal-stack-chart" style="--stack-columns: 49.95fr 12.07fr 7.30fr 6.14fr 5.01fr 0.83fr 18.70fr;" aria-label="Horizontal stacked bar chart of 2,054 smartphone and tablet records by spare-parts pricing link status">
+              <div class="stack-callout-row" aria-label="Smartphone and tablet tiny segment callout">
+                <div class="stack-callout" data-callout-for="other-dead-end">Other dead end</div>
+              </div>
+              <div class="stack-label-row" aria-label="Smartphone and tablet segment labels">
+                <div class="stack-label">Empty price-link field</div>
+                <div class="stack-label">Brand/product page</div>
+                <div class="stack-label">"See manual"</div>
+                <div class="stack-label">Support page, no prices</div>
+                <div class="stack-label">Temu/<wbr>AliExpress</div>
+                <div class="stack-label tiny" aria-hidden="true"></div>
+                <div class="stack-label">Usable pricing path</div>
+              </div>
+              <div class="stack-bar-row">
+                <div class="stack-cell problem">1,026</div>
+                <div class="stack-cell problem-dark">248</div>
+                <div class="stack-cell problem-mid">150</div>
+                <div class="stack-cell problem-soft">126</div>
+                <div class="stack-cell problem-pale">103</div>
+                <div class="stack-cell problem-muted tiny" data-segment="other-dead-end">17</div>
+                <div class="stack-cell ok">384</div>
+              </div>
+              <div class="stacked-column-label">2,054 active smartphone/tablet records</div>
             </div>
-            <div class="stack-label-row" aria-label="Smartphone and tablet segment labels">
-              <div class="stack-label">Empty price-link field</div>
-              <div class="stack-label">Brand/product page</div>
-              <div class="stack-label">"See manual"</div>
-              <div class="stack-label">Support page, no prices</div>
-              <div class="stack-label">Temu/<wbr>AliExpress</div>
-              <div class="stack-label tiny" aria-hidden="true"></div>
-              <div class="stack-label">Usable pricing path</div>
-            </div>
-            <div class="stack-bar-row">
-              <div class="stack-cell problem">1,026</div>
-              <div class="stack-cell problem-dark">248</div>
-              <div class="stack-cell problem-mid">150</div>
-              <div class="stack-cell problem-soft">126</div>
-              <div class="stack-cell problem-pale">103</div>
-              <div class="stack-cell problem-muted tiny" data-segment="other-dead-end">17</div>
-              <div class="stack-cell ok">384</div>
-            </div>
-            <div class="stacked-column-label">2,054 active smartphone/tablet records</div>
+          </div>
+          <p class="scroll-hint">Swipe to inspect chart</p>
+          <div class="chart-legend phone-chart-legend" aria-label="Smartphone pricing chart legend">
+            <span><i style="background:#8f1d22"></i>Empty price-link field: 1,026</span>
+            <span><i style="background:#a5282e"></i>Brand/product page: 248</span>
+            <span><i style="background:#b7333a"></i>"See manual": 150</span>
+            <span><i style="background:#d75a61"></i>Support page, no prices: 126</span>
+            <span><i style="background:#f0a0a5"></i>Temu/AliExpress: 103</span>
+            <span><i style="background:#f3c2c5"></i>Other dead end: 17</span>
+            <span><i style="background:#7aa95c"></i>Usable pricing path: 384</span>
           </div>
           <p class="chart-note">Counts from our analysis of active EPREL smartphone and tablet records. Red segments show records with empty price-link fields or links that did not provide a usable pricing path; the green segment shows usable pricing paths.</p>
         </div>
 
         <div class="evidence-copy">
-          <p>Read from left to right, the chart moves from missing fields to generic pages, manual references, support gates, marketplace links, other dead ends, and finally usable pricing. The examples below show how those categories look to a shopper trying to answer one practical question: can I afford to fix this product later?</p>
+          <p>The majority of smartphone records we examined showed no usable parts-pricing path. That matters because shoppers need a clear price link before repair can be a real decision instead of a guess.</p>
           <p>These problems affect whether the label produces meaningful price transparency. If a consumer scans a label and finds an empty field, a generic brand homepage, a locked-down support flow, or a Temu or AliExpress link, the regulation has not delivered the information it promised.</p>
-          <p>The Temu finding is especially damaging because it puts the burden on consumers to navigate marketplace imports, potential duties, and compliance uncertainty, while still appearing in an official repair-information field. A Temu listing cannot stand in for a repair channel or a parts catalog, and it does not satisfy the consumer-facing purpose of the label.</p>
-          <p>Spare-parts pricing matters because repair is often a price decision before it is a technical decision. As <a href="https://www.ifixit.com/News/61140/what-is-right-to-repair">iFixit has argued</a>, manufacturers can make repair effectively unavailable by controlling parts access and setting prices so high that replacement feels like the only rational choice. A phone can have a decent repairability label, a published manual, and a replaceable battery, but if the part is impossible to price or costs too much, the practical repair option disappears.</p>
+          <p>The Temu finding is especially damaging because it puts the burden on consumers to navigate marketplace imports, potential duties, and compliance uncertainty, while still appearing in an official repair-information field.</p>
+          <blockquote class="pull-quote">
+            <p>A Temu listing cannot stand in for a repair channel or a parts catalog, and it does not satisfy the consumer-facing purpose of the label.</p>
+          </blockquote>
+          <p>Spare-parts pricing matters because repair is often a price decision before it is a technical decision. Manufacturers can <a href="https://www.ifixit.com/News/61140/what-is-right-to-repair">make repair effectively unavailable</a> by controlling parts access and setting prices so high that replacement feels like the only rational choice. A phone can have a decent repairability label, a published manual, and a replaceable battery, but if the part is impossible to price or costs too much, the practical repair option disappears.</p>
           <p>Right to Repair Europe has been especially clear on this point: <a href="https://repair.eu/news/fixing-the-unfair-reality-of-spare-parts-prices/">expensive spare parts push consumers toward replacement</a>, and research cited by the coalition shows many consumers choose replacement when repair costs rise above about 30% of the cost of a new product. Since labor, shipping, diagnostics, and downtime also add cost, the spare part itself has to be affordable enough to leave room for the rest of the repair.</p>
-          <p>A price link is where the label turns into a practical repair decision. <a href="https://www.ifixit.com/News/61178/what-right-to-repair-compliance-looks-like-for-manufacturers">Real right-to-repair compliance</a> means parts are available at reasonable prices, with the information needed to use them. If the official record sends shoppers to a blank field, a support queue, or a marketplace listing, it prevents the most basic comparison: can I afford to fix this thing when it breaks?</p>
+          <p>A price link is what turns the label into a real repair choice. <a href="https://www.ifixit.com/News/61178/what-right-to-repair-compliance-looks-like-for-manufacturers">Real Right to Repair compliance</a> means parts are available at reasonable prices, with the information needed to use them. If the official record sends shoppers to a blank field, a support queue, or a marketplace listing, it prevents the most basic comparison: can I afford to fix this thing when it breaks?</p>
         </div>
 
         <div class="evidence-item">
@@ -1300,7 +1619,7 @@
             <h3>A score can look good while the links are missing</h3>
             <p>Below is a screenshot from the EPREL information sheet for an Acer AGM PAD P2W tablet currently on the market. Despite earning a class B repair score, and a perfect spare-parts availability sub-score, the sheet is missing the required links to spare-parts availability, spare-parts prices, and repair instructions.</p>
             <p>This is the problem in miniature: the label points to a product sheet, but the product sheet does not reliably point to the repair information and parts prices a shopper needs. A repairability class can look reassuring at the point of sale while the underlying record fails to deliver the evidence that would let someone check the claim.</p>
-            <p>That distinction is important for readers who do not live in EPREL. The label is the public-facing shortcut; the product information sheet is supposed to be the trail behind it. When required links are empty or missing, consumers get the shortcut without the supporting repair path. The next failure mode looks more helpful at first glance: the link exists, but it sends the shopper to a support queue instead of a price.</p>
+            <p>That distinction matters because the label and the product information sheet do different jobs. The label is the shorthand a shopper sees first, usually in a store or online listing. The product information sheet is supposed to hold the underlying repair details: the links to parts prices, repair instructions, and other supporting information. If the sheet is missing those links, or if the links go to an empty page, a support queue, or some other dead end, the shopper gets the promise of repair information without the information itself. The next failure mode looks more helpful at first glance: the link exists, but it still does not take the shopper to a usable price.</p>
           </div>
           <figure class="full-width-figure">
             <img src="assets/overview-image-07.png" alt="Acer tablet energy label with missing repair links">
@@ -1311,7 +1630,7 @@
           <div class="evidence-copy">
             <h3>"Contact support" is not price transparency</h3>
             <p>If the law is supposed to help you compare repair costs before you buy, a generic support-escalation page does not do the job. You need model-specific prices you can actually see, without opening a ticket, proving ownership, or waiting for a support representative to interpret your request.</p>
-            <p>This is a consumer-protection problem, not a paperwork complaint. Spare-parts price transparency is supposed to help consumers understand whether a product will be affordable to keep alive. A support form turns that comparison into a private negotiation. Marketplace links create a different version of the same problem: the path may look public, but it still lacks the accountability consumers should get from an official record.</p>
+            <p>This is a consumer-protection issue: shoppers need real parts prices before they buy. Spare-parts price transparency is supposed to help consumers understand whether a product will be affordable to keep alive. A support form turns that comparison into a private negotiation. Marketplace links create a different version of the same problem: the path may look public, but it still lacks the accountability consumers should get from an official record.</p>
           </div>
           <figure class="full-width-figure">
             <img src="assets/overview-image-08.png" alt="Rhino support page screenshot">
@@ -1427,7 +1746,7 @@
           </div>
           <figure class="full-width-figure">
             <img src="assets/overview-image-06.png" alt="MediaMarkt Brussels smartphone display with inconsistent labels">
-            <figcaption>MediaMarkt Brussels: required labels appeared inconsistently; the count in the source was 19 missing labels out of 113 phones on display.</figcaption>
+            <figcaption>MediaMarkt Brussels: required labels appeared inconsistently; there were 113 phones on display, and 19 of them were missing the mandatory label.</figcaption>
           </figure>
         </div>
         <div class="evidence-copy">
@@ -1490,6 +1809,39 @@
           </div>
         </div>
 
+        <div class="chart full-width-figure dryer-pricing-chart">
+          <h3>Tumble dryer records with weak parts-price access</h3>
+          <div class="horizontal-stack-chart dryer-horizontal-chart" style="--stack-columns: 26.92fr 25.53fr 1.86fr .58fr 45.11fr;" aria-label="Horizontal stacked bar chart of 5,159 dryer records by spare-parts pricing link status">
+            <div class="stack-callout-row" aria-label="Dryer tiny segment callouts">
+              <div class="stack-callout" data-callout-for="empty-broken-links" style="left:53.4%;">Empty or broken links</div>
+              <div class="stack-callout lower" data-callout-for="other-weak-links" style="left:54.55%;">Other weak<br>links</div>
+            </div>
+            <div class="stack-label-row" aria-label="Dryer segment labels">
+              <div class="stack-label">Login, serial, or contact required</div>
+              <div class="stack-label">General/dead-end support page</div>
+              <div class="stack-label tiny" aria-hidden="true"></div>
+              <div class="stack-label tiny" aria-hidden="true"></div>
+              <div class="stack-label">Usable or not flagged</div>
+            </div>
+            <div class="stack-bar-row">
+              <div class="stack-cell availability">1,389</div>
+              <div class="stack-cell problem">1,317</div>
+              <div class="stack-cell info tiny" data-segment="empty-broken-links">96</div>
+              <div class="stack-cell neutral tiny" data-segment="other-weak-links">30</div>
+              <div class="stack-cell ok">2,327</div>
+            </div>
+            <div class="stacked-column-label">5,159 active dryer records</div>
+          </div>
+          <div class="chart-legend dryer-chart-legend" aria-label="Dryer pricing chart legend">
+            <span><i style="background:#c1464d"></i>Login, serial, or contact required: 1,389</span>
+            <span><i style="background:#9f1f25"></i>General/dead-end support page: 1,317</span>
+            <span><i style="background:#d15a61"></i>Empty or broken links: 96</span>
+            <span><i style="background:#f0a0a5"></i>Other weak links: 30</span>
+            <span><i style="background:#7aa95c"></i>Usable or not flagged: 2,327</span>
+          </div>
+          <p class="chart-note">Counts from our analysis of active EPREL dryer records.</p>
+        </div>
+
         <figure class="section-hero">
           <img src="assets/overview-image-13.png" alt="Jacob D'Hollander repairing a washing machine">
           <figcaption>
@@ -1500,38 +1852,11 @@
           </figcaption>
         </figure>
 
-        <div class="cols">
-          <div class="chart">
-            <h3>Tumble dryer records with weak parts-price access</h3>
-            <div class="vertical-stack-chart" aria-label="Vertical stacked bar chart of 5,159 dryer records by spare-parts pricing link status">
-              <div class="stack-segment-labels" aria-label="Dryer segment labels">
-                <div class="stack-segment-label" style="height:26.92%">Login, serial, or contact required</div>
-                <div class="stack-segment-label" style="height:25.53%">General/dead-end support page</div>
-                <div class="stack-segment-label" style="height:1.86%">Empty or broken links</div>
-                <div class="stack-segment-label" style="height:0.58%">Other weak links</div>
-                <div class="stack-segment-label" style="height:45.11%">Usable or not flagged</div>
-              </div>
-              <div class="stacked-columns">
-                <div class="stacked-column-wrap">
-                  <div class="stacked-column">
-                    <div class="stack-cell availability" style="height:26.92%">1,389</div>
-                    <div class="stack-cell problem" style="height:25.53%">1,317</div>
-                    <div class="stack-cell info" style="height:1.86%">96</div>
-                    <div class="stack-cell neutral tiny" style="height:0.58%">30</div>
-                    <div class="stack-cell ok" style="height:45.11%">2,327</div>
-                  </div>
-                  <div class="stacked-column-label">5,159 active dryer records</div>
-                </div>
-              </div>
-            </div>
-            <p class="chart-note">Counts from our analysis of active EPREL dryer records.</p>
-          </div>
-          <div>
-            <p>Jacob D'Hollander repairs appliances in Ghent, Belgium. He is not a casual tinkerer asking for a favor; he has the competence, VAT registration, and insurance professional repairers are expected to have. Since last autumn, he has been asking major appliance brands for the service manuals, diagnostics, wiring diagrams, and error codes he needs to do his job.</p>
-            <p>Some brands delayed. Some refused. One brand reportedly told him that wiring diagrams and diagnostic programs were proprietary, then later said the refusal was a misunderstanding. Other brands gave him access to Tradeplace, a multi-brand appliance service portal, but only for parts ordering. The repair-information tab he had seen in other screenshots was missing from his account. That matters because a repairer can buy the right part and still be blocked without the service manual, diagnostic routine, wiring diagram, or error-code list needed to install it properly.</p>
-            <p>Right to Repair Europe, iFixit, and allies fought hard for the <a href="https://eur-lex.europa.eu/eli/dir/2024/1799/oj">Right to Repair Directive, Directive (EU) 2024/1799</a>, which becomes applicable from July 31, 2026. It is a real win: it should push manufacturers of covered goods toward repair obligations, reasonable spare-part prices, and fewer hardware or software tricks that block repair. But as <a href="https://repair.eu/whats-my-right-to-repair/">Right to Repair Europe explains</a>, coverage is still limited and much depends on product-specific rules, national implementation, and enforcement.</p>
-            <p>Without indicting a directive that has not yet fully arrived, Jacob's story warns that broader repair rights may underdeliver if existing access rules remain weakly enforced.</p>
-          </div>
+        <div class="evidence-copy">
+          <p>Jacob D'Hollander repairs appliances in Ghent, Belgium. He is not a casual tinkerer asking for a favor; he has the competence, VAT registration, and insurance professional repairers are expected to have. Since last autumn, he has been asking major appliance brands for the service manuals, diagnostics, wiring diagrams, and error codes he needs to do his job.</p>
+          <p>Some brands delayed. Some refused. One brand reportedly told him that wiring diagrams and diagnostic programs were proprietary, then later said the refusal was a misunderstanding. Other brands gave him access to Tradeplace, a multi-brand appliance service portal, but only for parts ordering. The repair-information tab he had seen in other screenshots was missing from his account. That matters because a repairer can buy the right part and still be blocked without the service manual, diagnostic routine, wiring diagram, or error-code list needed to install it properly.</p>
+          <p>Right to Repair Europe, iFixit, and allies fought hard for the <a href="https://eur-lex.europa.eu/eli/dir/2024/1799/oj">Right to Repair Directive, Directive (EU) 2024/1799</a>, which becomes applicable from July 31, 2026. It is a real win: it should push manufacturers of covered goods toward repair obligations, reasonable spare-part prices, and fewer hardware or software tricks that block repair. But as <a href="https://repair.eu/whats-my-right-to-repair/">Right to Repair Europe explains</a>, coverage is still limited and much depends on product-specific rules, national implementation, and enforcement.</p>
+          <p>Without indicting a directive that has not yet fully arrived, Jacob's story warns that broader repair rights may underdeliver if existing access rules remain weakly enforced.</p>
         </div>
 
         <div class="evidence-item">
@@ -1592,7 +1917,7 @@
             <h2>We're winning. Now let's make repair real.</h2>
           </div>
           <div>
-            <p class="lead">Ten years ago, repair advocates were still shouting into the void. Now <a href="https://www.repair.org/world">right-to-repair laws and repairability policies are moving around the world</a>, from US state laws to European repair labels and parts-access rules. That is a huge win.</p>
+            <p class="lead">Ten years ago, repair advocates were still shouting into the void. Now <a href="https://www.repair.org/world">Right to Repair laws and repairability policies are moving around the world</a>, from US state laws to European repair labels and parts-access rules. That is a huge win.</p>
             <p>This report should keep that progress in view. Being able to nitpick scorecards, link quality, label placement, and enforcement is a sign that repair has moved from the margins into policy, product pages, store shelves, and public databases. People are demanding the ability to fix their stuff, and lawmakers are listening.</p>
             <p>The throughline is simple: every repair policy needs a last-mile check. The score must be backed by evidence, the link must land on useful information, the label must appear at the point of sale, and the repairer must be able to get the documents needed to finish the job.</p>
             <p>Policy wins still have to become working repair systems. The same weak points show up again and again: self-declared scores that are hard to audit, public records with bad links, labels missing at the point of sale, parts prices that take too many clicks or never appear, and repair information that qualified professionals still struggle to obtain. Different actors own different pieces of that problem: manufacturers, importers, retailers, database administrators, and market-surveillance authorities.</p>
@@ -1609,6 +1934,6 @@
       </div>
     </section>
   </main>
-
+  <script src="assets/stacked-chart-renderer.js"></script>
 </body>
 </html>
