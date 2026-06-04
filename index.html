@@ -1006,6 +1006,10 @@
       margin-top: 28px;
     }
 
+    .media-followup {
+      padding-top: 18px;
+    }
+
     .evidence-copy h3 {
       margin-bottom: 6px;
     }
@@ -1558,7 +1562,7 @@
             <figcaption>The Flow Z13 has a QR code that leads to ASUS support pages. Awesome. But once you're there, parts access is still confusing: the official support route does not clearly expose ordinary purchase paths for key repair-critical components such as ports, RAM and wireless modules, fans, and other parts, and some support flows depend on diagnostics or serial-number-specific paths.</figcaption>
           </figure>
         </div>
-        <div class="evidence-copy">
+        <div class="evidence-copy media-followup">
           <p>The Flow Z13 is a useful test case precisely because ASUS has done a lot right. For consumers, a perfect score should start the repairability question, not end it. For journalists and regulators, the practical ask is narrower: perfect self-declared scores should come with criterion-level evidence and a way to check whether parts, documentation, and support commitments are delivered later.</p>
         </div>
       </div>
@@ -1619,7 +1623,7 @@
           <p class="chart-note">Counts from our analysis of active EPREL smartphone and tablet records. Red segments show records with empty price-link fields or links that did not provide a usable pricing path; the green segment shows usable pricing paths.</p>
         </div>
 
-        <div class="evidence-copy">
+        <div class="evidence-copy media-followup">
           <p>The majority of smartphone records we examined showed no usable parts-pricing path. That matters because shoppers need a clear price link before repair can be a real decision instead of a guess.</p>
           <p>These problems affect whether the label produces meaningful price transparency. If a consumer scans a label and finds an empty field, a generic brand homepage, a locked-down support flow, or a Temu or AliExpress link, the regulation has not delivered the information it promised.</p>
           <p>The Temu finding is especially damaging because it puts the burden on consumers to navigate marketplace imports, potential duties, and compliance uncertainty, while still appearing in an official repair-information field.</p>
@@ -1676,7 +1680,7 @@
             <figcaption>What compliance can look like: AEG and Electrolux dryer sheets link directly to relevant model-specific parts prices.</figcaption>
           </figure>
         </div>
-        <div class="evidence-copy">
+        <div class="evidence-copy media-followup">
           <p>The enforcement takeaway is practical: EPREL should not accept any URL-shaped answer as repair transparency. Journalists can test whether links lead to prices, consumers need those prices before purchase, and regulators can validate the fields well enough to catch empty pages, support queues, and marketplace detours.</p>
         </div>
       </div>
@@ -1707,7 +1711,7 @@
           <div class="bar-row"><span>MediaMarkt Brussels store</span><div class="track"><div class="bar" style="width:17%"></div></div><strong>17%</strong></div>
           <p class="chart-note">For online stores, we compared the total smartphone listings against the phones exposed through energy-label or score filters, plus visible label checks where available. In the Brussels store, we manually counted 113 phones on display; 19 were missing the required label.</p>
         </div>
-        <div class="evidence-copy">
+        <div class="evidence-copy media-followup">
           <p>The failures show up in different places, but they all break the same consumer moment: comparison. A filter count can reveal missing structured data, a marketplace listing can hide the label by seller, and a shelf tag can leave the score out of the physical store entirely.</p>
         </div>
 
@@ -1766,7 +1770,7 @@
             <figcaption>MediaMarkt Brussels: required labels appeared inconsistently; there were 113 phones on display, and 19 of them were missing the mandatory label.</figcaption>
           </figure>
         </div>
-        <div class="evidence-copy">
+        <div class="evidence-copy media-followup">
           <p>Retail display is the part of the system consumers actually touch. These checks give journalists a repeatable method, show consumers why a missing label should be treated as missing information, and give regulators a straightforward audit target: product pages, marketplace offers, filters, and shelves should all surface the mandatory label consistently.</p>
         </div>
       </div>
@@ -1790,22 +1794,25 @@
         </div>
 
         <div class="cols">
+          <div>
+            <p>Voluntary reporting and selection bias are likely part of the explanation, and the system still gives companies every reason to claim the highest score they can without aggressive checks on those claims. When the incentives push upward and the guardrails are weak, the result is predictable: public scores bunch at the top.</p>
+            <blockquote class="pull-quote">
+              <p>Top-heavy public data makes repairability harder to compare.</p>
+            </blockquote>
+          </div>
           <div class="chart source-comparison">
             <h3>Mean scores are higher in voluntary government uploads</h3>
             <div class="bar-row"><span>Voluntary data.gouv.fr uploads: mean</span><div class="track"><div class="bar" style="width:92%"></div></div><strong>9.22</strong></div>
             <div class="bar-row"><span>Boulanger retailer listings: mean</span><div class="track"><div class="bar blue" style="width:80%"></div></div><strong>7.96</strong></div>
             <p class="chart-note">Mean repairability scores from voluntary data.gouv.fr open-data uploads compared with Boulanger retailer listings. The gap suggests selection bias: companies appear more likely to publish higher scores to the voluntary government dataset.</p>
           </div>
-          <div>
-            <p>Voluntary reporting and selection bias are likely part of the explanation, and the system still gives companies every reason to claim the highest score they can without aggressive checks on those claims. When the incentives push upward and the guardrails are weak, the result is predictable: public scores bunch at the top.</p>
-            <blockquote class="pull-quote">
-              <p>Top-heavy public data makes repairability harder to compare.</p>
-            </blockquote>
-            <p>There are also direct data-quality problems: 48 repairability products and 18 durability products have conflicting scores depending on source. Smartphone manufacturers largely skipped the voluntary data.gouv.fr reporting route, except for brands such as Fairphone and Crosscall, making that category unrepresentative in the government open-data set.</p>
-            <p>In EPREL, some white-label devices using names such as "S24 Ultra" and "S25 Ultra" report repairability scores higher than actual Samsung devices. Three devices claim perfect 5.0/5.0 repairability across all sub-scores. All 11 ARCHOS tablets score exactly 1.0 across every criterion. Those patterns may reflect real products. They also look like self-reporting with too little oversight.</p>
-            <p>Some score elements cannot be audited from a teardown alone. For example, a manufacturer's commitment to provide spare parts for a certain duration may require contracts, supply records, or historical fulfillment evidence. That makes market surveillance and consumer redress especially important.</p>
-            <p>High scores can be real. A public score dataset with little spread still needs stronger context: who reported the score, what evidence supports it, how conflicts are resolved, and what consumers can do if the promised repair access does not appear. Without that context, journalists have to chase the evidence product by product, consumers lose a comparison tool, and regulators inherit a dataset that is hard to trust at a glance.</p>
-          </div>
+        </div>
+
+        <div class="evidence-copy closing-evidence">
+          <p>There are also direct data-quality problems: 48 repairability products and 18 durability products have conflicting scores depending on source. Smartphone manufacturers largely skipped the voluntary data.gouv.fr reporting route, except for brands such as Fairphone and Crosscall, making that category unrepresentative in the government open-data set.</p>
+          <p>In EPREL, some white-label devices using names such as "S24 Ultra" and "S25 Ultra" report repairability scores higher than actual Samsung devices. Three devices claim perfect 5.0/5.0 repairability across all sub-scores. All 11 ARCHOS tablets score exactly 1.0 across every criterion. Those patterns may reflect real products. They also look like self-reporting with too little oversight.</p>
+          <p>Some score elements cannot be audited from a teardown alone. For example, a manufacturer's commitment to provide spare parts for a certain duration may require contracts, supply records, or historical fulfillment evidence. That makes market surveillance and consumer redress especially important.</p>
+          <p>High scores can be real. A public score dataset with little spread still needs stronger context: who reported the score, what evidence supports it, how conflicts are resolved, and what consumers can do if the promised repair access does not appear. Without that context, journalists have to chase the evidence product by product, consumers lose a comparison tool, and regulators inherit a dataset that is hard to trust at a glance.</p>
         </div>
       </div>
     </section>
@@ -1870,7 +1877,7 @@
         </figure>
 
         <div class="evidence-copy">
-          <p>Jacob D'Hollander repairs appliances in Ghent, Belgium. He is not a casual tinkerer asking for a favor; he has the competence, VAT registration, and insurance professional repairers are expected to have. Since last autumn, he has been asking major appliance brands for the service manuals, diagnostics, wiring diagrams, and error codes he needs to do his job.</p>
+          <p>Jacob D'Hollander repairs appliances in Ghent, Belgium. He has the competence, VAT registration, and insurance professional repairers are expected to have. Since last autumn, he has been asking major appliance brands for the service manuals, diagnostics, wiring diagrams, and error codes he needs to do his job.</p>
           <p>Some brands delayed. Some refused. One brand reportedly told him that wiring diagrams and diagnostic programs were proprietary, then later said the refusal was a misunderstanding. Other brands gave him access to Tradeplace, a multi-brand appliance service portal, but only for parts ordering. The repair-information tab he had seen in other screenshots was missing from his account. That matters because a repairer can buy the right part and still be blocked without the service manual, diagnostic routine, wiring diagram, or error-code list needed to install it properly.</p>
           <p>Right to Repair Europe, iFixit, and allies fought hard for the <a href="https://eur-lex.europa.eu/eli/dir/2024/1799/oj">Right to Repair Directive, Directive (EU) 2024/1799</a>, which becomes applicable from July 31, 2026. It is a real win: it should push manufacturers of covered goods toward repair obligations, reasonable spare-part prices, and fewer hardware or software tricks that block repair. But as <a href="https://repair.eu/whats-my-right-to-repair/">Right to Repair Europe explains</a>, coverage is still limited and much depends on product-specific rules, national implementation, and enforcement.</p>
           <p>Without indicting a directive that has not yet fully arrived, Jacob's story warns that broader repair rights may underdeliver if existing access rules remain weakly enforced.</p>
@@ -1879,7 +1886,7 @@
         <div class="evidence-item">
           <div class="evidence-copy">
             <h3>Parts-price links still dead-end</h3>
-            <p>A dryer is not an impulse buy. If repair costs are supposed to influence a purchase, the model information sheet needs to take shoppers to the relevant prices before they buy.</p>
+            <p>Dryers are considered purchases with long ownership costs. If repair costs are supposed to influence a purchase, the model information sheet needs to take shoppers to the relevant prices before they buy.</p>
             <p>This screenshot shows the same basic problem we saw in phones and tablets: a required path exists, but it does not land on the required information. For a consumer trying to estimate long-term ownership costs, that is the difference between transparency and a dead end.</p>
           </div>
           <figure class="full-width-figure">
@@ -1920,7 +1927,7 @@
             <figcaption>Tradeplace access for a repairer: parts sales are available, but the repair-information tab shown in other screenshots is absent from Jacob's account.</figcaption>
           </figure>
         </div>
-        <div class="evidence-copy">
+        <div class="evidence-copy media-followup">
           <p>Consumer price transparency and professional information access are part of the same repair promise. A consumer needs to know whether a product will be affordable to maintain; a repairer needs the manuals, diagnostics, and parts paths to make that repair real. For regulators, both problems point to the same enforcement question: when the rules say information must be available, who checks that it actually reaches the person who needs it?</p>
         </div>
       </div>

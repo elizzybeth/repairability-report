@@ -43,6 +43,40 @@ function boxesOverlap(a, b, tolerance = 0) {
 }
 
 for (const viewport of viewports) {
+  test.describe(`data section text layout ${viewport.name}`, () => {
+    test.use({ viewport: { width: viewport.width, height: viewport.height } });
+
+    test('keeps the data-quality paragraph group at full section width', async ({ page }) => {
+      await page.goto(pageUrl);
+
+      const section = page.locator('#data');
+      const wrap = section.locator('.wrap').first();
+      const columns = section.locator('.cols');
+      const sourceCopy = columns.locator(':scope > div').first();
+      const sourceChart = section.locator('.source-comparison');
+      const paragraphGroup = section
+        .locator('.evidence-copy.closing-evidence')
+        .filter({ hasText: 'There are also direct data-quality problems' });
+
+      await expect(paragraphGroup).toHaveCount(1);
+      await expect(paragraphGroup.locator('p').first()).toContainText('48 repairability products');
+
+      const wrapBox = await getBox(wrap);
+      const columnsBox = await getBox(columns);
+      const sourceCopyBox = await getBox(sourceCopy);
+      const sourceChartBox = await getBox(sourceChart);
+      const paragraphGroupBox = await getBox(paragraphGroup);
+
+      if (viewport.width > 860) {
+        expect(sourceChartBox.x).toBeGreaterThan(sourceCopyBox.x);
+      }
+      expect(paragraphGroupBox.y).toBeGreaterThanOrEqual(columnsBox.y + columnsBox.height - 1);
+      expect(paragraphGroupBox.x).toBeGreaterThanOrEqual(wrapBox.x - 1);
+      expect(paragraphGroupBox.x + paragraphGroupBox.width).toBeLessThanOrEqual(wrapBox.x + wrapBox.width + 1);
+      expect(paragraphGroupBox.width).toBeGreaterThanOrEqual(wrapBox.width - 2);
+    });
+  });
+
   test.describe(`smartphone pricing chart ${viewport.name}`, () => {
     test.use({ viewport: { width: viewport.width, height: viewport.height } });
 
