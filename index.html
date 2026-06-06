@@ -89,7 +89,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
       padding: 24px 0 42px;
     }
@@ -113,110 +113,6 @@
       margin-top: 8px;
       color: var(--muted);
       font-size: .94rem;
-    }
-
-    .asus-score-card {
-      grid-column: span 2;
-      display: grid;
-      grid-template-columns: .92fr 1.08fr;
-      gap: 18px;
-      align-items: center;
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .asus-score-card img {
-      width: 100%;
-      height: 100%;
-      min-height: 260px;
-      object-fit: contain;
-      padding: 18px;
-      background: #101512;
-    }
-
-    .asus-score-copy {
-      padding: 20px 20px 20px 0;
-    }
-
-    .asus-score-copy p {
-      margin: 10px 0 0;
-      color: #28342d;
-    }
-
-    .score-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin: 14px 0;
-      align-items: stretch;
-    }
-
-    .score-box {
-      display: flex;
-      flex-direction: column;
-      min-height: 108px;
-      width: 100%;
-      border: 1px solid var(--line);
-      background: #f7f7f2;
-      padding: 12px;
-      border-radius: 6px;
-    }
-
-    .score-box small {
-      display: flex;
-      align-items: end;
-      min-height: 34px;
-      color: var(--muted);
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: .68rem;
-      letter-spacing: .05em;
-      margin-bottom: 6px;
-      line-height: 1.1;
-    }
-
-    .score-box b {
-      margin-top: auto;
-      font-size: clamp(1.55rem, 3.6vw, 2.5rem);
-      line-height: 1;
-    }
-
-    .score-box.claim b::after {
-      content: "?";
-      color: var(--red);
-      margin-left: 2px;
-    }
-
-    .score-flags {
-      display: grid;
-      gap: 7px;
-      margin-top: 14px;
-    }
-
-    .score-flags span {
-      display: grid;
-      grid-template-columns: 18px 1fr;
-      align-items: center;
-      gap: 8px;
-      margin: 0;
-      color: var(--ink);
-      font-size: .82rem;
-      font-weight: 800;
-    }
-
-    .score-flags span::before {
-      content: "x";
-      width: 18px;
-      height: 18px;
-      display: inline-grid;
-      place-items: center;
-      color: #fff;
-      background: #d12f2f;
-      border-radius: 50%;
-      font-size: .82rem;
-      line-height: 1;
-      font-weight: 900;
-      font-family: Arial, Helvetica, sans-serif;
     }
 
     .temu-logo {
@@ -426,6 +322,79 @@
       grid-template-columns: minmax(180px, 280px) 1fr minmax(52px, auto);
     }
 
+    .data-outlier-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .92fr);
+      gap: 28px;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .data-outlier-copy p {
+      margin-top: 0;
+    }
+
+    .score-stat-grid {
+      display: grid;
+      margin: 16px 0 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .score-stat {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(88px, auto);
+      gap: 6px 16px;
+      align-items: start;
+      padding: 15px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .score-stat:first-child {
+      border-top: 0;
+    }
+
+    .score-stat-label {
+      min-width: 0;
+      color: var(--ink);
+      font-size: .88rem;
+      font-weight: 900;
+      line-height: 1.15;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+    }
+
+    .score-stat strong {
+      color: var(--blue);
+      font-size: clamp(2.05rem, 5vw, 3.1rem);
+      line-height: .95;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .score-stat strong.score-stat-perfect {
+      max-width: 13rem;
+      font-size: clamp(1.45rem, 3.9vw, 2.45rem);
+      line-height: .98;
+      white-space: normal;
+    }
+
+    .score-stat.flagged strong {
+      color: #b46912;
+    }
+
+    .score-stat.urgent strong {
+      color: #007f86;
+    }
+
+    .score-stat p {
+      grid-column: 1 / -1;
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.35;
+    }
+
     .stack-row {
       display: grid;
       grid-template-columns: minmax(120px, 190px) 1fr minmax(52px, auto);
@@ -518,14 +487,6 @@
     }
 
     .mobile-stacked-summary { display: none; }
-
-    .asus-score-chart .chart-scroll {
-      overflow-x: visible;
-    }
-
-    .asus-score-chart .scroll-hint {
-      display: none;
-    }
 
     .marketplace-logo-card {
       min-width: 0;
@@ -1018,17 +979,6 @@
       margin: 0 0 10px;
     }
 
-    .asus-score-layout {
-      display: grid;
-      gap: 24px;
-      margin-top: 28px;
-    }
-
-    .asus-score-chart .track,
-    .asus-score-chart .stack-track {
-      height: 34px;
-    }
-
     .score-compare {
       display: grid;
       gap: 12px;
@@ -1195,36 +1145,12 @@
       background: #101512;
     }
 
-    .score-with-badge {
-      display: grid;
-      grid-template-columns: 1fr 160px;
-      gap: 22px;
-      align-items: center;
-    }
-
-    .repairability-badge {
-      width: 100%;
-      max-width: 160px;
-      margin: 0 auto;
-      filter: drop-shadow(0 16px 24px rgba(17, 22, 26, .18));
-    }
-
-    .opening-repairability-badge {
-      width: 100%;
-      max-width: none;
-      display: block;
-      margin: 4px 0 14px;
-      filter: drop-shadow(0 16px 24px rgba(17, 22, 26, .18));
-    }
-
     @media (max-width: 860px) {
       .hero-grid, .cards, .photo-strip { grid-template-columns: 1fr 1fr; }
-      .asus-score-card { grid-column: 1 / -1; }
       .section-head, .cols { grid-template-columns: 1fr; gap: 18px; }
       .figure-grid { grid-template-columns: 1fr; }
       .section-hero { grid-template-columns: 1fr; }
       .section-hero figcaption { border-left: 0; border-top: 1px solid var(--line); }
-      .score-with-badge { grid-template-columns: 1fr; }
       .score-compare { grid-template-columns: 1fr; }
       .vertical-stack-chart { grid-template-columns: minmax(0, 1fr) minmax(68px, 96px); }
       .stacked-columns { min-height: 300px; }
@@ -1238,7 +1164,6 @@
       }
       .method-stack-compare .method-stack-wrap:nth-of-type(3) { grid-column: 1; }
       .method-stack-compare .method-labels:nth-of-type(4) { grid-column: 2; }
-      .repairability-badge { max-width: 140px; }
     }
 
     @media (max-width: 720px) {
@@ -1296,18 +1221,36 @@
       .bar-row {
         grid-template-columns: 1fr minmax(0, 1fr) minmax(44px, auto);
       }
+      .score-stat {
+        grid-template-columns: minmax(0, 1fr) minmax(74px, auto);
+        gap: 6px 12px;
+      }
+      .score-stat strong {
+        font-size: 2.2rem;
+      }
+      .data-outlier-feature {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
     }
 
     @media (max-width: 560px) {
       .wrap { width: min(100% - 24px, 1160px); }
       .hero-grid, .cards, .photo-strip { grid-template-columns: 1fr; }
-      .asus-score-card { grid-template-columns: 1fr; }
-      .asus-score-copy { padding: 18px; }
-      .asus-score-card img { min-height: 190px; }
-      .score-pair { grid-template-columns: 1fr; }
       .bar-row { grid-template-columns: 1fr; gap: 5px; }
       .bar-row strong {
         justify-self: start;
+      }
+      .score-stat {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+      .score-stat strong {
+        justify-self: start;
+        text-align: left;
+      }
+      .score-stat strong.score-stat-perfect {
+        max-width: none;
       }
       .horizontal-stack-chart .stack-callout { font-size: .5rem; }
       .horizontal-stack-chart .stack-callout::after { height: 48px; }
@@ -1335,24 +1278,8 @@
       </div>
       <div class="eyebrow">Investigative report</div>
       <h1>The EU is raising the bar on repair. Our data shows where it still falls short.</h1>
-      <p class="dek">Nearly a year after the EU's smartphone repairability labels became law, iFixit reviewed public product records, retailer listings, store shelves, and one high-scoring ASUS device. Our analysis found missing repair labels, empty parts-price links, Temu links in official records, and a 10/10 claim that deserves public proof.</p>
+      <p class="dek">Nearly a year after the EU's smartphone repairability labels became law, iFixit reviewed public product records, retailer listings, store shelves, and professional repair-information access. Our analysis found missing repair labels, empty parts-price links, Temu links in official records, and public score data that deserves stronger oversight.</p>
       <div class="hero-grid" aria-label="Key findings">
-        <div class="metric asus-score-card">
-          <img src="assets/asus-rog-flow-z13-front.png" alt="ASUS ROG Flow Z13 tablet product image">
-          <div class="asus-score-copy">
-            <h3>ASUS claims a perfect French repairability score for this model.</h3>
-            <p>Our separate iFixit assessment of the same ROG Flow Z13 is 7.4/10. The teardown found repair barriers that make any perfect-score claim worth explaining in public.</p>
-            <div class="score-pair" aria-label="ASUS claim and separate iFixit assessment">
-              <div class="score-box claim"><small>ASUS French<br>Repair Index claim</small><b>10/10</b></div>
-              <div class="score-box"><small>Separate iFixit<br>Assessment</small><b>7.4/10</b></div>
-            </div>
-            <div class="score-flags">
-              <span>Soldered ports</span>
-              <span>Soldered RAM</span>
-              <span>Weak parts access</span>
-            </div>
-          </div>
-        </div>
         <div class="metric-stack">
           <div class="metric">
             <img class="temu-logo" src="assets/temu-logo.svg" alt="Temu logo">
@@ -1388,7 +1315,6 @@
     <div class="wrap">
       <div class="desktop-nav" aria-label="Report section links">
         <a href="#overview">Core Case</a>
-        <a href="#asus">Perfect Score?</a>
         <a href="#temu">Missing Parts Prices</a>
         <a href="#retail">Missing Labels</a>
         <a href="#data">Self-Reported Scores</a>
@@ -1399,7 +1325,6 @@
         <summary>Sections</summary>
         <div class="mobile-nav-links">
           <a href="#overview">Core Case</a>
-          <a href="#asus">Perfect Score</a>
           <a href="#temu">Parts Prices</a>
           <a href="#retail">Labels</a>
           <a href="#data">Score Data</a>
@@ -1419,151 +1344,10 @@
             <h2>Europe is ahead. That is exactly why these gaps matter.</h2>
           </div>
           <div>
-            <p class="lead">Repair policy is moving all over the world. The US has real state-level <a href="https://repair.org/legislation">Right to Repair</a> wins, and advocates are pushing repair access, parts availability, and repairability information <a href="https://www.repair.org/world">across Canada, Australia, New Zealand, Brazil, India, Taiwan, Europe, and beyond</a>. Europe is ahead because it is the only place where repairability labels, spare-parts access, and repair-information rules are all far enough along to stress-test in public. So we went looking at the places where those rules meet real life: public score records, <a href="https://eprel.ec.europa.eu/screen/home">European Product Registry for Energy Labelling (EPREL)</a> product sheets, retailer listings, store shelves, ASUS support pages, and a professional repairer's attempt to get the information he is supposed to have.</p>
-            <p>Repairability scoring is one of the reforms we are most excited about because it turns repair into a point-of-sale comparison. A score gives consumers a way to compare products, gives journalists a concrete claim to test, and gives regulators a public promise to enforce. The score only works if the evidence behind it is visible enough to check.</p>
-            <p><a href="https://repair.eu/news/the-french-repair-index-challenges-and-opportunities/">France moved first.</a> Its repairability index took effect on January 1, 2021 for five categories of electronic devices sold in France, after a 2019 law required clear repairability information at the point of sale. Manufacturers calculate the score, sellers display it, and the 0-to-10 grade is built from criteria such as documentation, disassembly, spare-parts availability, and spare-parts prices.</p>
-            <p><a href="https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/new-eu-labels-help-consumers-choose-more-repairable-electronics-2025-06-20_en">The EU followed</a> with smartphone and tablet repairability classes on the energy label, in force from June 20, 2025. Those labels run from A to E and are based on factors including disassembly depth, fasteners, tools, spare-parts availability, software updates, and repair information.</p>
-            <p>This report stress-tests implementation across several repair reforms. Some findings are about France's national score. Others are about EU energy labels, ecodesign rules, EPREL records, retailer display, and repair-information access. The pattern is the same: a repair rule is only useful if people can see it, verify it, and use it. Too often, market surveillance is not catching inflated scores or bad information, the link goes nowhere useful, the evidence is hard to check, or the label never reaches the shopper.</p>
+            <p class="lead">Europe is doing the most developed public implementation work on repair policy. French repairability scores, EU smartphone and tablet labels, EPREL product sheets, ecodesign information duties, and the Right to Repair Directive give European regulators a rare live test of whether repair information actually reaches the people who need it. So we looked at where European repair rules meet real life: public score records, <a href="https://eprel.ec.europa.eu/screen/home">European Product Registry for Energy Labelling (EPREL)</a> product sheets, retailer listings, store shelves, and a professional repairer's attempt to get the information he is supposed to have.</p>
+            <p>This report stress-tests implementation across EU repair reforms: energy labels, ecodesign rules, EPREL records, retailer display, and repair-information access. The pattern is the same: a repair rule is only useful if people can see it, verify it, and use it. Too often, market surveillance is not catching inflated scores or bad information, the link goes nowhere useful, the evidence is hard to check, or the label never reaches the shopper.</p>
+            <p>Taken together, these findings argue for improving the repair-label system, not retreating from it. Score claims need evidence, official records need working links, and retailers need to show repair information where people actually shop. Market regulators should treat EPREL records and retailer disclosures as live compliance targets, not static paperwork. They should check whether the public data matches the product on sale, whether the links resolve to useful repair information, and whether the label is visible at the point of purchase. If the system is going to earn consumer trust, it needs routine enforcement, visible consequences for bad records, and faster correction when manufacturers or retailers get the details wrong.</p>
           </div>
-        </div>
-
-        <div class="cards">
-          <div class="card">
-            <figure class="card-media">
-              <img src="assets/asus-rog-flow-z13-front.png" alt="ASUS ROG Flow Z13 product image">
-            </figure>
-            <h3>Perfect scores need proof</h3>
-            <p><a href="https://www.indicereparabiliteasus.com/">ASUS's dedicated French repairability site</a> publishes a 10/10 scorecard for the ROG Flow Z13 GZ302EA. But our teardown found soldered components, parts-access friction, and documentation gaps that make a perfect score hard to square without audit-ready evidence.</p>
-          </div>
-          <div class="card">
-            <figure class="card-media marketplace-logo-card">
-              <div class="marketplace-logo-inner">
-                <img src="assets/temu-logo.svg" alt="Temu logo">
-                <img src="assets/aliexpress-logo.svg" alt="AliExpress logo">
-              </div>
-            </figure>
-            <h3>Broken links</h3>
-            <p>EPREL records point consumers to empty fields, "see manual" notes, generic support pages, AliExpress, and Temu for legally relevant repair information.</p>
-          </div>
-          <div class="card">
-            <figure class="card-media">
-              <img src="assets/overview-image-05.jpg" alt="Brussels shop window displaying smartphone models without energy labels">
-            </figure>
-            <h3>Missing at retail</h3>
-            <p>We found major online and physical retailers failing to display required smartphone energy and repairability labels.</p>
-          </div>
-        </div>
-        <div class="evidence-copy closing-evidence">
-          <p>Taken together, these findings argue for improving the repair-label system, not retreating from it. Score claims need evidence, official records need working links, and retailers need to show repair information where people actually shop. Market regulators should treat EPREL records and retailer disclosures as live compliance targets, not static paperwork. They should check whether the public data matches the product on sale, whether the links resolve to useful repair information, and whether the label is visible at the point of purchase. If the system is going to earn consumer trust, it needs routine enforcement, visible consequences for bad records, and faster correction when manufacturers or retailers get the details wrong.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="asus">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Perfect score?</div>
-            <h2>ASUS gave the Flow Z13 a 10/10. We put it to the test.</h2>
-            <img class="opening-repairability-badge" src="assets/7_Repairability-Score_Drop-Shadow (1).png" alt="iFixit repairability badge showing a score of 7">
-          </div>
-          <div>
-            <p class="lead"><a href="https://www.indicereparabiliteasus.com/page-produit/?model=GZ302EA">ASUS says the ROG Flow Z13 GZ302EA deserves a 10/10 on the French Repairability Index</a>, and that claim is exactly the kind that begs for a closer look. The scorecard is public, which is useful. The tricky part is that not everything behind a perfect score is equally easy for a consumer, journalist, or independent repair group to verify.</p>
-            <p>We tried to verify that 10/10 claim from the outside. We could check the public scorecard, the published service manual, the physical design of the device, and the repair/support paths ASUS makes visible online. We could not independently verify every underlying commitment that feeds the French score, such as future parts availability, delivery timelines, or the internal evidence behind some criterion calculations.</p>
-            <p>The visible evidence gave us reasons to question whether a perfect score was plausible. The device has soldered USB-C ports, soldered RAM and wireless, and a fan trapped under the heatsink. The <a href="https://rog.asus.com/laptops/rog-flow/rog-flow-z13-2025/helpdesk_service_guide/">service manual</a> is public and useful, but it lacks troubleshooting, board diagrams, and a parts list with part numbers. ASUS's official support route also does not clearly show ordinary consumers how to buy parts, and the customer self-repair pathway appears to depend on diagnostic gates, one-component requests, and possible deposits.</p>
-            <blockquote class="pull-quote">
-              <p>So we did the usual iFixit thing: we took the Flow Z13 apart, documented the repair experience, and scored it on our own repairability scale.</p>
-            </blockquote>
-            <p>Our score was 7.4/10. The Flow Z13 earned most of its points from repairable design choices: a screen-first opening procedure, a screwed-in battery, an accessible SSD hatch, replaceable cameras and modules, and a useful public service manual. It lost points where those strengths did not translate into a complete repair experience: component-level soldering, harder fan access, incomplete documentation, and unclear parts access.</p>
-            <p>The Flow Z13 is, truth be told, a remarkably repairable device by modern tablet/laptop standards. ASUS made a repairable product, and a perfect repairability score should still be backed by evidence people can check, especially when the score depends partly on manufacturer commitments about future parts availability, delivery timelines, and support pathways.</p>
-          </div>
-        </div>
-
-        <figure class="product-hero">
-          <img src="assets/asus-rog-flow-z13-keyboard.png" alt="ASUS ROG Flow Z13 with detachable keyboard">
-          <figcaption>ASUS ROG Flow Z13 product image. The device is marketed like a laptop, but its tablet-style architecture matters for repairability scoring.</figcaption>
-        </figure>
-
-        <div class="asus-score-layout">
-          <div class="card">
-            <div class="callout">Two scoring systems can reasonably produce different numbers. A perfect self-declared score still needs to be verifiable, especially when a teardown reveals meaningful repair barriers.</div>
-            <p>iFixit has been publishing repairability scores since 2011, and our score does a different job from the French Repairability Index score. We <a href="https://www.ifixit.com/News/80361/ifixit-vs-french-repairability-score">consulted on the French system</a>, but the two methods answer slightly different questions. The French score looks at a broader repair ecosystem in France. <a href="https://www.ifixit.com/News/75533/how-ifixit-scores-repairability">Our score</a> puts more weight on product design, teardown evidence, and the repair experience available to a self-repairer right now.</p>
-            <p>Our scoring also uses product-group calibration in a specific way. Instead of simply adding up category weights and letting scores fall wherever they fall, we score a sample of products in a given category, then calibrate the range so the results spread out instead of clustering near the top. That matters here because the Flow Z13 is a real example of why calibrated scoring is useful: it combines genuinely repair-friendly design choices with barriers that keep a perfect score from being self-evident.</p>
-            <p>The design has real strengths: the screen comes away first, the battery is screwed rather than glued, the SSD is accessible behind a hatch, cameras and several modules are replaceable, and ASUS publishes a useful service manual. But the charging ports are soldered to the motherboard, RAM and wireless are soldered, one fan is trapped under the heatsink, and the official support path does not clearly lead ordinary consumers to buy parts. In other words, the calibration can reward the good design choices without flattening the repair barriers that still matter in practice.</p>
-            <p>The service manual is public and useful, though it lacks troubleshooting, a parts list with part numbers, and board diagrams. ASUS's official US support path did not expose parts for sale; the separate ASUS parts site appeared legitimate without a clear endorsement from the official support page.</p>
-            <p>ASUS has a lot of high French repairability scores. <a href="https://www.indicereparabiliteasus.com/">Its dedicated French repairability site</a> claims 10/10 scores for the ROG Flow Z13 GZ302EA and the ROG Zephyrus GU605MZ. A broader public dataset contains many 10/10 ASUS entries, concentrated in variants of a small number of model families, so that count does not show a massive pattern across unrelated designs. The bigger issue is that high scores are everywhere: the <a href="#data">public French repairability data is heavily clustered near the top</a>.</p>
-          </div>
-          <div class="chart asus-score-chart">
-            <h3>Two stacked scores, two different methods</h3>
-            <div class="chart-scroll">
-              <div class="method-stack-compare" aria-label="Stacked comparison of French Repairability Index claim and separate iFixit assessment">
-                <div class="method-labels" aria-label="French Repairability Index segment labels">
-                  <div class="method-label left" style="height:20%">Product-specific criteria</div>
-                  <div class="method-label left" style="height:20%">Parts-price ratio</div>
-                  <div class="method-label left" style="height:20%">Spare-parts availability</div>
-                  <div class="method-label left" style="height:20%">Disassembly</div>
-                  <div class="method-label left" style="height:20%">Repair information</div>
-                </div>
-                <div class="method-stack-wrap">
-                  <div class="method-stack">
-                    <div class="stack-cell specific" style="height:20%">20%</div>
-                    <div class="stack-cell price" style="height:20%">20%</div>
-                    <div class="stack-cell availability" style="height:20%">20%</div>
-                    <div class="stack-cell disassembly" style="height:20%">20%</div>
-                    <div class="stack-cell info" style="height:20%">20%</div>
-                  </div>
-                  <div class="stacked-column-label">ASUS French Repairability Index claim: 10/10</div>
-                </div>
-                <div class="method-stack-wrap">
-                  <div class="method-stack">
-                    <div class="stack-cell gap" style="height:26.5%"></div>
-                    <div class="stack-cell parts" style="height:1.5%">0.15</div>
-                    <div class="stack-cell design" style="height:63.5%">6.35</div>
-                    <div class="stack-cell service" style="height:8.5%">0.85</div>
-                  </div>
-                  <div class="stacked-column-label">Separate iFixit assessment: 7.4/10</div>
-                </div>
-                <div class="method-labels" aria-label="iFixit assessment segment labels">
-                  <div class="method-label right" style="height:26.5%"></div>
-                  <div class="method-label right" style="height:1.5%">Parts availability</div>
-                  <div class="method-label right" style="height:63.5%">Design, including parts pricing</div>
-                  <div class="method-label right" style="height:8.5%">Repair information/manual</div>
-                </div>
-              </div>
-            </div>
-            <p class="scroll-hint">Swipe to inspect chart</p>
-            <div class="chart-legend score-chart-legend" aria-label="Mobile score chart labels">
-              <span><i style="background:#5b8e7d"></i><b>French claim:</b> five equally weighted 20% categories: product-specific criteria, parts-price ratio, spare-parts availability, disassembly, and repair information.</span>
-              <span><i style="background:#7aa95c"></i><b>iFixit assessment:</b> 6.35 design points, 0.85 repair-information points, 0.15 parts-availability points, and a 2.65-point gap from 10.</span>
-            </div>
-            <p class="chart-note">The iFixit score is a separate assessment with a different method. Scoring the Flow Z13 revealed soldered RAM and wireless, soldered ports, weak parts access, and incomplete repair documentation.</p>
-          </div>
-        </div>
-
-        <div class="evidence-item">
-          <div class="evidence-copy">
-            <h3>The support flow matters</h3>
-            <p>A perfect score has to cover more than opening the device. People also need the parts and information required after the product breaks. That is where the Flow Z13 gets more complicated: ASUS has repair documentation and a customer self-repair pathway, but the pathway comes with conditions that ordinary shoppers will not understand from a 10/10 score.</p>
-            <p>The support language matters because it affects whether repair is practical. If a customer has to pass a diagnostic gate, file separate requests, or put down a deposit tied to a part's market price, that should be visible in the evidence behind a perfect score.</p>
-          </div>
-          <figure class="full-width-figure">
-            <img src="assets/asus-image-01.png" alt="ASUS ROG Flow Z13 internal repair assessment image">
-            <figcaption>This ASUS support FAQ shows why a perfect-score claim deserves public evidence: if MyASUS does not confirm a hardware error, the customer cannot use Customer Self Repair (CSR), ASUS's program for sending customers replacement parts; only one component can be covered per CSR request; and ASUS can require a deposit tied to the replacement part's market price.</figcaption>
-          </figure>
-        </div>
-        <div class="evidence-item">
-          <div class="evidence-copy">
-            <h3>The QR code is the right idea</h3>
-            <p>Putting repair information one scan away is exactly where these rules should go. The Flow Z13's QR code is a genuinely good consumer-facing move: it gives the buyer a visible bridge from the physical product to repair support.</p>
-            <p>The hard part is making sure that scan takes people to usable repair paths instead of a support maze. In our review, the route from the QR code to actual parts access was still muddy, especially for repair-critical components that a self-repairer would need to identify, price, and buy without becoming an authorized service center.</p>
-          </div>
-          <figure class="full-width-figure">
-            <img src="assets/overview-image-01.jpg" alt="ASUS ROG Flow Z13 label with QR code">
-            <figcaption>The Flow Z13 has a QR code that leads to ASUS support pages. Awesome. But once you're there, parts access is still confusing: the official support route does not clearly expose ordinary purchase paths for key repair-critical components such as ports, RAM and wireless modules, fans, and other parts, and some support flows depend on diagnostics or serial-number-specific paths.</figcaption>
-          </figure>
-        </div>
-        <div class="evidence-copy media-followup">
-          <p>The Flow Z13 is a useful test case precisely because ASUS has done a lot right. For consumers, a perfect score should start the repairability question, not end it. For journalists and regulators, the practical ask is narrower: perfect self-declared scores should come with criterion-level evidence and a way to check whether parts, documentation, and support commitments are delivered later.</p>
         </div>
       </div>
     </section>
@@ -1781,38 +1565,49 @@
         <div class="section-head">
           <div>
             <div class="kicker">Self-reported scores</div>
-            <h2>Top-heavy public score data makes comparison harder.</h2>
+            <h2>Suspicious EPREL score claims need public evidence.</h2>
           </div>
           <div>
-            <p class="lead">Repair scores are supposed to help shoppers tell the difference between products. When public data clusters near the top of the scale, consumers need more context about how those scores were produced and checked.</p>
-            <p>We looked at two different public windows into the French Repairability Index. The first is data.gouv.fr, France's official open-data portal, where manufacturers and importers can voluntarily publish repairability score data. The second is Boulanger, a major French electronics and appliance retailer, whose product listings show scores consumers may actually encounter while shopping. The comparison puts a voluntary government upload set beside a retailer catalog.</p>
-            <p>The voluntary data.gouv.fr repairability entries average 9.22 with a 9.3 median, compared with Boulanger-listed products at 7.96 mean and 8.0 median. High scores may be legitimate, but this pattern shows why self-reported public data needs auditing, public evidence, and enough spread to help consumers compare products.</p>
+            <p class="lead">Repair scores are supposed to help shoppers compare products. EPREL can do that job only if unusual score claims are easy for regulators, journalists, retailers, and consumers to check.</p>
+            <p>The issue is not the average score. The issue is what happens when public records carry Samsung-like model names, unusually high scores, or perfect sub-scores without enough visible evidence to tell whether the claim is real.</p>
             <blockquote class="pull-quote">
-              <p>In the voluntary government dataset, 97% of products score 8/10 or higher, and only 8 of 2,173 score below 6.0.</p>
+              <p>Outlier score claims are where EPREL needs visible proof.</p>
             </blockquote>
           </div>
         </div>
 
-        <div class="cols">
-          <div>
-            <p>Voluntary reporting and selection bias are likely part of the explanation, and the system still gives companies every reason to claim the highest score they can without aggressive checks on those claims. When the incentives push upward and the guardrails are weak, the result is predictable: public scores bunch at the top.</p>
+        <div class="data-outlier-feature">
+          <div class="evidence-copy data-outlier-copy">
+            <p>In EPREL, some white-label devices using names such as "S24 Ultra" and "S25 Ultra" report repairability scores higher than actual Samsung devices. Three devices claim perfect 5.0/5.0 repairability across all sub-scores. All 11 ARCHOS tablets score exactly 1.0 across every criterion. Those patterns may reflect real products. They also look like self-reporting with too little oversight.</p>
+            <p>Some score elements cannot be audited from a teardown alone. For example, a manufacturer's commitment to provide spare parts for a certain duration may require contracts, supply records, or historical fulfillment evidence. That makes market surveillance and consumer redress especially important.</p>
+            <p>High scores can be real. EPREL's public score data still needs stronger context: who reported the score, what evidence supports it, how conflicts are resolved, and what consumers can do if the promised repair access does not appear. Without that context, journalists have to chase the evidence product by product, consumers lose a comparison tool, and regulators inherit a dataset that is hard to trust at a glance.</p>
+            <p>The score comparison should be treated as a triage signal, not proof that every white-label listing is wrong. Names that echo flagship models, scores that outrank the brand they appear to imitate, and perfect sub-scores should trigger evidence checks.</p>
             <blockquote class="pull-quote">
-              <p>Top-heavy public data makes repairability harder to compare.</p>
+              <p>A score record should show enough evidence to explain the score.</p>
             </blockquote>
+            <p>That is the practical enforcement ask: require criterion-level evidence, check outliers first, and make correction paths visible when a public score does not match the repair access consumers actually receive.</p>
           </div>
-          <div class="chart source-comparison">
-            <h3>Mean scores are higher in voluntary government uploads</h3>
-            <div class="bar-row"><span>Voluntary data.gouv.fr uploads: mean</span><div class="track"><div class="bar" style="width:92%"></div></div><strong>9.22</strong></div>
-            <div class="bar-row"><span>Boulanger retailer listings: mean</span><div class="track"><div class="bar blue" style="width:80%"></div></div><strong>7.96</strong></div>
-            <p class="chart-note">Mean repairability scores from voluntary data.gouv.fr open-data uploads compared with Boulanger retailer listings. The gap suggests selection bias: companies appear more likely to publish higher scores to the voluntary government dataset.</p>
+          <div class="chart source-comparison score-anomaly-chart">
+            <h3>EPREL outliers worth checking first</h3>
+            <div class="score-stat-grid" aria-label="Samsung-like EPREL score outliers">
+              <div class="score-stat">
+                <span class="score-stat-label">Actual Samsung phones</span>
+                <strong>3.05</strong>
+                <p>Average repairability score across 49 Samsung records in the EPREL smartphone source notes.</p>
+              </div>
+              <div class="score-stat flagged">
+                <span class="score-stat-label">S24/S25-named white-label records</span>
+                <strong>4.10</strong>
+                <p>Samsung-like model names from companies including Shenzhen Jiaqi and VIQEE are recorded above Samsung's brand average.</p>
+              </div>
+              <div class="score-stat urgent">
+                <span class="score-stat-label">Perfect-score records</span>
+                <strong class="score-stat-perfect">3 perfect 5.0 records</strong>
+                <p>These are S24/S25 white-label phones, not Samsung-direct scores: three claim 5.0/5.0 repairability and 5.0 sub-scores for disassembly, fasteners, and tools.</p>
+              </div>
+            </div>
+            <p class="chart-note">These are triage signals, not proof that each listing is wrong. They are the outlier checks EPREL should make easy: claimant identity, criterion evidence, and visible correction paths.</p>
           </div>
-        </div>
-
-        <div class="evidence-copy closing-evidence">
-          <p>There are also direct data-quality problems: 48 repairability products and 18 durability products have conflicting scores depending on source. Smartphone manufacturers largely skipped the voluntary data.gouv.fr reporting route, except for brands such as Fairphone and Crosscall, making that category unrepresentative in the government open-data set.</p>
-          <p>In EPREL, some white-label devices using names such as "S24 Ultra" and "S25 Ultra" report repairability scores higher than actual Samsung devices. Three devices claim perfect 5.0/5.0 repairability across all sub-scores. All 11 ARCHOS tablets score exactly 1.0 across every criterion. Those patterns may reflect real products. They also look like self-reporting with too little oversight.</p>
-          <p>Some score elements cannot be audited from a teardown alone. For example, a manufacturer's commitment to provide spare parts for a certain duration may require contracts, supply records, or historical fulfillment evidence. That makes market surveillance and consumer redress especially important.</p>
-          <p>High scores can be real. A public score dataset with little spread still needs stronger context: who reported the score, what evidence supports it, how conflicts are resolved, and what consumers can do if the promised repair access does not appear. Without that context, journalists have to chase the evidence product by product, consumers lose a comparison tool, and regulators inherit a dataset that is hard to trust at a glance.</p>
         </div>
       </div>
     </section>
@@ -1941,12 +1736,12 @@
             <h2>We're winning. Now let's make repair real.</h2>
           </div>
           <div>
-            <p class="lead">Ten years ago, repair advocates were still shouting into the void. Now <a href="https://www.repair.org/world">Right to Repair laws and repairability policies are moving around the world</a>, from US state laws to European repair labels and parts-access rules. That is a huge win.</p>
-            <p>This report should keep that progress in view. Being able to nitpick scorecards, link quality, label placement, and enforcement is a sign that repair has moved from the margins into policy, product pages, store shelves, and public databases. People are demanding the ability to fix their stuff, and lawmakers are listening.</p>
+            <p class="lead">Europe has moved repair policy from principle into public infrastructure: national repair scores, EU labels, EPREL records, ecodesign obligations, and repair-information rights. That is a major achievement, and it gives European regulators a live view of where the system still needs enforcement.</p>
+            <p>This report should keep that progress in view. Being able to test scorecards, link quality, label placement, and information access is a sign that repair has moved from advocacy into implementation. The next job is not to retreat from the framework, but to make sure the framework reaches consumers, repairers, retailers, and market-surveillance authorities in practice.</p>
             <p>The throughline is simple: every repair policy needs a last-mile check. The score must be backed by evidence, the link must land on useful information, the label must appear at the point of sale, and the repairer must be able to get the documents needed to finish the job.</p>
             <p>Policy wins still have to become working repair systems. The same weak points show up again and again: self-declared scores that are hard to audit, public records with bad links, labels missing at the point of sale, parts prices that take too many clicks or never appear, and repair information that qualified professionals still struggle to obtain. Different actors own different pieces of that problem: manufacturers, importers, retailers, database administrators, and market-surveillance authorities.</p>
             <p>There is more to come as the Right to Repair Directive becomes applicable from July 31, 2026. We should expect stronger repair obligations for covered products, better access to spare parts at reasonable prices, and more pressure against software or hardware practices that block repair. That is worth celebrating. And it is exactly why the next phase matters: to make the EU repairability approach as effective as it wants to be, perfect scores need evidence, EPREL links need validation, labels need retail enforcement, repairers need fast access, and consumers need redress when promises are not kept.</p>
-            <p>The stakes are bigger than Europe. Other countries are watching these systems and deciding what to borrow. In the US, lawmakers have considered repair-score ideas in <a href="https://lawfilesext.leg.wa.gov/biennium/2021-22/Htm/Bill%20Reports/House/1801%20HBR%20CPB%2022.htm">Washington</a>, <a href="https://www.maine.gov/housedems/news/crafts-introduces-bill-create-repairability-scores-consumer-electronics">Maine</a>, <a href="https://assembly.state.ny.us/leg/?Actions=Y&amp;Summary=Y&amp;Text=Y&amp;bn=A3058&amp;default_fld=">New York</a>, and <a href="https://leg.colorado.gov/bills/hjr24-1005">Colorado</a>. <a href="https://www.moenv.gov.tw/en/news/press-releases/14005.html">Taiwan's Ministry of Environment</a> has piloted a repairability-index approach for phones and laptops after studying France's system. That is exciting, but it also raises the bar for everyone: we cannot copy-paste today's scorecards and expect them to solve repair on their own. Every new system should learn from the last one, tighten the weak spots, and keep ratcheting up toward repair that people can actually use.</p>
+            <p>The stakes extend beyond Europe because other jurisdictions are watching European repair policy and deciding what to borrow. <a href="https://www.moenv.gov.tw/en/news/press-releases/14005.html">Taiwan's Ministry of Environment</a> has piloted a repairability-index approach for phones and laptops after studying France's system, and repair-score ideas have appeared in state-level proposals in <a href="https://lawfilesext.leg.wa.gov/biennium/2021-22/Htm/Bill%20Reports/House/1801%20HBR%20CPB%2022.htm">Washington</a>, <a href="https://www.maine.gov/housedems/news/crafts-introduces-bill-create-repairability-scores-consumer-electronics">Maine</a>, and <a href="https://leg.colorado.gov/bills/hjr24-1005">Colorado</a>. New York has gone further: its Electronics Repair Scores Act <a href="https://nyassembly.gov/leg/?Actions=Y&amp;Memo=Y&amp;Summary=Y&amp;Text=Y&amp;Votes=Y&amp;bn=A03058&amp;term=">passed the Assembly on March 18, 2026</a> and <a href="https://www.nysenate.gov/legislation/bills/2025/S6438/amendment/C">passed the Senate on June 4, 2026</a>. That raises the bar for Europe: the more influential these systems become, the more important it is to tighten the weak spots before others copy them. Every new repairability system should learn from the last one, improve enforcement, and keep ratcheting up toward repair that people can actually use.</p>
           </div>
         </div>
 

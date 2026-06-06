@@ -3,6 +3,8 @@ const path = require('path');
 const { pathToFileURL } = require('url');
 
 const pageUrl = pathToFileURL(path.join(__dirname, '..', 'index.html')).href;
+const asusPageUrl = pathToFileURL(path.join(__dirname, '..', 'asus-flow-z13.html')).href;
+const frenchPageUrl = pathToFileURL(path.join(__dirname, '..', 'french-repairability-data.html')).href;
 
 const viewports = [
   { name: 'desktop', width: 1280, height: 900, maxChartHeight: 360 },
@@ -42,38 +44,183 @@ function boxesOverlap(a, b, tolerance = 0) {
   );
 }
 
+test.describe('ASUS page split', () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  test('moves Flow Z13 content to its own page and removes it from the report', async ({ page }) => {
+    await page.goto(pageUrl);
+
+    const reportBody = page.locator('body');
+    await expect(reportBody).not.toContainText(/ASUS|Flow Z13|ROG Flow|GZ302EA/i);
+    await expect(page.locator('#asus')).toHaveCount(0);
+    await expect(page.locator('a[href="#asus"]')).toHaveCount(0);
+    await expect(page.locator('img[src*="asus"]')).toHaveCount(0);
+
+    await page.goto(asusPageUrl);
+
+    const asusBody = page.locator('body');
+    await expect(page.locator('h1')).toContainText('ASUS gave the Flow Z13 a 10/10');
+    await expect(asusBody).toContainText('ROG Flow Z13 GZ302EA');
+    await expect(asusBody).toContainText('Separate iFixit assessment: 7.4/10');
+    await expect(page.locator('img[src="assets/asus-rog-flow-z13-keyboard.png"]')).toBeVisible();
+    await expect(page.locator('img[src="assets/asus-image-01.png"]')).toBeVisible();
+
+    for (const href of [
+      'https://www.indicereparabiliteasus.com/page-produit/?model=GZ302EA',
+      'https://rog.asus.com/laptops/rog-flow/rog-flow-z13-2025/helpdesk_service_guide/',
+      'https://www.ifixit.com/News/80361/ifixit-vs-french-repairability-score',
+      'https://www.ifixit.com/News/75533/how-ifixit-scores-repairability',
+      'https://www.indicereparabiliteasus.com/',
+      'french-repairability-data.html'
+    ]) {
+      await expect(page.locator(`a[href="${href}"]`).first()).toHaveCount(1);
+    }
+  });
+});
+
+test.describe('EPREL score data framing', () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  test('focuses the EU report on suspicious EPREL score claims', async ({ page }) => {
+    await page.goto(pageUrl);
+
+    const dataSection = page.locator('#data');
+    const anomalyChart = dataSection.locator('.score-anomaly-chart');
+
+    await expect(dataSection.locator('h2')).toContainText('Suspicious EPREL score claims need public evidence');
+    await expect(dataSection).toContainText('S24 Ultra');
+    await expect(dataSection).toContainText('S25 Ultra');
+    await expect(dataSection).toContainText('Three devices claim perfect 5.0/5.0');
+    await expect(dataSection).toContainText('All 11 ARCHOS tablets score exactly 1.0');
+    await expect(dataSection).toContainText('Some score elements cannot be audited from a teardown alone');
+    await expect(dataSection).toContainText("EPREL's public score data still needs stronger context");
+    await expect(anomalyChart.locator('h3')).toContainText('EPREL outliers worth checking first');
+    await expect(anomalyChart.locator('.score-stat')).toHaveCount(3);
+    await expect(anomalyChart.locator('.bar-row')).toHaveCount(0);
+    await expect(anomalyChart).toContainText('Actual Samsung phones');
+    await expect(anomalyChart).toContainText('49 Samsung records');
+    await expect(anomalyChart).toContainText('3.05');
+    await expect(anomalyChart).toContainText('S24/S25-named white-label records');
+    await expect(anomalyChart).toContainText('4.10');
+    await expect(anomalyChart).toContainText('Perfect-score records');
+    await expect(anomalyChart.locator('.score-stat.urgent strong')).toContainText(/3\s*perfect 5\.0\s*records/);
+    await expect(anomalyChart.locator('.score-stat-perfect .score-stat-context')).toHaveCount(0);
+    await expect(anomalyChart).toContainText('5.0/5.0');
+    await expect(anomalyChart.locator('img.s24-photo')).toHaveCount(0);
+    await expect(anomalyChart).not.toContainText('Samsung-like names outscore Samsung records');
+    await expect(dataSection).not.toContainText('EPREL smartphone and tablet scores have spread');
+    await expect(dataSection).not.toContainText('mean score is 3.26');
+    await expect(dataSection).not.toContainText('median is 3.37');
+    await expect(dataSection).not.toContainText('meaningful bell-shaped distribution');
+    await expect(dataSection).not.toContainText('France-specific score distribution analysis');
+    await expect(dataSection).not.toContainText('data.gouv.fr repairability entries average 9.22');
+    await expect(dataSection).not.toContainText('Boulanger-listed products at 7.96');
+    await expect(dataSection).not.toContainText('97% of products score 8/10 or higher');
+    await expect(dataSection).not.toContainText('Mean scores are higher in voluntary government uploads');
+    await expect(dataSection).not.toContainText('48 repairability products and 18 durability products');
+
+    await page.goto(frenchPageUrl);
+
+    const frenchBody = page.locator('body');
+    await expect(page.locator('h1')).toContainText('French repairability score data is clustered near the top');
+    await expect(frenchBody).toContainText('data.gouv.fr');
+    await expect(frenchBody).toContainText('Boulanger');
+    await expect(frenchBody).toContainText('9.22');
+    await expect(frenchBody).toContainText('7.96');
+    await expect(frenchBody).toContainText('97% of products score 8/10 or higher');
+    await expect(frenchBody).toContainText('only 8 of 2,173 score below 6.0');
+    await expect(frenchBody).toContainText('48 repairability products and 18 durability products');
+    await expect(page.locator('a[href="index.html#data"]').first()).toHaveCount(1);
+  });
+});
+
+test.describe('overview section', () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  test('does not repeat the parts-price and retail findings as cards', async ({ page }) => {
+    await page.goto(pageUrl);
+
+    const overview = page.locator('#overview');
+    await expect(overview.locator('.cards')).toHaveCount(0);
+    await expect(overview.locator('h3', { hasText: 'Broken links' })).toHaveCount(0);
+    await expect(overview.locator('h3', { hasText: 'Missing at retail' })).toHaveCount(0);
+    await expect(page.locator('#temu')).toHaveCount(1);
+    await expect(page.locator('#retail')).toHaveCount(1);
+
+    const leadBox = await getBox(overview.locator('.lead'));
+    const summaryBox = await getBox(overview.locator('p', { hasText: 'Taken together, these findings' }));
+    expect(Math.abs(summaryBox.x - leadBox.x)).toBeLessThanOrEqual(1);
+  });
+});
+
+test.describe('European regulator framing', () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  test('puts European implementation first and avoids US-led framing', async ({ page }) => {
+    await page.goto(pageUrl);
+
+    const body = page.locator('body');
+    const overviewLead = page.locator('#overview .lead');
+    const evidenceLead = page.locator('#evidence .lead');
+
+    await expect(overviewLead).toContainText('European regulators');
+    await expect(overviewLead).toContainText('European repair rules meet real life');
+    await expect(evidenceLead).toContainText('Europe has moved repair policy');
+    await expect(body).not.toContainText('The US has real state-level');
+    await expect(body).not.toContainText('from US state laws');
+    await expect(body).not.toContainText('In the US, lawmakers');
+    await expect(body).not.toContainText('repair-score ideas have also appeared in state-level proposals in Washington, Maine, New York, and Colorado');
+    await expect(body).not.toContainText('Repairability scoring is one of the reforms');
+    await expect(body).not.toContainText('France moved first');
+    await expect(body).not.toContainText('January 1, 2021');
+    await expect(body).not.toContainText('The EU followed');
+    await expect(body).not.toContainText('June 20, 2025');
+    await expect(body).not.toContainText("Some findings are about France's national score");
+    await expect(body).toContainText('This report stress-tests implementation across EU repair reforms');
+    await expect(body).toContainText('New York has gone further');
+    await expect(body).toContainText('passed the Assembly on March 18, 2026');
+    await expect(body).toContainText('passed the Senate on June 4, 2026');
+  });
+});
+
 for (const viewport of viewports) {
   test.describe(`data section text layout ${viewport.name}`, () => {
     test.use({ viewport: { width: viewport.width, height: viewport.height } });
 
-    test('keeps the data-quality paragraph group at full section width', async ({ page }) => {
+    test('places the outlier panel beside the first EPREL paragraph', async ({ page }) => {
       await page.goto(pageUrl);
 
       const section = page.locator('#data');
       const wrap = section.locator('.wrap').first();
-      const columns = section.locator('.cols');
-      const sourceCopy = columns.locator(':scope > div').first();
-      const sourceChart = section.locator('.source-comparison');
-      const paragraphGroup = section
-        .locator('.evidence-copy.closing-evidence')
-        .filter({ hasText: 'There are also direct data-quality problems' });
+      const outlierFeature = section.locator('.data-outlier-feature');
+      const outlierIntro = outlierFeature.locator('.data-outlier-copy');
+      const sourceChart = outlierFeature.locator('.source-comparison');
+      const paragraphGroup = outlierFeature.locator('.data-outlier-copy');
 
-      await expect(paragraphGroup).toHaveCount(1);
-      await expect(paragraphGroup.locator('p').first()).toContainText('48 repairability products');
+      await expect(outlierFeature).toHaveCount(1);
+      await expect(outlierIntro.locator('p').first()).toContainText('In EPREL, some white-label devices');
+      await expect(paragraphGroup).toContainText('Some score elements cannot be audited');
+      await expect(paragraphGroup).toContainText('The score comparison should be treated as a triage signal');
+      await expect(section.locator('.evidence-copy.closing-evidence')).toHaveCount(0);
+      await expect(section.locator('.evidence-copy.media-followup')).toHaveCount(0);
 
       const wrapBox = await getBox(wrap);
-      const columnsBox = await getBox(columns);
-      const sourceCopyBox = await getBox(sourceCopy);
+      const featureBox = await getBox(outlierFeature);
+      const introBox = await getBox(outlierIntro);
       const sourceChartBox = await getBox(sourceChart);
       const paragraphGroupBox = await getBox(paragraphGroup);
 
       if (viewport.width > 860) {
-        expect(sourceChartBox.x).toBeGreaterThan(sourceCopyBox.x);
+        expect(sourceChartBox.x).toBeGreaterThan(introBox.x);
+        expect(Math.abs(sourceChartBox.y - introBox.y)).toBeLessThanOrEqual(12);
+        expect(Math.abs(paragraphGroupBox.y - introBox.y)).toBeLessThanOrEqual(12);
+        expect(paragraphGroupBox.x + paragraphGroupBox.width).toBeLessThan(sourceChartBox.x + 1);
+      } else {
+        expect(sourceChartBox.y).toBeGreaterThan(introBox.y);
+        expect(paragraphGroupBox.width).toBeGreaterThanOrEqual(wrapBox.width - 2);
       }
-      expect(paragraphGroupBox.y).toBeGreaterThanOrEqual(columnsBox.y + columnsBox.height - 1);
       expect(paragraphGroupBox.x).toBeGreaterThanOrEqual(wrapBox.x - 1);
       expect(paragraphGroupBox.x + paragraphGroupBox.width).toBeLessThanOrEqual(wrapBox.x + wrapBox.width + 1);
-      expect(paragraphGroupBox.width).toBeGreaterThanOrEqual(wrapBox.width - 2);
     });
   });
 
@@ -273,7 +420,8 @@ test.describe('mobile navigation and chart layout', () => {
     await expect(desktopNav).toBeHidden();
     await expect(mobileNav).toBeVisible();
     await expect(summary).toHaveText('Sections');
-    await expect(mobileNav.locator('a')).toHaveCount(7);
+    await expect(mobileNav.locator('a')).toHaveCount(6);
+    await expect(mobileNav.locator('a', { hasText: 'Perfect Score' })).toHaveCount(0);
     await expect(mobileNav.locator('a', { hasText: 'Parts Prices' })).toHaveAttribute('href', '#temu');
     await summary.click();
     await expect(mobileNav).toHaveAttribute('open', '');
@@ -309,6 +457,7 @@ test.describe('desktop navigation', () => {
 
     await expect(page.locator('.desktop-nav')).toBeVisible();
     await expect(page.locator('.mobile-nav')).toBeHidden();
-    await expect(page.locator('.desktop-nav a')).toHaveCount(7);
+    await expect(page.locator('.desktop-nav a')).toHaveCount(6);
+    await expect(page.locator('.desktop-nav a', { hasText: 'Perfect Score' })).toHaveCount(0);
   });
 });

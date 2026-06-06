@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ASUS gave the Flow Z13 a 10/10. We put it to the test.</title>
+  <style>
+    :root {
+      --ink: #11161a;
+      --muted: #58636d;
+      --line: #d7dde3;
+      --paper: #f3f4f6;
+      --panel: #ffffff;
+      --red: #0071ce;
+      --amber: #e09f49;
+      --green: #00b5bc;
+      --blue: #0071ce;
+      --soft-red: #e7f3fc;
+      --shadow: 0 18px 45px rgba(17, 22, 26, .09);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+
+    a { color: var(--blue); }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1160px, calc(100% - 36px)); margin: 0 auto; }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .brandline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 28px;
+    }
+
+    .ifixit-mark {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .ifixit-logo {
+      width: 116px;
+      height: auto;
+    }
+
+    .back-link {
+      font-size: .9rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      gap: .5rem;
+      align-items: center;
+      margin: 36px 0 18px;
+      color: var(--red);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .78rem;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2.4rem, 7vw, 5.8rem);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 6px 0 12px;
+      font-size: clamp(1.8rem, 4vw, 3.2rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    h3 { margin: 0 0 10px; font-size: 1.15rem; }
+
+    .dek {
+      max-width: 760px;
+      margin: 24px 0 28px;
+      color: #26323b;
+      font-size: clamp(1.1rem, 2vw, 1.42rem);
+    }
+
+    .case-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: 28px;
+      align-items: end;
+      padding-bottom: 42px;
+    }
+
+    .case-hero img {
+      width: 100%;
+      max-height: 430px;
+      object-fit: contain;
+      padding: 20px;
+      background: #101512;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .score-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 18px 0 0;
+      align-items: stretch;
+      max-width: 520px;
+    }
+
+    .score-box {
+      display: flex;
+      flex-direction: column;
+      min-height: 108px;
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 12px;
+      border-radius: 6px;
+    }
+
+    .score-box small {
+      display: flex;
+      align-items: end;
+      min-height: 34px;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: .68rem;
+      letter-spacing: .05em;
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    .score-box b {
+      margin-top: auto;
+      font-size: clamp(1.55rem, 3.6vw, 2.5rem);
+      line-height: 1;
+      color: var(--red);
+    }
+
+    .score-box.claim b::after {
+      content: "?";
+      color: var(--red);
+      margin-left: 2px;
+    }
+
+    main section {
+      padding: 54px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 36px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .kicker {
+      color: var(--red);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .78rem;
+    }
+
+    .lead { font-size: 1.16rem; color: #29352e; margin-top: 0; }
+
+    .pull-quote {
+      border-left: 6px solid var(--red);
+      margin: 18px 0;
+      padding: 12px 0 12px 18px;
+      color: #1e2a32;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .product-hero {
+      margin: 0 0 28px;
+    }
+
+    .product-hero img {
+      width: 100%;
+      max-height: 430px;
+      object-fit: contain;
+      padding: 26px;
+      background: #101512;
+    }
+
+    figcaption {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: 8px;
+    }
+
+    .opening-repairability-badge {
+      width: 100%;
+      max-width: none;
+      display: block;
+      margin: 4px 0 14px;
+      filter: drop-shadow(0 16px 24px rgba(17, 22, 26, .18));
+    }
+
+    .asus-score-layout {
+      display: grid;
+      gap: 24px;
+      margin-top: 28px;
+    }
+
+    .card,
+    .chart {
+      min-width: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 18px;
+      border-radius: 6px;
+      box-shadow: var(--shadow);
+    }
+
+    .callout {
+      background: var(--soft-red);
+      border-left: 6px solid var(--red);
+      padding: 18px 20px;
+      margin: 0 0 20px;
+      font-weight: 700;
+    }
+
+    .chart-scroll {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .scroll-hint { display: none; margin: 8px 0 0; color: var(--muted); font-size: .82rem; }
+
+    .chart-legend {
+      display: none;
+      gap: 8px 14px;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+
+    .chart-legend span {
+      display: grid;
+      grid-template-columns: 12px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .chart-legend i {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      margin-top: 4px;
+      border: 1px solid rgba(17, 22, 26, .18);
+    }
+
+    .chart-note { margin: 10px 0 0; color: var(--muted); font-size: .9rem; }
+
+    .method-stack-compare {
+      display: grid;
+      grid-template-columns: minmax(148px, 1fr) minmax(120px, 160px) minmax(120px, 160px) minmax(148px, 1fr);
+      gap: 14px;
+      align-items: stretch;
+      min-width: 680px;
+    }
+
+    .method-labels {
+      height: 430px;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      font-size: .82rem;
+      font-weight: 800;
+      line-height: 1.12;
+      color: var(--ink);
+    }
+
+    .method-label {
+      display: flex;
+      align-items: center;
+      min-height: 0;
+      overflow: visible;
+    }
+
+    .method-label.left { justify-content: end; text-align: right; }
+    .method-label.right { justify-content: start; text-align: left; }
+
+    .method-stack-wrap {
+      display: grid;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .method-stack {
+      height: 430px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      background: #eef1ee;
+      overflow: hidden;
+    }
+
+    .method-stack .stack-cell {
+      min-height: 0;
+      overflow: hidden;
+      padding: 0 2px;
+      display: grid;
+      place-items: center;
+      font-size: .62rem;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .stacked-column-label {
+      color: var(--muted);
+      font-size: .86rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .stack-cell.specific { background: #4f776b; }
+    .stack-cell.price { background: #5b8e7d; }
+    .stack-cell.availability { background: #67a28f; }
+    .stack-cell.disassembly { background: #7bb8a5; }
+    .stack-cell.info { background: #9ccdbc; color: #15332a; }
+    .stack-cell.design { background: #7aa95c; }
+    .stack-cell.service { background: #5b8e7d; }
+    .stack-cell.parts { background: #e09f49; color: #1d160c; }
+    .stack-cell.gap { background: #eef1ee; color: var(--muted); }
+
+    .full-width-figure {
+      margin-top: 22px;
+    }
+
+    .evidence-item {
+      margin-top: 26px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .evidence-copy {
+      width: 100%;
+      max-width: none;
+    }
+
+    .evidence-copy h3 {
+      margin-bottom: 6px;
+    }
+
+    .evidence-copy p {
+      margin: 0 0 10px;
+    }
+
+    .media-followup {
+      padding-top: 18px;
+    }
+
+    @media (max-width: 860px) {
+      .case-hero,
+      .section-head {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .method-stack-compare {
+        grid-template-columns: minmax(120px, 1fr) minmax(92px, 122px);
+        row-gap: 18px;
+      }
+
+      .method-stack-compare .method-stack-wrap:nth-of-type(3) { grid-column: 1; }
+      .method-stack-compare .method-labels:nth-of-type(4) { grid-column: 2; }
+    }
+
+    @media (max-width: 720px) {
+      .chart {
+        padding: 14px;
+        overflow: hidden;
+      }
+
+      .chart-scroll {
+        margin-inline: -2px;
+        padding-inline: 2px;
+      }
+
+      .scroll-hint { display: block; }
+      .chart-legend { display: grid; grid-template-columns: 1fr; }
+      .chart-legend span { grid-template-columns: 10px 1fr; }
+      .chart-legend i { width: 10px; height: 10px; }
+
+      .method-stack-compare {
+        grid-template-columns: minmax(96px, 1fr) minmax(96px, 1fr);
+        min-width: 300px;
+        gap: 12px;
+      }
+
+      .method-stack-compare .method-labels {
+        display: none;
+      }
+
+      .method-stack-compare .method-stack-wrap:nth-of-type(2),
+      .method-stack-compare .method-stack-wrap:nth-of-type(3) {
+        grid-column: auto;
+      }
+
+      .method-stack {
+        height: 400px;
+      }
+
+      .method-stack .stack-cell {
+        font-size: .58rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 24px, 1160px); }
+      .brandline { align-items: start; flex-direction: column; }
+      .score-pair { grid-template-columns: 1fr; }
+      .method-stack { height: 360px; }
+      .method-stack .stack-cell { font-size: .5rem; padding: 0 1px; }
+      main section { padding: 42px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brandline">
+        <a class="ifixit-mark" href="https://www.ifixit.com" aria-label="iFixit">
+          <img class="ifixit-logo" src="assets/ifixit-logo.svg" alt="iFixit">
+        </a>
+        <a class="back-link" href="index.html">Back to repairability report</a>
+      </div>
+      <div class="case-hero">
+        <div>
+          <div class="eyebrow">Repairability case study</div>
+          <h1>ASUS gave the Flow Z13 a 10/10. We put it to the test.</h1>
+          <p class="dek">ASUS says the ROG Flow Z13 GZ302EA deserves a perfect French Repairability Index score. Our separate iFixit assessment of the same device is 7.4/10 because the teardown found repair barriers that deserve public evidence.</p>
+          <div class="score-pair" aria-label="ASUS claim and separate iFixit assessment">
+            <div class="score-box claim"><small>ASUS French<br>Repair Index claim</small><b>10/10</b></div>
+            <div class="score-box"><small>Separate iFixit<br>Assessment</small><b>7.4/10</b></div>
+          </div>
+        </div>
+        <img src="assets/asus-rog-flow-z13-front.png" alt="ASUS ROG Flow Z13 tablet product image">
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="asus">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Perfect score?</div>
+            <h2>ASUS gave the Flow Z13 a 10/10. We put it to the test.</h2>
+            <img class="opening-repairability-badge" src="assets/7_Repairability-Score_Drop-Shadow (1).png" alt="iFixit repairability badge showing a score of 7">
+          </div>
+          <div>
+            <p class="lead"><a href="https://www.indicereparabiliteasus.com/page-produit/?model=GZ302EA">ASUS says the ROG Flow Z13 GZ302EA deserves a 10/10 on the French Repairability Index</a>, and that claim is exactly the kind that begs for a closer look. The scorecard is public, which is useful. The tricky part is that not everything behind a perfect score is equally easy for a consumer, journalist, or independent repair group to verify.</p>
+            <p>We tried to verify that 10/10 claim from the outside. We could check the public scorecard, the published service manual, the physical design of the device, and the repair/support paths ASUS makes visible online. We could not independently verify every underlying commitment that feeds the French score, such as future parts availability, delivery timelines, or the internal evidence behind some criterion calculations.</p>
+            <p>The visible evidence gave us reasons to question whether a perfect score was plausible. The device has soldered USB-C ports, soldered RAM and wireless, and a fan trapped under the heatsink. The <a href="https://rog.asus.com/laptops/rog-flow/rog-flow-z13-2025/helpdesk_service_guide/">service manual</a> is public and useful, but it lacks troubleshooting, board diagrams, and a parts list with part numbers. ASUS's official support route also does not clearly show ordinary consumers how to buy parts, and the customer self-repair pathway appears to depend on diagnostic gates, one-component requests, and possible deposits.</p>
+            <blockquote class="pull-quote">
+              <p>So we did the usual iFixit thing: we took the Flow Z13 apart, documented the repair experience, and scored it on our own repairability scale.</p>
+            </blockquote>
+            <p>Our score was 7.4/10. The Flow Z13 earned most of its points from repairable design choices: a screen-first opening procedure, a screwed-in battery, an accessible SSD hatch, replaceable cameras and modules, and a useful public service manual. It lost points where those strengths did not translate into a complete repair experience: component-level soldering, harder fan access, incomplete documentation, and unclear parts access.</p>
+            <p>The Flow Z13 is, truth be told, a remarkably repairable device by modern tablet/laptop standards. ASUS made a repairable product, and a perfect repairability score should still be backed by evidence people can check, especially when the score depends partly on manufacturer commitments about future parts availability, delivery timelines, and support pathways.</p>
+          </div>
+        </div>
+
+        <figure class="product-hero">
+          <img src="assets/asus-rog-flow-z13-keyboard.png" alt="ASUS ROG Flow Z13 with detachable keyboard">
+          <figcaption>ASUS ROG Flow Z13 product image. The device is marketed like a laptop, but its tablet-style architecture matters for repairability scoring.</figcaption>
+        </figure>
+
+        <div class="asus-score-layout">
+          <div class="card">
+            <div class="callout">Two scoring systems can reasonably produce different numbers. A perfect self-declared score still needs to be verifiable, especially when a teardown reveals meaningful repair barriers.</div>
+            <p>iFixit has been publishing repairability scores since 2011, and our score does a different job from the French Repairability Index score. We <a href="https://www.ifixit.com/News/80361/ifixit-vs-french-repairability-score">consulted on the French system</a>, but the two methods answer slightly different questions. The French score looks at a broader repair ecosystem in France. <a href="https://www.ifixit.com/News/75533/how-ifixit-scores-repairability">Our score</a> puts more weight on product design, teardown evidence, and the repair experience available to a self-repairer right now.</p>
+            <p>Our scoring also uses product-group calibration in a specific way. Instead of simply adding up category weights and letting scores fall wherever they fall, we score a sample of products in a given category, then calibrate the range so the results spread out instead of clustering near the top. That matters here because the Flow Z13 is a real example of why calibrated scoring is useful: it combines genuinely repair-friendly design choices with barriers that keep a perfect score from being self-evident.</p>
+            <p>The design has real strengths: the screen comes away first, the battery is screwed rather than glued, the SSD is accessible behind a hatch, cameras and several modules are replaceable, and ASUS publishes a useful service manual. But the charging ports are soldered to the motherboard, RAM and wireless are soldered, one fan is trapped under the heatsink, and the official support path does not clearly lead ordinary consumers to buy parts. In other words, the calibration can reward the good design choices without flattening the repair barriers that still matter in practice.</p>
+            <p>The service manual is public and useful, though it lacks troubleshooting, a parts list with part numbers, and board diagrams. ASUS's official US support path did not expose parts for sale; the separate ASUS parts site appeared legitimate without a clear endorsement from the official support page.</p>
+            <p>ASUS has a lot of high French repairability scores. <a href="https://www.indicereparabiliteasus.com/">Its dedicated French repairability site</a> claims 10/10 scores for the ROG Flow Z13 GZ302EA and the ROG Zephyrus GU605MZ. A broader public dataset contains many 10/10 ASUS entries, concentrated in variants of a small number of model families, so that count does not show a massive pattern across unrelated designs. The bigger issue is that high scores are everywhere: the <a href="french-repairability-data.html">public French repairability data is heavily clustered near the top</a>.</p>
+          </div>
+          <div class="chart asus-score-chart">
+            <h3>Two stacked scores, two different methods</h3>
+            <div class="chart-scroll">
+              <div class="method-stack-compare" aria-label="Stacked comparison of French Repairability Index claim and separate iFixit assessment">
+                <div class="method-labels" aria-label="French Repairability Index segment labels">
+                  <div class="method-label left" style="height:20%">Product-specific criteria</div>
+                  <div class="method-label left" style="height:20%">Parts-price ratio</div>
+                  <div class="method-label left" style="height:20%">Spare-parts availability</div>
+                  <div class="method-label left" style="height:20%">Disassembly</div>
+                  <div class="method-label left" style="height:20%">Repair information</div>
+                </div>
+                <div class="method-stack-wrap">
+                  <div class="method-stack">
+                    <div class="stack-cell specific" style="height:20%">20%</div>
+                    <div class="stack-cell price" style="height:20%">20%</div>
+                    <div class="stack-cell availability" style="height:20%">20%</div>
+                    <div class="stack-cell disassembly" style="height:20%">20%</div>
+                    <div class="stack-cell info" style="height:20%">20%</div>
+                  </div>
+                  <div class="stacked-column-label">ASUS French Repairability Index claim: 10/10</div>
+                </div>
+                <div class="method-stack-wrap">
+                  <div class="method-stack">
+                    <div class="stack-cell gap" style="height:26.5%"></div>
+                    <div class="stack-cell parts" style="height:1.5%">0.15</div>
+                    <div class="stack-cell design" style="height:63.5%">6.35</div>
+                    <div class="stack-cell service" style="height:8.5%">0.85</div>
+                  </div>
+                  <div class="stacked-column-label">Separate iFixit assessment: 7.4/10</div>
+                </div>
+                <div class="method-labels" aria-label="iFixit assessment segment labels">
+                  <div class="method-label right" style="height:26.5%"></div>
+                  <div class="method-label right" style="height:1.5%">Parts availability</div>
+                  <div class="method-label right" style="height:63.5%">Design, including parts pricing</div>
+                  <div class="method-label right" style="height:8.5%">Repair information/manual</div>
+                </div>
+              </div>
+            </div>
+            <p class="scroll-hint">Swipe to inspect chart</p>
+            <div class="chart-legend score-chart-legend" aria-label="Mobile score chart labels">
+              <span><i style="background:#5b8e7d"></i><b>French claim:</b> five equally weighted 20% categories: product-specific criteria, parts-price ratio, spare-parts availability, disassembly, and repair information.</span>
+              <span><i style="background:#7aa95c"></i><b>iFixit assessment:</b> 6.35 design points, 0.85 repair-information points, 0.15 parts-availability points, and a 2.65-point gap from 10.</span>
+            </div>
+            <p class="chart-note">The iFixit score is a separate assessment with a different method. Scoring the Flow Z13 revealed soldered RAM and wireless, soldered ports, weak parts access, and incomplete repair documentation.</p>
+          </div>
+        </div>
+
+        <div class="evidence-item">
+          <div class="evidence-copy">
+            <h3>The support flow matters</h3>
+            <p>A perfect score has to cover more than opening the device. People also need the parts and information required after the product breaks. That is where the Flow Z13 gets more complicated: ASUS has repair documentation and a customer self-repair pathway, but the pathway comes with conditions that ordinary shoppers will not understand from a 10/10 score.</p>
+            <p>The support language matters because it affects whether repair is practical. If a customer has to pass a diagnostic gate, file separate requests, or put down a deposit tied to a part's market price, that should be visible in the evidence behind a perfect score.</p>
+          </div>
+          <figure class="full-width-figure">
+            <img src="assets/asus-image-01.png" alt="ASUS ROG Flow Z13 internal repair assessment image">
+            <figcaption>This ASUS support FAQ shows why a perfect-score claim deserves public evidence: if MyASUS does not confirm a hardware error, the customer cannot use Customer Self Repair (CSR), ASUS's program for sending customers replacement parts; only one component can be covered per CSR request; and ASUS can require a deposit tied to the replacement part's market price.</figcaption>
+          </figure>
+        </div>
+        <div class="evidence-item">
+          <div class="evidence-copy">
+            <h3>The QR code is the right idea</h3>
+            <p>Putting repair information one scan away is exactly where these rules should go. The Flow Z13's QR code is a genuinely good consumer-facing move: it gives the buyer a visible bridge from the physical product to repair support.</p>
+            <p>The hard part is making sure that scan takes people to usable repair paths instead of a support maze. In our review, the route from the QR code to actual parts access was still muddy, especially for repair-critical components that a self-repairer would need to identify, price, and buy without becoming an authorized service center.</p>
+          </div>
+          <figure class="full-width-figure">
+            <img src="assets/overview-image-01.jpg" alt="ASUS ROG Flow Z13 label with QR code">
+            <figcaption>The Flow Z13 has a QR code that leads to ASUS support pages. Awesome. But once you're there, parts access is still confusing: the official support route does not clearly expose ordinary purchase paths for key repair-critical components such as ports, RAM and wireless modules, fans, and other parts, and some support flows depend on diagnostics or serial-number-specific paths.</figcaption>
+          </figure>
+        </div>
+        <div class="evidence-copy media-followup">
+          <p>The Flow Z13 is a useful test case precisely because ASUS has done a lot right. For consumers, a perfect score should start the repairability question, not end it. For journalists and regulators, the practical ask is narrower: perfect self-declared scores should come with criterion-level evidence and a way to check whether parts, documentation, and support commitments are delivered later.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
